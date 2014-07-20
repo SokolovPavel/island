@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MiniMap : MonoBehaviour {
 
+
 	public Transform target;
 	public Texture2D marker;
 	public float camHeight = 1.0f;//Расстояние от головы персонажа до камеры
@@ -11,6 +12,8 @@ public class MiniMap : MonoBehaviour {
 	public float speedScale = 5;
 	public float heightScale = 0.1f;
 	public float camDistance = 2.0f;//orthographicSize
+	public float camMapDistance = 10f;
+
 	public enum ha {left, center, right};
 	public enum va {top, middle, bottom};
 	public ha horisontalAlignment = ha.left;
@@ -18,12 +21,23 @@ public class MiniMap : MonoBehaviour {
 	public int size = 50;
 	public float xOffset = 0f;
 	public float yOffset = 0f;
-
+	public Vector3 CameraMapModePosition;
 	public RenderTexture RTexture;
 	public Material RMaterial;
+	public Material RMapMaterial;
+
+	public float changeTime = 1;
+	private float currentTime = 0;
+
+	//Флаги включения анимации между миникартой и картой
+	private bool isMovingDown = false;
+	private bool isMovingUp = false;
 
 	private Rect _miniMapRect;
+	private Rect _mapRect;
+	private Rect _currentRect;
 	private Vector3 _prevPos;
+	private bool isMinimap = true;
 
 	void Start () {
 		Vector3 angles = transform.eulerAngles;
@@ -31,39 +45,75 @@ public class MiniMap : MonoBehaviour {
 		angles.y = target.transform.eulerAngles.y;
 		transform.eulerAngles = angles;
 		_miniMapRect = Draw ();
+		_mapRect = setupMapRect ();
 		_prevPos = transform.position;
 	}
 
 	void Update () {
-		transform.position = new Vector3 (target.transform.position.x, target.transform.position.y + camHeight, target.transform.position.z);
-		if (!freezeRotation) {
-			Vector3 angles = transform.eulerAngles;
-			float diff = angles.y - target.transform.eulerAngles.y;
-			if (Mathf.Abs(diff) < 0.9){
-				angles.y = target.transform.eulerAngles.y;
-			}else{
-				if ((diff > 180)||(diff < -180)){
-					diff = 360 * Mathf.Sign(diff) - diff;
-					angles.y += diff * Time.deltaTime * rotationSpeed;
-				}else{
-					angles.y -= diff * Time.deltaTime * rotationSpeed;
+		if (isMinimap) {
+
+			if (_currentRect != _miniMapRect) {
+				float proportion = currentTime/changeTime;
+				currentTime -= Time.deltaTime;
+				if (proportion <= 0) {
+					proportion = 0;
+					currentTime = 0;
 				}
+				_currentRect.x = _mapRect.x * (proportion) + (1 - proportion) * _miniMapRect.x;
+				_currentRect.y = _mapRect.y * ( proportion) + (1 - proportion) * _miniMapRect.y;
+				_currentRect.width = _mapRect.width * (proportion) + (1 - proportion) * _miniMapRect.width;
+				_currentRect.height = _mapRect.height * (proportion) + (1 - proportion) * _miniMapRect.height;
+			} 
+
+			transform.position = new Vector3 (target.transform.position.x, target.transform.position.y + camHeight, target.transform.position.z);
+			if (!freezeRotation) {
+				Vector3 angles = transform.eulerAngles;
+				float diff = angles.y - target.transform.eulerAngles.y;
+				if (Mathf.Abs (diff) < 0.9) {
+					angles.y = target.transform.eulerAngles.y;
+				} else {
+					if ((diff > 180) || (diff < -180)) {
+						diff = 360 * Mathf.Sign (diff) - diff;
+						angles.y += diff * Time.deltaTime * rotationSpeed;
+					} else {
+						angles.y -= diff * Time.deltaTime * rotationSpeed;
+					}
+				}
+				transform.eulerAngles = angles;
 			}
-			transform.eulerAngles = angles;
+		} else {
+			if (_currentRect != _mapRect) {
+				float proportion = currentTime/changeTime;
+				currentTime += Time.deltaTime;
+				if (proportion >= 1) {
+					proportion = 1;
+					currentTime = changeTime;
+				}
+				_currentRect.x = _miniMapRect.x * (1 - proportion) + proportion * _mapRect.x;
+				_currentRect.y = _miniMapRect.y * (1 - proportion) + proportion * _mapRect.y;
+				_currentRect.width = _miniMapRect.width * (1 - proportion) + proportion * _mapRect.width;
+				_currentRect.height = _miniMapRect.height * (1 - proportion) + proportion * _mapRect.height;
+			} 
 		}
 	}
 
 	void FixedUpdate() {
-		//Изменение масштаба камеры в зависимости от движения игрока
-		Vector3 curPos = transform.position;
-		curPos.y = 0;
-		_prevPos.y = 0;
-		Vector3 move = curPos - _prevPos ;
-		_prevPos = transform.position;
-		float speed = move.magnitude;
-		
-		camera.orthographicSize = camDistance + speed*speedScale + target.position.y*heightScale;
+		if (isMinimap) {
+			//Изменение масштаба камеры в зависимости от движения игрока
+			Vector3 curPos = transform.position;
+			curPos.y = 0;
+			_prevPos.y = 0;
+			Vector3 move = curPos - _prevPos;
+			_prevPos = transform.position;
+			float speed = move.magnitude;
+			camera.orthographicSize = camDistance + speed * speedScale + target.position.y * heightScale;
+		}
 	}
+
+	Rect setupMapRect() {
+		return new Rect (Screen.width / 2 - RTexture.width / 2, Screen.height / 2 - RTexture.height / 2, RTexture.width, RTexture.height);
+	}
+
 	Rect Draw () {
 		int mMsize;
 		if (Screen.width < Screen.height) {
@@ -100,8 +150,42 @@ public class MiniMap : MonoBehaviour {
 	}
 	
 	void OnGUI(){	
-		if(Event.current.type == EventType.Repaint)	
-			Graphics.DrawTexture(_miniMapRect, RTexture, RMaterial);		
+		if (Event.current.type == EventType.Repaint) {
+			if (isMinimap) {
+				if ((currentTime/changeTime)>=0) {
+					RMapMaterial.SetFloat("_Opacity",(currentTime/changeTime));
+					RMaterial.SetFloat("_Opacity",(1 - currentTime/changeTime));
+					Graphics.DrawTexture (_currentRect, RTexture, RMapMaterial);
+				}
+				Graphics.DrawTexture(_miniMapRect, RTexture, RMaterial);
+			} else {
+				//GUI.DrawTexture(Rect(Screen.width * 0.1, Screen.height * 0.1, Screen.width * 0.8, Screen.height * 0.8), RTexture, ScaleMode.ScaleToFit, true, 10.0F);
+				if ((currentTime/changeTime)<=1) {
+					RMapMaterial.SetFloat("_Opacity",(currentTime/changeTime));
+					RMaterial.SetFloat("_Opacity",(1 - currentTime/changeTime));
+					Graphics.DrawTexture (_miniMapRect, RTexture, RMaterial);
+				}
+				Graphics.DrawTexture(_currentRect, RTexture, RMapMaterial);
+
+			}
+		}
+	}
+
+	public void setMiniMap () {
+		isMinimap = true;
+		isMovingDown = false;
+		isMovingUp = true;
+	}
+
+	public void setMap () {
+		isMinimap = false;
+		camera.orthographicSize = camMapDistance;
+		transform.position = CameraMapModePosition;
+		Vector3 angles = transform.eulerAngles;
+		angles.y = 0;
+		transform.eulerAngles = angles;
+		isMovingDown = true;
+		isMovingUp = false;
 	}
 	
 }

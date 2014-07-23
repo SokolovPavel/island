@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 
-public class Item : MonoBehaviour 
+public class Itm  
 
 {
 	public string name;
@@ -12,8 +11,8 @@ public class Item : MonoBehaviour
 	public int quantity;
 	public int durability;
 	public int maxDur;
-	public enType type;
-	public enum enType
+	public Item.enType type;
+	/*public enum enType
 	{
 		Weapon,
 		Instrument,
@@ -22,9 +21,9 @@ public class Item : MonoBehaviour
 		Resource,
 		Equipment
 	}
+*/
 
-
-	public void  SetItem(string n, string t, string d, float w, int mQ, int q, int dur, int mDur, enType typ)
+	public Itm(string n, string t, string d, float w, int mQ, int q, int dur, int mDur, Item.enType typ)
 	{
 		name = n;
 		title = t;
@@ -37,17 +36,17 @@ public class Item : MonoBehaviour
 		type = typ;
 	}
 
-	public Item()
+	public Itm()
 	{
 		name = "DebugCube";
 		title = "DebugItem";
 		desc = "Just a placeholder";
 		weight = 0.01f;
-		maxQ = 1;
-		quantity = 1;
+		maxQ = 0;
+		quantity = 0;
 		durability = 1;
 		maxDur = 1;
-		type = enType.Resource;
+		type = Item.enType.Resource;
 	}
 
 }

@@ -19,6 +19,7 @@ public class MouseLook : MonoBehaviour {
 
 	float yawRotation = 0F;
 	float pitchRotation = 0F;
+
 	void Update ()
 	{
 		if (enabled) {
@@ -33,6 +34,19 @@ public class MouseLook : MonoBehaviour {
 		if (Input.GetButtonDown ("Screenshot")) {
 			StartCoroutine(ScreenCapture());
 		}
+
+		if (Input.GetButtonDown("Use"))
+		{
+			TakeItem ();
+		}
+
+		if (Input.GetButtonDown("Drop"))
+		{
+			DropItem (0);
+		}
+
+
+
 	}
 
 	IEnumerator ScreenCapture() {
@@ -67,4 +81,47 @@ public class MouseLook : MonoBehaviour {
 
 		#endif
 	}
+	/// <summary>
+	/// Gets the look position. 
+	/// I think its an useless function.
+	/// </summary>
+	/// <returns>The look position.</returns>
+	/// <param name="range">Range.</param>
+	Vector3 GetLookPos(float range) {
+		Vector3 direction = HeadCamera.transform.TransformDirection (Vector3.forward);
+		RaycastHit hit;
+		if (Physics.Raycast (HeadCamera.transform.position, direction, out hit, range)) {	
+			Vector3 ret = hit.point;
+			return ret;
+		} else {
+			return new Vector3(0f,0f,0f);
+		}
+
+	}
+
+	void DropItem( int itemIndex)
+	{
+		Inventory inv = GetComponent<Inventory>();
+		GameObject obj = inv.DropItem(itemIndex);
+		obj.transform.position = GetLookPos(10.0f);
+		obj.transform.rotation = Quaternion.identity;
+	}
+
+	void TakeItem()
+	{
+		Inventory inv = GetComponent<Inventory>();
+		float range = 10f;
+		Vector3 direction = HeadCamera.transform.TransformDirection (Vector3.forward);
+		RaycastHit hit;
+		if (Physics.Raycast (HeadCamera.transform.position, direction, out hit, range)) {	
+			if ((hit.rigidbody)&&(hit.rigidbody.gameObject.name!="Player"))
+			{
+				GameObject nz= hit.transform.gameObject;
+				if (inv.AddItem (nz) >= 0) {
+					Destroy (nz);
+				}
+			}
+		}
+	}
+
 }

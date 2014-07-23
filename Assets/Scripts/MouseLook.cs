@@ -42,7 +42,7 @@ public class MouseLook : MonoBehaviour {
 
 		if (Input.GetButtonDown("Drop"))
 		{
-			DropItem (0);
+			DropItem ();
 		}
 
 
@@ -99,10 +99,19 @@ public class MouseLook : MonoBehaviour {
 
 	}
 
-	void DropItem( int itemIndex)
+	void DropItem()
 	{
+
+
 		Inventory inv = GetComponent<Inventory>();
-		GameObject obj = inv.DropItem(itemIndex);
+		GameObject obj = inv.DropLastItem();
+
+		Component[] allComponents = obj.GetComponents<Component>();
+
+		if (allComponents.Length == 1) { // Contains only Transform?
+			Destroy (obj);
+			return;
+		}
 		obj.transform.position = GetLookPos(10.0f);
 		obj.transform.rotation = Quaternion.identity;
 	}

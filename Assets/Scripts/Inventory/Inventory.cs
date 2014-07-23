@@ -7,9 +7,12 @@ using System.Collections;
 public class Inventory : MonoBehaviour
 {	
 	public static int inventorySize = 127;
-	//public int[] itemQuantity = new int[inventorySize + 1];
 	public Itm[] items = new Itm[inventorySize + 1];	// Элементы инвентаря
+	private int lastPickedItem;
 
+	/// <summary>
+	/// The debug object. Удалить после отладки
+	/// </summary>
 	public GameObject debugObj;
 	public GameObject debugObj2;
 
@@ -32,7 +35,7 @@ public class Inventory : MonoBehaviour
 		} else { 				//TODO: добавить проверку на наполнение стака. Пока подождет
 			bool stacked = false;
 			for (int i = 0; i < inventorySize; i++) {
-				if (items [i].maxQ > 0) {
+				if (items [i] != null) {
 					if (it.name == items [i].name) {
 						items [i].quantity += it.quantity;
 						resIndex = i;
@@ -56,19 +59,11 @@ public class Inventory : MonoBehaviour
 
 			}
 		}
-
+		if (resIndex >= 0) {
+			lastPickedItem = resIndex;
+		}
 		return resIndex;
 	}
-
-
-
-	/// <summary>
-	/// Debug function
-	/// </summary>
-			void Update()
-			{
-	
-			}
 
 
 	public GameObject DropItem( int itemIndex) //Spawn a gameobject from inventory. You should position it manually. If no object at this position, returns empty GameObject
@@ -106,4 +101,84 @@ public class Inventory : MonoBehaviour
 
 	}
 
+	public GameObject DropLastItem (){
+		GameObject it = new GameObject();
+		if (items [lastPickedItem] == null) {
+			for (int i = inventorySize; i >= 0; i--) {
+				if (items [i] != null) {
+					lastPickedItem = i;
+					break;
+				}
+			}
+		}
+		if (items [lastPickedItem] != null) {
+			it = (GameObject)Instantiate (Resources.Load (items [lastPickedItem].name, typeof(GameObject)));
+
+			Item im = it.GetComponent<Item> ();
+			im.SetItem (items [lastPickedItem].name, items [lastPickedItem].title, items [lastPickedItem].desc, items [lastPickedItem].weight, items [lastPickedItem].maxQ, items [lastPickedItem].quantity, items [lastPickedItem].durability, items [lastPickedItem].maxDur, items [lastPickedItem].type);
+			items [lastPickedItem] = null;
+		}
+		return it;
+
+	}
+
+
+	public int GetQuantity (int index)          //Returns item quantity. If not found, returns 0
+	{
+		if (index >= 0) {
+			int ret = 0;
+			ret = items [index].quantity;	 
+			return ret;
+		} else
+			return 0;
+	}
+
+	public void SetQuantity (int index, int amount)          //
+	{
+		items [index].quantity = amount;
+		if (items [index].quantity <= 0) {
+			items [index] = null;
+		}
+	}
+
+	public void AddQuantity (int index, int amount)          //
+	{
+		items [index].quantity += amount;
+		if (items [index].quantity <= 0) {
+			items [index]  = null;
+		}
+
+	}	
+
+	public int FindByName (string n)          //Returns item index. If not found, returns -1
+	{
+		int ret;
+		for (int i=0; i<inventorySize; i++) {
+			if (items [i] != null) {
+				if (items [i].name == n) {
+					ret = i;	
+					return ret;
+				}
+			}
+		}
+		ret = -1;
+		return ret;
+
+	}
+
+	public void DestroyItem(int index)
+	{
+		items[index] = null;
+
+	}
+
+	public float GetTotalWeight()
+	{
+		float mass = 0.0f;
+		for (int i = 0; i < inventorySize; i++) {
+			mass += items [i].weight;
+		}
+
+		return mass;
+	}
 }

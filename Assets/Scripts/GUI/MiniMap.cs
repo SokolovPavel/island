@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MiniMap : MonoBehaviour {
 
-
 	public Transform target;
 	public Texture2D marker;
 	public float camHeight = 1.0f;//Расстояние от головы персонажа до камеры
@@ -18,7 +17,8 @@ public class MiniMap : MonoBehaviour {
 	public enum va {top, middle, bottom};
 	public ha horisontalAlignment = ha.left;
 	public va verticalAlignment = va.top;
-	public int size = 50;
+	public int miniMapSize = 50;
+	public int mapSize = 80;
 	public float xOffset = 0f;
 	public float yOffset = 0f;
 	public Vector3 CameraMapModePosition;
@@ -44,7 +44,7 @@ public class MiniMap : MonoBehaviour {
 		angles.x = 90;
 		angles.y = target.transform.eulerAngles.y;
 		transform.eulerAngles = angles;
-		_miniMapRect = Draw ();
+		_miniMapRect = DrawSetup ();
 		_mapRect = setupMapRect ();
 		_prevPos = transform.position;
 	}
@@ -111,15 +111,20 @@ public class MiniMap : MonoBehaviour {
 	}
 
 	Rect setupMapRect() {
-		return new Rect (Screen.width / 2 - RTexture.width / 2, Screen.height / 2 - RTexture.height / 2, RTexture.width, RTexture.height);
+		if (Screen.width > Screen.height) {
+			return new Rect (Screen.width / 2 - Screen.height / 2 * 0.01f * mapSize, Screen.height / 2 - Screen.height / 2 * 0.01f * mapSize, Screen.height * 0.01f * mapSize, Screen.height * 0.01f * mapSize);
+		} else {
+			return new Rect (Screen.width / 2 - Screen.width / 2 * 0.01f * mapSize, Screen.height / 2 - Screen.width / 2 * 0.01f * mapSize, Screen.width * 0.01f * mapSize, Screen.width * 0.01f * mapSize);
+
+		}
 	}
 
-	Rect Draw () {
+	Rect DrawSetup () {
 		int mMsize;
 		if (Screen.width < Screen.height) {
-			mMsize = Mathf.RoundToInt (size * 0.01f * Screen.width);
+			mMsize = Mathf.RoundToInt (miniMapSize * 0.01f * Screen.width);
 		}else {
-			mMsize = Mathf.RoundToInt (size * 0.01f * Screen.height);
+			mMsize = Mathf.RoundToInt (miniMapSize * 0.01f * Screen.height);
 		}
 		int hloc = Mathf.RoundToInt (xOffset * 0.01f * Screen.width);
 		int vloc = Mathf.RoundToInt (Screen.height - mMsize - yOffset * 0.01f * Screen.height);
@@ -149,24 +154,27 @@ public class MiniMap : MonoBehaviour {
 		return new Rect (hloc, vloc, mMsize, mMsize);
 	}
 	
-	void OnGUI(){	
-		if (Event.current.type == EventType.Repaint) {
-			if (isMinimap) {
-				if ((currentTime/changeTime)>=0) {
-					RMapMaterial.SetFloat("_Opacity",(currentTime/changeTime));
-					RMaterial.SetFloat("_Opacity",(1 - currentTime/changeTime));
-					Graphics.DrawTexture (_currentRect, RTexture, RMapMaterial);
-				}
-				Graphics.DrawTexture(_miniMapRect, RTexture, RMaterial);
-			} else {
-				//GUI.DrawTexture(Rect(Screen.width * 0.1, Screen.height * 0.1, Screen.width * 0.8, Screen.height * 0.8), RTexture, ScaleMode.ScaleToFit, true, 10.0F);
-				if ((currentTime/changeTime)<=1) {
-					RMapMaterial.SetFloat("_Opacity",(currentTime/changeTime));
-					RMaterial.SetFloat("_Opacity",(1 - currentTime/changeTime));
-					Graphics.DrawTexture (_miniMapRect, RTexture, RMaterial);
-				}
-				Graphics.DrawTexture(_currentRect, RTexture, RMapMaterial);
+	public void Draw(){	
+		if (isMinimap) {
+			if ((currentTime / changeTime) >= 0) {
+				RMapMaterial.SetFloat ("_Opacity", (currentTime / changeTime));
+				RMaterial.SetFloat ("_Opacity", (1 - currentTime / changeTime));
+				Graphics.DrawTexture (_currentRect, RTexture, RMapMaterial);
+			}
+			Graphics.DrawTexture (_miniMapRect, RTexture, RMaterial);
+		} else {
+			if ((currentTime / changeTime) <= 1) {
+				RMapMaterial.SetFloat ("_Opacity", (currentTime / changeTime));
+				RMaterial.SetFloat ("_Opacity", (1 - currentTime / changeTime));
+				Graphics.DrawTexture (_miniMapRect, RTexture, RMaterial);
+			}
+			Graphics.DrawTexture (_currentRect, RTexture, RMapMaterial);
+			if (GUI.Button (new Rect (_mapRect.x, _mapRect.y + _mapRect.height -30 , 30, 30), "+")) {
+				camera.orthographicSize -= 10;
+			}
 
+			if (GUI.Button (new Rect (_mapRect.x, _mapRect.y + _mapRect.height - 60, 30, 30), "-")) {
+				camera.orthographicSize += 10;
 			}
 		}
 	}
@@ -187,5 +195,4 @@ public class MiniMap : MonoBehaviour {
 		isMovingDown = true;
 		isMovingUp = false;
 	}
-	
 }

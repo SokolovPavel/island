@@ -2,12 +2,9 @@
 using System.Collections;
 
 public class Menu : MonoBehaviour {
-
-
-	public GameObject cursorTextureHolder;
 	public GameObject mapCamera;
 
-	private CursorScript cursor;
+	private GUIt GUIHolder;
 	private MiniMap map;
 	private MouseLook look;
 	//private FPSInputController controller;
@@ -16,7 +13,7 @@ public class Menu : MonoBehaviour {
 
 	void Start () {
 		look = gameObject.GetComponent<MouseLook> ();
-		cursor = cursorTextureHolder.GetComponent<CursorScript> ();
+		GUIHolder = GetComponent<GUIt> ();
 		//controller = gameObject.GetComponent<FPSInputController> ();
 		controller = gameObject.GetComponent<PlayerController> ();
 		map = mapCamera.GetComponent<MiniMap> ();
@@ -28,10 +25,10 @@ public class Menu : MonoBehaviour {
 			if (locked){
 				map.setMiniMap();
 				unlockControl();
-				cursor.SetCursor(CursorScript.CursorType.game);
+				GUIHolder.SetCursor(GUIt.CursorType.game);
 			} else {
 				lockControl();
-				cursor.SetCursor(CursorScript.CursorType.inventory);
+				GUIHolder.SetCursor(GUIt.CursorType.inventory);
 			}
 			locked =!locked;
 		}
@@ -39,11 +36,11 @@ public class Menu : MonoBehaviour {
 		if (Input.GetButtonDown("Map")) {
 			if (locked){
 				unlockControl();
-				cursor.SetCursor(CursorScript.CursorType.game);
+				GUIHolder.SetCursor(GUIt.CursorType.game);
 				map.setMiniMap();
 			} else {
 				lockControl();
-				cursor.SetCursor(CursorScript.CursorType.inventory);
+				GUIHolder.SetCursor(GUIt.CursorType.inventory);
 				map.setMap();
 			}
 			locked =!locked;

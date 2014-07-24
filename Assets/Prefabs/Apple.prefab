@@ -13,7 +13,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
   - 135: {fileID: 13500000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}

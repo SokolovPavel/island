@@ -1,16 +1,16 @@
-﻿public class Food : ItemG {
+﻿public class FoodOl : ItemG {
 	private int _healthReg;//Reg - regeneration
 	private int _energyReg;
 	private int _hungerReg;
 	private int _thirstReg;
 
-	public Food(){
+	public FoodOl(){
 		_healthReg = 5;
 		_energyReg = 5;
 		_healthReg = 5;
 		_thirstReg = 5;
 	}
-	public Food(int he,int en,int hu, int th){
+	public FoodOl(int he,int en,int hu, int th){
 		_healthReg = he;
 		_energyReg = en;
 		_hungerReg = hu;

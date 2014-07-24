@@ -56,6 +56,10 @@ public class Menu : MonoBehaviour {
 				DropItem ();
 			}
 
+			if (Input.GetButtonDown ("Use")) {
+				UseObject ();
+			}
+
 
 		}
 
@@ -119,5 +123,21 @@ public class Menu : MonoBehaviour {
 		}
 	}
 
+	void UseObject(){
+		float range = 10f;
+		Vector3 direction = HeadCamera.transform.TransformDirection (Vector3.forward);
+		RaycastHit hit;
+		if (Physics.Raycast (HeadCamera.transform.position, direction, out hit, range)) {	
+			if(hit.collider.tag=="Water")
+			{
+				hit.transform.gameObject.SendMessage("Drink",this.transform.parent.gameObject, SendMessageOptions.DontRequireReceiver);
+			}
+			if ((hit.rigidbody)&&(hit.rigidbody.gameObject.name!="Player"))
+			{hit.transform.gameObject.SendMessage("Use",this.transform.gameObject,SendMessageOptions.DontRequireReceiver);Debug.Log("Use Rigidbody");	}
+			else if (hit.collider.tag=="Usable")
+			{hit.transform.gameObject.SendMessage("Use",this.transform.gameObject,SendMessageOptions.DontRequireReceiver);Debug.Log("Use object");}
+		}
 
+
+	}
 }

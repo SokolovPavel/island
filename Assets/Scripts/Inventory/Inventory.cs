@@ -72,6 +72,61 @@ public class Inventory : MonoBehaviour
 		return resIndex;
 	}
 
+	public int AddItem(Itm it) //Прям таки набиваю строчки, перегружая функцию и меняя в ней всего пару строк
+	{
+		int resIndex = -1;
+		if (it.maxQ == 1) {
+			for (int i = 0; i < inventorySize; i++) {
+				if (items [i] == null) {
+					// Итак, начинаем. Ибо простое присваивание запихает сюда только ссылку на объект, копируем все ручками
+					items [i] = new Itm (it.name, it.title, it.desc, it.weight, it.maxQ, it.quantity, it.durability, it.maxDur, it.type);
+					resIndex = i;
+					Debug.Log (resIndex);
+					break;
+				}
+
+			}
+
+		} else { 				
+			bool stacked = false;
+			for (int i = 0; i < inventorySize; i++) {
+				if (items [i] != null) {
+					if (it.name == items [i].name) {
+						if ((items [i].quantity + it.quantity) > (items [i].maxQ)) {
+							it.quantity = it.quantity + items [i].quantity - items [i].maxQ;
+							items [i].quantity = items [i].maxQ;
+							stacked = false;
+							break; //Идем добавлять остатки в новый слот.
+						} else {
+							items [i].quantity += it.quantity;
+							resIndex = i;
+							stacked = true;
+							break;
+						}
+					}
+				}
+			}
+
+			if (!stacked) {
+				for (int i = 0; i < inventorySize; i++) {
+
+					if (items [i] == null) {
+						// Итак, начинаем. Ибо простое присваивание запихает сюда только ссылку на объект, копируем все ручками
+						items [i] = new Itm (it.name, it.title, it.desc, it.weight, it.maxQ, it.quantity, it.durability, it.maxDur, it.type);
+						resIndex = i;
+						break;
+					}
+
+				}
+
+			}
+		}
+		if (resIndex >= 0) {
+			lastPickedItem = resIndex;
+		}
+		return resIndex;
+	}
+
 
 	public GameObject DropItem( int itemIndex) //Spawn a gameobject from inventory. You should position it manually. If no object at this position, returns empty GameObject
 	{

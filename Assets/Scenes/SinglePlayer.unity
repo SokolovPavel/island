@@ -87,6 +87,7 @@ GameObject:
   - 54: {fileID: 16799910}
   - 114: {fileID: 16799909}
   - 135: {fileID: 16799911}
+  - 114: {fileID: 16799912}
   m_Layer: 9
   m_Name: Apple
   m_TagString: Untagged
@@ -144,6 +145,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .105682001
   m_Center: {x: .00110850111, y: .105680004, z: -.00113150105}
+--- !u!114 &16799912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1743057788}
+  m_GameObject: {fileID: 16799908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854dbe3d72d58b4db6991a267e03277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerAmount: 20
+  healthAmount: 0
+  haveSeeds: 1
+  seedsDropChance: 2
+  seedName: AppleSeed
+  seedTitle: Apple seeds
+  seedDescription: Small brown seeds. Useful in farming.
+  seedWeight: .0199999996
+  seedMaxQ: 128
+  seedQuantity: 2
 --- !u!23 &16799913
 Renderer:
   m_ObjectHideFlags: 0
@@ -355,7 +378,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &148149446
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +436,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &153368951
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +751,7 @@ Transform:
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1 &657683945
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +856,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
       propertyPath: m_Layer
@@ -914,6 +937,117 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1675448644}
   m_RootOrder: 5
+--- !u!1 &832349438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+  m_PrefabInternal: {fileID: 1348665952}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 832349444}
+  - 33: {fileID: 832349443}
+  - 23: {fileID: 832349442}
+  - 114: {fileID: 832349441}
+  - 65: {fileID: 832349440}
+  - 54: {fileID: 832349439}
+  m_Layer: 0
+  m_Name: AppleSeed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!54 &832349439
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: f0418fa899b556543b662f50fda18270,
+    type: 2}
+  m_PrefabInternal: {fileID: 1348665952}
+  m_GameObject: {fileID: 832349438}
+  serializedVersion: 2
+  m_Mass: .0199999996
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &832349440
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: f0418fa899b556543b662f50fda18270,
+    type: 2}
+  m_PrefabInternal: {fileID: 1348665952}
+  m_GameObject: {fileID: 832349438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .0912294984, y: .048591733, z: .100000001}
+  m_Center: {x: .00173902512, y: .0242958628, z: .00403165817}
+--- !u!114 &832349441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: f0418fa899b556543b662f50fda18270,
+    type: 2}
+  m_PrefabInternal: {fileID: 1348665952}
+  m_GameObject: {fileID: 832349438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d26ba7b1a480e47863d98b9fe9104b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: AppleSeed
+  title: Apple seeds
+  desc: Small brown seeds. Useful in farming.
+  weight: .0199999996
+  maxQ: 150
+  quantity: 1
+  durability: 1
+  maxDur: 1
+  type: 3
+--- !u!23 &832349442
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: f0418fa899b556543b662f50fda18270,
+    type: 2}
+  m_PrefabInternal: {fileID: 1348665952}
+  m_GameObject: {fileID: 832349438}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: accec55a87c6ac546b69e3be007998c1, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &832349443
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: f0418fa899b556543b662f50fda18270,
+    type: 2}
+  m_PrefabInternal: {fileID: 1348665952}
+  m_GameObject: {fileID: 832349438}
+  m_Mesh: {fileID: 4300000, guid: cd6a21c2b2cd715478acdfb6d71ca83b, type: 3}
+--- !u!4 &832349444
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+  m_PrefabInternal: {fileID: 1348665952}
+  m_GameObject: {fileID: 832349438}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.84610367, y: .0484060496, z: 7.54231024}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!1 &844777517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1152,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
       propertyPath: m_Layer
@@ -1326,6 +1460,57 @@ Prefab:
   m_RootGameObject: {fileID: 148149446}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1001 &1348665952
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.84610367
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .0484060496
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.54231024
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_DeprecatedTransformRoot: {fileID: 0}
+    m_DeprecatedTransformMap: {}
+    m_DeprecatedTransformComplete: 1
+  m_ParentPrefab: {fileID: 100100000, guid: f0418fa899b556543b662f50fda18270, type: 2}
+  m_RootGameObject: {fileID: 832349438}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &1380523026
 Prefab:
   m_ObjectHideFlags: 0
@@ -1335,15 +1520,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.26252222
+      value: 6.26249981
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.04914045
+      value: 1.70589995
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 6.71130419
+      value: 6.7112999
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1431,11 +1616,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1650,7 +1835,7 @@ Transform:
   - {fileID: 1087698074}
   - {fileID: 844777519}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1738767070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,7 +1868,7 @@ Transform:
   m_PrefabInternal: {fileID: 1380523026}
   m_GameObject: {fileID: 1738767070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.26252222, y: 3.04914045, z: 6.71130419}
+  m_LocalPosition: {x: 6.26249981, y: 1.70589995, z: 6.7112999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1044262735}
@@ -2014,6 +2199,7 @@ GameObject:
   - 54: {fileID: 1874303763}
   - 114: {fileID: 1874303762}
   - 135: {fileID: 1874303761}
+  - 114: {fileID: 1874303767}
   m_Layer: 9
   m_Name: Apple
   m_TagString: Untagged
@@ -2111,7 +2297,29 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
+--- !u!114 &1874303767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 868717491}
+  m_GameObject: {fileID: 1874303760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854dbe3d72d58b4db6991a267e03277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerAmount: 20
+  healthAmount: 0
+  haveSeeds: 1
+  seedsDropChance: 2
+  seedName: AppleSeed
+  seedTitle: Apple seeds
+  seedDescription: Small brown seeds. Useful in farming.
+  seedWeight: .0199999996
+  seedMaxQ: 128
+  seedQuantity: 2
 --- !u!1 &1978178748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,6 +2469,7 @@ GameObject:
   - 54: {fileID: 2110137987}
   - 114: {fileID: 2110137986}
   - 135: {fileID: 2110137985}
+  - 114: {fileID: 2110137991}
   m_Layer: 9
   m_Name: Apple
   m_TagString: Untagged
@@ -2358,4 +2567,26 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
+--- !u!114 &2110137991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 704125952}
+  m_GameObject: {fileID: 2110137984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854dbe3d72d58b4db6991a267e03277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerAmount: 20
+  healthAmount: 0
+  haveSeeds: 1
+  seedsDropChance: 2
+  seedName: AppleSeed
+  seedTitle: Apple seeds
+  seedDescription: Small brown seeds. Useful in farming.
+  seedWeight: .0199999996
+  seedMaxQ: 128
+  seedQuantity: 2

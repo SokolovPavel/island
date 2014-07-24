@@ -10,12 +10,11 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
-  - 135: {fileID: 13500000}
-  - 114: {fileID: 11400002}
-  m_Layer: 9
-  m_Name: Apple
+  - 65: {fileID: 6500000}
+  - 54: {fileID: 5400000}
+  m_Layer: 0
+  m_Name: AppleSeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +26,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 2.18556941e-08, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.69420004, y: 1.68640006, z: 7.30499983}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.09205818, y: .0445658453, z: 7.38133526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,7 +44,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: f0722bd21d31ef1408909e6966fa9c54, type: 2}
+  - {fileID: 2100000, guid: accec55a87c6ac546b69e3be007998c1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -59,7 +58,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 7f9468b82884dcd43990819c658cbf17, type: 3}
+  m_Mesh: {fileID: 4300000, guid: cd6a21c2b2cd715478acdfb6d71ca83b, type: 3}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -67,7 +66,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Mass: .200000003
+  m_Mass: .0199999996
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -75,6 +74,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6500000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .0912294984, y: .048591733, z: .100000001}
+  m_Center: {x: .00173902512, y: .0242958628, z: .00403165817}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,48 +97,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d26ba7b1a480e47863d98b9fe9104b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Apple
-  title: Yellow Apple
-  desc: An ordinary yellow apple. You may eat it.
-  weight: .100000001
-  maxQ: 5
+  name: AppleSeed
+  title: Apple seeds
+  desc: Small brown seeds. Useful in farming.
+  weight: .0199999996
+  maxQ: 150
   quantity: 1
   durability: 1
   maxDur: 1
-  type: 2
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a854dbe3d72d58b4db6991a267e03277, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hungerAmount: 20
-  healthAmount: 0
-  haveSeeds: 1
-  seedsDropChance: 2
-  seedName: AppleSeed
-  seedTitle: Apple seeds
-  seedDescription: Small brown seeds. Useful in farming.
-  seedWeight: .0199999996
-  seedMaxQ: 128
-  seedQuantity: 2
---- !u!135 &13500000
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .105682001
-  m_Center: {x: .00110850111, y: .105680004, z: -.00113150105}
+  type: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

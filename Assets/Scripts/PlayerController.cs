@@ -63,9 +63,21 @@ public class PlayerController : MonoBehaviour {
 				crouching = true;
 				h = height*0.5f;
 
+
+
 			} else {
-				crouching = false;
-				h = height;
+				if (crouching == true) {
+					Vector3 up = transform.TransformDirection(Vector3.up);
+					up.y -= 0.5f;
+					if (Physics.Raycast (transform.position, up, 1.5f)) {
+						crouching = true;
+						h = height*0.5f;
+					} else {
+						crouching = false;
+						h = height;
+					}
+
+				}
 			}
 
 			var lastHeight = controller.height; // crouch/stand up smoothly 

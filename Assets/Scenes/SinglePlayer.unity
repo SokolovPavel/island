@@ -110,8 +110,8 @@ MonoBehaviour:
   title: Yellow Apple
   desc: An ordinary yellow apple. You may eat it.
   weight: .100000001
-  maxQ: 1
-  quantity: 1
+  maxQ: 5
+  quantity: 2
   durability: 1
   maxDur: 1
   type: 2
@@ -660,6 +660,75 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 571897032}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &573307592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 573307596}
+  - 33: {fileID: 573307595}
+  - 65: {fileID: 573307594}
+  - 23: {fileID: 573307593}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &573307593
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573307592}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &573307594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573307592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &573307595
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573307592}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &573307596
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573307592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.38789988, y: 2.36759996, z: 10}
+  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &657683945
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +838,10 @@ Prefab:
     - target: {fileID: 100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: quantity
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_DeprecatedTransformRoot: {fileID: 0}
@@ -950,6 +1023,10 @@ Prefab:
     - target: {fileID: 100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: quantity
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_DeprecatedTransformRoot: {fileID: 0}
@@ -1626,6 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapCamera: {fileID: 144653392}
+  HeadCamera: {fileID: 1656756510}
 --- !u!114 &1738767073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,6 +1717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   runSpeed: 10
+  crouchSpeed: 5
   JumpHeight: 1
   gravity: 9.80000019
   enable: 1
@@ -1847,6 +1926,10 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: quantity
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_DeprecatedTransformRoot: {fileID: 0}
     m_DeprecatedTransformMap: {}
@@ -1967,8 +2050,8 @@ MonoBehaviour:
   title: Yellow Apple
   desc: An ordinary yellow apple. You may eat it.
   weight: .100000001
-  maxQ: 1
-  quantity: 1
+  maxQ: 5
+  quantity: 6
   durability: 1
   maxDur: 1
   type: 2
@@ -2214,8 +2297,8 @@ MonoBehaviour:
   title: Yellow Apple
   desc: An ordinary yellow apple. You may eat it.
   weight: .100000001
-  maxQ: 1
-  quantity: 1
+  maxQ: 5
+  quantity: 4
   durability: 1
   maxDur: 1
   type: 2

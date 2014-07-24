@@ -89,7 +89,7 @@ MonoBehaviour:
   title: Yellow Apple
   desc: An ordinary yellow apple. You may eat it.
   weight: .100000001
-  maxQ: 1
+  maxQ: 5
   quantity: 1
   durability: 1
   maxDur: 1

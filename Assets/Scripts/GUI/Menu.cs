@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Menu : MonoBehaviour {
 	public GameObject mapCamera;
-
+	public GameObject HeadCamera;
 	private GUIt GUIHolder;
 	private MiniMap map;
 	private MouseLook look;
@@ -45,6 +45,20 @@ public class Menu : MonoBehaviour {
 			}
 			locked =!locked;
 		}
+
+
+		if (!locked) {
+			if (Input.GetButtonDown ("Take")) {
+				TakeItem ();
+			}
+
+			if (Input.GetButtonDown ("Drop")) {
+				DropItem ();
+			}
+
+
+		}
+
 	}
 
 	void unlockControl () {
@@ -60,4 +74,50 @@ public class Menu : MonoBehaviour {
 		Screen.lockCursor = false;
 		//Screen.showCursor = false;
 	}
+
+
+
+
+	void DropItem()
+	{
+		Vector3 direction = HeadCamera.transform.TransformDirection (Vector3.forward);
+		float range = 7.0f;
+		RaycastHit hit;
+		if (Physics.Raycast (HeadCamera.transform.position, direction, out hit, range)) {
+
+			Inventory inv = GetComponent<Inventory>();
+			GameObject obj = inv.DropLastItem();
+
+			Component[] allComponents = obj.GetComponents<Component>();
+			if (allComponents.Length == 1) { // Contains only Transform?
+				Destroy (obj);
+				return;
+			}
+			obj.transform.position = hit.point;
+			obj.transform.rotation = Quaternion.identity;
+
+		} else {
+			return;
+		}
+
+	}
+
+	void TakeItem()
+	{
+		Inventory inv = GetComponent<Inventory>();
+		float range = 10f;
+		Vector3 direction = HeadCamera.transform.TransformDirection (Vector3.forward);
+		RaycastHit hit;
+		if (Physics.Raycast (HeadCamera.transform.position, direction, out hit, range)) {	
+			if ((hit.rigidbody)&&(hit.rigidbody.gameObject.name!="Player"))
+			{
+				GameObject nz= hit.transform.gameObject;
+				if (inv.AddItem (nz) >= 0) {
+					Destroy (nz);
+				}
+			}
+		}
+	}
+
+
 }

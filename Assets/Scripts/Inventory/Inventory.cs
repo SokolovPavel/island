@@ -32,15 +32,22 @@ public class Inventory : MonoBehaviour
 
 			}
 
-		} else { 				//TODO: добавить проверку на наполнение стака. Пока подождет
+		} else { 				
 			bool stacked = false;
 			for (int i = 0; i < inventorySize; i++) {
 				if (items [i] != null) {
 					if (it.name == items [i].name) {
-						items [i].quantity += it.quantity;
-						resIndex = i;
-						stacked = true;
-						break;
+						if ((items [i].quantity + it.quantity) > (items [i].maxQ)) {
+							it.quantity = it.quantity + items [i].quantity - items [i].maxQ;
+							items [i].quantity = items [i].maxQ;
+							stacked = false;
+							break; //Идем добавлять остатки в новый слот.
+						} else {
+							items [i].quantity += it.quantity;
+							resIndex = i;
+							stacked = true;
+							break;
+						}
 					}
 				}
 			}

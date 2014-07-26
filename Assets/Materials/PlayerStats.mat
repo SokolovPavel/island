@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PlayerStats
-  m_Shader: {fileID: 4800000, guid: ce4481c2996b2d740a9f6f6ae5b40318, type: 3}
+  m_Shader: {fileID: 4800000, guid: 764234a1ce36c574cb30dae36ee8f8ba, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,7 +17,42 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 120f6708e0b4c564697dc095062ebf94, type: 3}
+          m_Texture: {fileID: 2800000, guid: 3e897011811cf374ba08822e35741fa7, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SecondTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 20b75a0e09931f4419be0c0949645947, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _HealthTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 59bddc7037d9f7f4788305a1c6a2e9ae, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EnergyTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 5aa9c19215814794880ca647c635f1f4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _HungerTex
+        second:
+          m_Texture: {fileID: 2800000, guid: a2ab8a79fef454b4b89f81e571ab2c48, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ThirstTex
+        second:
+          m_Texture: {fileID: 2800000, guid: ce66a6aaafb140d4794095035f1d3080, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -29,11 +64,31 @@ Material:
         first:
           name: _Shininess
         second: 1
+      data:
+        first:
+          name: _Health
+        second: .0599999987
+      data:
+        first:
+          name: _Energy
+        second: .33377558
+      data:
+        first:
+          name: _Hunger
+        second: .607551157
+      data:
+        first:
+          name: _Thirst
+        second: .605097651
+      data:
+        first:
+          name: _Width
+        second: 519.299988
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .311646789, g: .0294658095, b: .801470578, a: 1}
+        second: {r: .0147058964, g: .0143389925, b: .00140571024, a: 1}
       data:
         first:
           name: _Emission

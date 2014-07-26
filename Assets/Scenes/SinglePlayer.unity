@@ -1980,7 +1980,7 @@ Transform:
   - {fileID: 1087698074}
   - {fileID: 844777519}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!1 &1738767070
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,6 +2164,9 @@ MonoBehaviour:
   hungerCoef: .400000006
   energyCoef: .200000003
   harmCoef: .100000001
+  texture: {fileID: 2800000, guid: 3e897011811cf374ba08822e35741fa7, type: 3}
+  material: {fileID: 2100000, guid: 1abf9b611084aa842a31421dc63898e3, type: 2}
+  size: 20
 --- !u!114 &1738767079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2489,7 +2492,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!114 &1874303767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2759,7 +2762,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!114 &2110137991
 MonoBehaviour:
   m_ObjectHideFlags: 0

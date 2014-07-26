@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class PlayerStats : MonoBehaviour {
 	bool sleeping;
 	float health;
@@ -23,7 +24,9 @@ public class PlayerStats : MonoBehaviour {
 	public  float hungerCoef = 0.4f;
 	public  float energyCoef = 0.2f;
 	public  float harmCoef = 0.1f;
-
+	public Texture texture;
+	public Material material;
+	public int size=25;
 
 	void Start () 
 	{
@@ -36,13 +39,15 @@ public class PlayerStats : MonoBehaviour {
 		maxAgility=255.0f;
 		maxStamina=255.0f;
 
-		health= maxHealth;
+		health= 0;
 		hunger= maxHunger;
 		thirst = maxThirst;
-		energy = maxEnergy;
+		energy = maxEnergy/2;
 		strength= maxStrength / 3;
 		agility = maxAgility / 3;
 		stamina = maxStamina / 3;
+
+		material.SetFloat ("_Width", Screen.width*0.015f*size);
 	}
 	
 
@@ -60,8 +65,12 @@ public class PlayerStats : MonoBehaviour {
 		if(this.thirst<0f) {this.thirst=0f;}
 		if(this.energy<0f) {this.energy=0f;}
 		checkLowNeeds();
+		updateBars ();
 	}
-
+	void OnGUI() {
+		if (Event.current.type.Equals (EventType.Repaint))
+			Graphics.DrawTexture (new Rect (0, 0, Screen.width*0.01f*size, Screen.width*0.01f*size*texture.height/texture.width), texture, material);
+	}
 	void checkLowNeeds()
 	{
 		if (hunger<20.0f) 
@@ -82,6 +91,7 @@ public class PlayerStats : MonoBehaviour {
 	void harm(float amount)		//портит игроку здоровье, вызывается несколько в секунду. Используется для плавного уменьшения здоровья
 	{
 		this.health=this.health - amount*Time.deltaTime;
+		updateBars ();
 	}	
 
 	void addHunger(float amount)
@@ -89,6 +99,7 @@ public class PlayerStats : MonoBehaviour {
 		hunger=hunger+amount;
 		if(hunger>maxHunger) 
 		{ hunger=maxHunger;	}
+		updateBars ();
 
 	}
 	void addHealth(float amount)
@@ -96,23 +107,35 @@ public class PlayerStats : MonoBehaviour {
 		health=health+amount;
 		if(health>maxHealth) 
 		{ health=maxHealth;	}
+		updateBars ();
 	}
 	void addThirst(float amount)
 	{
 		thirst=thirst+amount;
 		if(thirst>maxThirst) 
 		{ thirst=maxThirst;	}
+		updateBars ();
 	}
 	void addEnergy(float amount)
 	{
 		energy=energy+amount;
 		if(energy>maxEnergy) 
 		{ energy=maxEnergy;	}
+		updateBars ();
 	}
 
 	void changeSleepingStatus()
 	{
 		sleeping=!sleeping;
+	}
+
+	void updateBars(){
+		float minOffset = 0.06f;
+		float maxOffset = 0.55f;
+		material.SetFloat ("_Health", health / maxHealth * maxOffset + minOffset);
+		material.SetFloat ("_Energy", energy / maxEnergy * maxOffset + minOffset);
+		material.SetFloat ("_Hunger", hunger / maxHunger * maxOffset + minOffset);
+		material.SetFloat ("_Thirst", thirst / maxThirst * maxOffset + minOffset);
 	}
 
 }

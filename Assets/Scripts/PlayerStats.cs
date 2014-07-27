@@ -130,8 +130,8 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	void updateBars(){
-		float minOffset = 0.06f;
-		float maxOffset = 0.55f;
+		float minOffset = 0.08f;
+		float maxOffset = 0.78f;
 		material.SetFloat ("_Health", health / maxHealth * maxOffset + minOffset);
 		material.SetFloat ("_Energy", energy / maxEnergy * maxOffset + minOffset);
 		material.SetFloat ("_Hunger", hunger / maxHunger * maxOffset + minOffset);

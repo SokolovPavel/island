@@ -44,40 +44,39 @@
 		uniform fixed4 _Color;
 		uniform half _Width;
 		struct vertexInput {
-			float4 vertex : POSITION;
-			float4 texcoord : TEXCOORD0;
+			float4 vertex : POSITION0;
+			half4 texcoord : TEXCOORD0;
 		};
 
 		struct fragmentInput {
 			float4 pos : SV_POSITION;
-			half2 uv : TEXTCOORD0;
-			half2 uv2 : TEXTCOORD1;
+			half2 uv : TEXCOORD0;
 		};
 
-		fragmentInput vert(vertexInput i) {
+		fragmentInput vert(vertexInput i : TEXCOORD) {
 			fragmentInput o;
 			o.pos = mul( UNITY_MATRIX_P, i.vertex);
 			o.uv = TRANSFORM_TEX(i.texcoord, _MainTex);
 			return o;
 		}
 		
-		half4 frag(fragmentInput i) : COLOR {
+		half4 frag(fragmentInput i : TEXCOORD) : COLOR {
 			float4 frameTexColor = tex2D( _MainTex, i.uv );
 			float4 statColor = tex2D( _HealthTex, i.uv);
-			if ((i.pos.x/_Width > _Health )&&(tex2D( _HealthTex, i.uv).w > 0 )){
+			if ((i.uv.x> _Health )&&(tex2D( _HealthTex, i.uv).w > 0 )){
 				statColor = _Color;
 			}
-			if ((i.pos.x/_Width > _Energy )&&(tex2D( _EnergyTex, i.uv).w > 0 )){
+			if ((i.uv.x > _Energy )&&(tex2D( _EnergyTex, i.uv).w > 0 )){
 				statColor = _Color;
 			}else{
 				statColor +=tex2D( _EnergyTex, i.uv);
 			}
-			if ((i.pos.x/_Width > _Hunger )&&(tex2D( _HungerTex, i.uv).w > 0 )){
+			if ((i.uv.x > _Hunger )&&(tex2D( _HungerTex, i.uv).w > 0 )){
 				statColor = _Color;
 			}else{
 				statColor +=tex2D( _HungerTex, i.uv);
 			}
-			if ((i.pos.x/_Width > _Thirst )&&(tex2D( _ThirstTex, i.uv).w > 0 )){
+			if ((i.uv.x > _Thirst )&&(tex2D( _ThirstTex, i.uv).w > 0 )){
 				statColor = _Color;
 			}else{
 				statColor +=tex2D( _ThirstTex, i.uv);

@@ -10,14 +10,14 @@ public class Menu : MonoBehaviour {
 	//private FPSInputController controller;
 	private PlayerController controller;
 	private bool locked = false;
-
+	private bool equipped;
 	void Start () {
 		look = gameObject.GetComponent<MouseLook> ();
 		GUIHolder = GetComponent<GUIt> ();
 		//controller = gameObject.GetComponent<FPSInputController> ();
 		controller = gameObject.GetComponent<PlayerController> ();
 		map = mapCamera.GetComponent<MiniMap> ();
-
+		equipped = false;
 	}
 
 	void Update () {
@@ -60,6 +60,10 @@ public class Menu : MonoBehaviour {
 				UseObject ();
 			}
 
+			if (Input.GetKeyDown ("1")) { //Equip tool/weapon in inventory slot1
+				//UseObject ();
+				StartCoroutine( "EquipTool",0);
+			}
 
 		}
 
@@ -139,5 +143,24 @@ public class Menu : MonoBehaviour {
 		}
 
 
+	}
+
+	IEnumerator EquipTool(int index){
+		Inventory inv = GetComponent<Inventory> ();
+		if (inv.items [index] != null) {
+			if ((inv.items [index].type == Item.enType.Tool) || (inv.items [index].type == Item.enType.Weapon)) {
+				if (equipped) {
+					SendMessage ("Unequip");
+					yield return new WaitForSeconds (0.05f);
+				}
+				this.gameObject.AddComponent( inv.items [index].name+ "Script");
+				yield return new WaitForSeconds (0.05f);
+
+				SendMessage ("Equip", index);
+				equipped = true;
+			}
+		} else {
+			yield return null;
+		}
 	}
 }

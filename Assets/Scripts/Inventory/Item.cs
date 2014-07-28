@@ -16,11 +16,13 @@ public class Item : MonoBehaviour
 	public enum enType
 	{
 		Weapon,
-		Instrument,
+		Tool,
 		Food,
 		Seeds,
 		Resource,
-		Equipment
+		Equipment,
+		Ammunition,
+		Other
 	}
 
 

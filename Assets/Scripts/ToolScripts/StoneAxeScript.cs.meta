@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2f4b0d6b73b8e7948ae242b56b71f7ce
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - toolPlace: {instanceID: 0}
+  - inv: {instanceID: 0}
+  - cam: {instanceID: 0}
+  - toolModel: {instanceID: 0}
+  - useSound: {fileID: 8300000, guid: 344258815fe2d6746ab63fb082329a31, type: 3}
+  - toolObj: {fileID: 100000, guid: c0236e6f75326cd4ba5741491d4e95cf, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

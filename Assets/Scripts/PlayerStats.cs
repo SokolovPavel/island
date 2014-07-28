@@ -39,7 +39,7 @@ public class PlayerStats : MonoBehaviour {
 		maxAgility=255.0f;
 		maxStamina=255.0f;
 
-		health= 0;
+		health= 255.0f;
 		hunger= maxHunger;
 		thirst = maxThirst;
 		energy = maxEnergy/2;

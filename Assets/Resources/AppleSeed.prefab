@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: AppleSeed
   m_TagString: Untagged
@@ -106,6 +107,22 @@ MonoBehaviour:
   durability: 1
   maxDur: 1
   type: 3
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d3e9a71359ba44697e1840777390df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlantName: BerryBush
+  origin: {fileID: 0}
+  timeToAppear: 5
+  activated: 0
+  canGrowSelf: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

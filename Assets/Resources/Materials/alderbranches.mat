@@ -17,26 +17,62 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: d72b881dbd110e38a00062d88f962b59, type: 3}
+          m_Texture: {fileID: 2800000, guid: e58ee9bc2f7a0814aa1d14d523637a89, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _GlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _TranslucencyMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ShadowOffset
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Cutoff
-        second: .54905659
+        second: .595485151
+      data:
+        first:
+          name: _Shininess
+        second: .078125
+      data:
+        first:
+          name: _SquashAmount
+        second: 1
       data:
         first:
           name: _BaseLight
-        second: .103773586
+        second: .303571433
       data:
         first:
           name: _AO
-        second: 1.03773582
+        second: 1.39487875
       data:
         first:
           name: _Occlusion
-        second: 5.47169781
+        second: 2.85714269
     m_Colors:
       data:
         first:
@@ -46,6 +82,10 @@ Material:
         first:
           name: _MainTex_ST
         second: {r: 1, g: 1, b: 0, a: 0}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .5, g: .5, b: .5, a: 0}
       data:
         first:
           name: _Scale

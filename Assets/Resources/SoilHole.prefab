@@ -139,6 +139,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondStage: {fileID: 100000}
+  hydrated: 0
+  haveSeed: 0
+  timeToGrow: 15
+  seedObj: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

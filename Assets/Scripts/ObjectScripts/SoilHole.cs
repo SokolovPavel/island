@@ -3,14 +3,14 @@ using System.Collections;
 
 public class SoilHole : MonoBehaviour {
 	public GameObject secondStage;
-	private bool hydrated;
-	private bool haveSeed;
+	public bool hydrated;
+	public bool haveSeed;
 	private int stage;
-	private float timeToGrow;
+	public float timeToGrow;
 	private int waterAmount;
 	private int neededWater;
 	private float timer;
-	private GameObject seedObj;
+	public GameObject seedObj;
 
 	private int seedIndex;
 	// Use this for initialization
@@ -38,8 +38,8 @@ public class SoilHole : MonoBehaviour {
 			timer = 0.0f;
 			waterAmount = 1;
 			stage = 0;
-			secondStage.SetActive (false);
 			this.gameObject.GetComponent<MeshRenderer> ().enabled = true;
+			secondStage.SetActive (false);
 			Destroy (seedObj);
 			seedObj = null;
 		}
@@ -58,7 +58,8 @@ public class SoilHole : MonoBehaviour {
 			timer += Time.fixedDeltaTime;
 			if ((timer > timeToGrow) && (waterAmount >= neededWater)) {
 				seedObj.SetActive (true);
-				Destroy (this.gameObject);
+				seedObj.GetComponent<SeedScript> ().Activate (this.gameObject, true);
+
 			}
 		}
 

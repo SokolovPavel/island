@@ -130,7 +130,7 @@ public class Menu : MonoBehaviour {
 		if (Physics.Raycast (HeadCamera.transform.position, direction, out hit, range)) {	
 			if(hit.collider.tag=="Water")
 			{
-				hit.transform.gameObject.SendMessage("Drink",this.transform.parent.gameObject, SendMessageOptions.DontRequireReceiver);
+				hit.transform.gameObject.SendMessage("Drink",this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
 			}
 			if ((hit.rigidbody)&&(hit.rigidbody.gameObject.name!="Player"))
 			{hit.transform.gameObject.SendMessage("Use",this.transform.gameObject,SendMessageOptions.DontRequireReceiver);Debug.Log("Use Rigidbody");	}

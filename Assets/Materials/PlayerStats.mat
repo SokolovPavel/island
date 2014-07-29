@@ -66,24 +66,24 @@ Material:
         second: 1
       data:
         first:
-          name: _Width
-        second: 192
-      data:
-        first:
           name: _Health
         second: .859999955
       data:
         first:
           name: _Energy
-        second: .465059638
+        second: .466514826
       data:
         first:
           name: _Hunger
-        second: .850119293
+        second: .853029668
       data:
         first:
           name: _Thirst
-        second: .840219736
+        second: .84604609
+      data:
+        first:
+          name: _Width
+        second: 173.099991
     m_Colors:
       data:
         first:

@@ -2983,8 +2983,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1395102767}
-  m_LocalRotation: {x: .136952028, y: .52874583, z: .0869168639, w: -.833137095}
-  m_LocalPosition: {x: 2.29152679, y: -9.27514458, z: 11.3167343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.93447113, y: -10.3759918, z: 20.0249538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 649732651}
@@ -3966,6 +3966,7 @@ GameObject:
   - 114: {fileID: 1667024208}
   - 114: {fileID: 1667024207}
   - 114: {fileID: 1667024206}
+  - 114: {fileID: 1667024216}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4187,6 +4188,20 @@ CharacterController:
   m_SkinWidth: .0500000007
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1667024216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1667024204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f81c42fe083944ea21a66e46197a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texture: {fileID: 2800000, guid: 41ef72889692c1746896d2e6fbd975bb, type: 3}
+  material: {fileID: 2100000, guid: c247a3339b972e348854cebd82d69099, type: 2}
+  size: 25
 --- !u!1001 &1709351673
 Prefab:
   m_ObjectHideFlags: 0
@@ -5223,8 +5238,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2095499413}
-  m_LocalRotation: {x: .136952028, y: .52874583, z: .0869168639, w: -.833137095}
-  m_LocalPosition: {x: 2.29152679, y: -9.27514458, z: 11.3167343}
+  m_LocalRotation: {x: .155663043, y: .667469978, z: .145625666, w: -.713474691}
+  m_LocalPosition: {x: -9.38396168, y: -4.82209301, z: 50.2845955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 649732651}

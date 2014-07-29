@@ -7,12 +7,12 @@ public class SoilHole : MonoBehaviour {
 	public bool haveSeed;
 	private int stage;
 	public float timeToGrow;
-	private int waterAmount;
+	public int waterAmount;
 	private int neededWater;
 	private float timer;
 	public GameObject seedObj;
 
-	private int seedIndex;
+	private int seedIndex = 0;
 	// Use this for initialization
 	void Start () {
 		hydrated = false;
@@ -25,15 +25,14 @@ public class SoilHole : MonoBehaviour {
 			//Open Plant Dialog
 			Inventory inv = user.GetComponent<Inventory> ();
 			seedObj = inv.DropItem (seedIndex);
+			Debug.Log ("Au!");
 			seedObj.transform.position = this.transform.position;
 			seedObj.transform.rotation = Quaternion.identity;
 			seedObj.SetActive (false);
 			haveSeed = true;
 			SwitchStage ();
 
-		}
-
-		if ((hydrated) && (stage == 1)) { //Если юзаем уже посаженную семку, то она уничтожается и лунка снова становится пустой
+		} else	if ((hydrated) && (stage == 1)) { //Если юзаем уже посаженную семку, то она уничтожается и лунка снова становится пустой
 			haveSeed = false;
 			timer = 0.0f;
 			waterAmount = 1;
@@ -59,9 +58,14 @@ public class SoilHole : MonoBehaviour {
 			if ((timer > timeToGrow) && (waterAmount >= neededWater)) {
 				seedObj.SetActive (true);
 				seedObj.GetComponent<SeedScript> ().Activate (this.gameObject, true);
-
+				Destroy (this.gameObject);
 			}
 		}
 
+	}
+
+	void Hydrate() {
+		hydrated = true;
+		waterAmount++;
 	}
 }

@@ -2,7 +2,15 @@ fileFormatVersion: 2
 guid: f0c386bf534943844a57809602e4bfaa
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - toolPlace: {instanceID: 0}
+  - inv: {instanceID: 0}
+  - cam: {instanceID: 0}
+  - toolModel: {instanceID: 0}
+  - useSound: {instanceID: 0}
+  - toolObj: {instanceID: 0}
+  - texture: {fileID: 2800000, guid: 41ef72889692c1746896d2e6fbd975bb, type: 3}
+  - material: {fileID: 2100000, guid: c247a3339b972e348854cebd82d69099, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

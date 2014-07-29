@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StoneAxeScript : toolBaseScript {
+public class WoodenShovelScript :  toolBaseScript  {
+
+	public GameObject hole;
+	private TerrainTexture tex;
 
 	private bool busy;
 	private float delay1=3.0f;
@@ -9,22 +12,19 @@ public class StoneAxeScript : toolBaseScript {
 	private float timer;
 	private float delayTime;
 	public byte delayN;
-	// Use this for initialization
+
 	void Start () {
-		toolName = "StoneAxe";
-		scriptName = "StoneAxeScript";
+		toolName = "WoodenShovel";
+		scriptName = "WoodenShovelScript";
 		toolObj = Resources.Load (toolName, typeof(GameObject)) as GameObject;
+		hole = Resources.Load ("SoilHole", typeof(GameObject)) as GameObject;
 		Init ();
-
+		tex =  new TerrainTexture ();
+		tex.SetSelf (this.transform);
 	}
-
-
-
-
+	
 	// Update is called once per frame
 	void Update () {
-
-
 		if (!busy) {
 			if (Input.GetMouseButtonDown (0)) {
 				//	Debug.Log ("LMB Pressed");
@@ -43,7 +43,7 @@ public class StoneAxeScript : toolBaseScript {
 				StartCoroutine ("Action2");
 				return;
 			}
-		
+
 		} else {
 			timer += Time.deltaTime;
 			if (timer > delayTime) {
@@ -62,10 +62,7 @@ public class StoneAxeScript : toolBaseScript {
 				}
 			}
 		}
-
 	}
-
-
 
 	void FixedUpdate (){
 		Validate();
@@ -75,41 +72,32 @@ public class StoneAxeScript : toolBaseScript {
 		if (busy) {
 			DrawBar (timer / delayTime);
 		}
-
 	}
 
 	IEnumerator Action1() {
-		float range = 10f;
+		float range = 8.0f;
 		Vector3 direction = cam.transform.TransformDirection (Vector3.forward);
 		RaycastHit hit;
 		if (Physics.Raycast (cam.transform.position, direction, out hit, range)) {	
 
-			if ((hit.rigidbody) && (hit.rigidbody.gameObject.name != "Player")) {
-				yield return new WaitForSeconds (delay1);
-				hit.transform.gameObject.SendMessage ("Chop", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
-			} else if (hit.collider.tag == "Usable") {
-				yield return new WaitForSeconds (delay1);
-				hit.transform.gameObject.SendMessage ("Chop", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
-			}
-		} else {
-			yield return null;
-		}
+			if ((hit.collider.tag=="Usable")&&(hit.transform.gameObject.name == "Ground")){
 
+				if (tex.TexMatch ("Grass")) {
+					yield return new WaitForSeconds (delay1);
+					Instantiate (hole, hit.point, Quaternion.LookRotation (hit.normal) * Quaternion.Euler (90, 0, 0));
+				} else {
+					Debug.Log ("Terrain type mismatch");
+					busy = false;
+					timer = 0.0f;
+					yield return null;
+				}
+
+			}
+		}
+		yield return null;
 	}
 
-	IEnumerator Action2() {
-		float range = 10f;
-		Vector3 direction = cam.transform.TransformDirection (Vector3.forward);
-		RaycastHit hit;
-		if (Physics.Raycast (cam.transform.position, direction, out hit, range)) {	
-
-			if ((hit.rigidbody) && (hit.rigidbody.gameObject.name != "Player")) {
-				yield return new WaitForSeconds (delay1);
-				hit.transform.gameObject.SendMessage ("Hydrate", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
-			} else if (hit.collider.tag == "Usable") {
-				yield return new WaitForSeconds (delay1);
-				hit.transform.gameObject.SendMessage ("Hydrate", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
-			}
-		}
+		IEnumerator Action2() {
+		yield return null;
 	}
 }

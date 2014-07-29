@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Progressbar
-  m_Shader: {fileID: 4800000, guid: 90a484eb61876d1439a850f6d0b23fd4, type: 3}
+  m_Name: fireplace_coal
+  m_Shader: {fileID: 51, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,27 +17,23 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 41ef72889692c1746896d2e6fbd975bb, type: 3}
+          m_Texture: {fileID: 2800000, guid: 13572f67fdd20fd43b88c28140965a46, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ProgressTex
+          name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: c1ff9be3a9e3af84a8d4bdee03ad801c, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
-          name: _Progress
-        second: .995599449
-      data:
-        first:
-          name: _Health
-        second: .357142836
+          name: _Cutoff
+        second: .5
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .198529422, g: .0715289786, b: .0715289786, a: 1}
+        second: {r: .800000012, g: .800000012, b: .800000012, a: 1}

@@ -71,19 +71,19 @@ Material:
       data:
         first:
           name: _Energy
-        second: .456291765
+        second: .461281002
       data:
         first:
           name: _Hunger
-        second: .832583487
+        second: .84256202
       data:
         first:
           name: _Thirst
-        second: .805114746
+        second: .825090826
       data:
         first:
           name: _Width
-        second: 409.799988
+        second: 333
     m_Colors:
       data:
         first:

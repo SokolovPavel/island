@@ -14,6 +14,7 @@ public class WoodenShovelScript :  toolBaseScript  {
 	public byte delayN;
 
 	void Start () {
+
 		toolName = "WoodenShovel";
 		scriptName = "WoodenShovelScript";
 		toolObj = Resources.Load (toolName, typeof(GameObject)) as GameObject;
@@ -21,6 +22,7 @@ public class WoodenShovelScript :  toolBaseScript  {
 		Init ();
 		tex =  new TerrainTexture ();
 		tex.SetSelf (this.transform);
+
 	}
 	
 	// Update is called once per frame

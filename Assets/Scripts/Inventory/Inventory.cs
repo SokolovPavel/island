@@ -36,7 +36,7 @@ public class Inventory : MonoBehaviour
 			bool stacked = false;
 			for (int i = 0; i < inventorySize; i++) {
 				if (items [i] != null) {
-					if (it.name == items [i].name) {
+					if ((it.name == items [i].name)&&(items[i].quantity<items[i].maxQ)) {
 						if ((items [i].quantity + it.quantity) > (items [i].maxQ)) {
 							it.quantity = it.quantity + items [i].quantity - items [i].maxQ;
 							items [i].quantity = items [i].maxQ;

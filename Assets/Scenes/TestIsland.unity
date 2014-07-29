@@ -303,6 +303,61 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1799323200}
   m_GameObject: {fileID: 76376495}
   m_Mesh: {fileID: 4300000, guid: 681e41ee1260343b395ca58745c94870, type: 3}
+--- !u!1001 &89933741
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 19.1130009
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.65910006
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -34.2229996
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 2.18556941e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: quantity
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_DeprecatedTransformRoot: {fileID: 0}
+    m_DeprecatedTransformMap: {}
+    m_DeprecatedTransformComplete: 1
+  m_ParentPrefab: {fileID: 100100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+  m_RootGameObject: {fileID: 1432383308}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &144531410
 Prefab:
   m_ObjectHideFlags: 0
@@ -491,7 +546,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 19
 --- !u!1 &183693432
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +997,7 @@ MonoBehaviour:
   desc: An ordinary yellow apple. You may eat it.
   weight: .100000001
   maxQ: 5
-  quantity: 1
+  quantity: 3
   durability: 1
   maxDur: 1
   type: 2
@@ -1002,7 +1057,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 17
 --- !u!1 &366897545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,7 +1165,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 11
 --- !u!1 &401857438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1313,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 16
 --- !u!1 &469356720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,7 +1709,7 @@ Transform:
   - {fileID: 952925682}
   - {fileID: 827753736}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 12
 --- !u!1001 &743622003
 Prefab:
   m_ObjectHideFlags: 0
@@ -2209,6 +2264,57 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1799323200}
   m_GameObject: {fileID: 865536884}
   m_Mesh: {fileID: 4300000, guid: 681e41ee1260343b395ca58745c94870, type: 3}
+--- !u!1001 &873827574
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 20.2749996
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.65910006
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -34.2229996
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 2.18556941e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_DeprecatedTransformRoot: {fileID: 0}
+    m_DeprecatedTransformMap: {}
+    m_DeprecatedTransformComplete: 1
+  m_ParentPrefab: {fileID: 100100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+  m_RootGameObject: {fileID: 1813046175}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &908309058
 Prefab:
   m_ObjectHideFlags: 0
@@ -2247,6 +2353,10 @@ Prefab:
     - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
       propertyPath: m_RootMapOrder
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: quantity
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_DeprecatedTransformRoot: {fileID: 0}
@@ -2389,7 +2499,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 20
 --- !u!1 &949114275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2822,6 +2932,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1001 &1173134062
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 19.5300007
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.65910006
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -34.2229996
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 2.18556941e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+      propertyPath: quantity
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_DeprecatedTransformRoot: {fileID: 0}
+    m_DeprecatedTransformMap: {}
+    m_DeprecatedTransformComplete: 1
+  m_ParentPrefab: {fileID: 100100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+  m_RootGameObject: {fileID: 1962586327}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &1178882775
 Prefab:
   m_ObjectHideFlags: 0
@@ -3311,7 +3476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 13
 --- !u!1 &1395102767
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,8 +3531,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1395102767}
-  m_LocalRotation: {x: .0871723145, y: .899590492, z: .210452527, w: -.372622669}
-  m_LocalPosition: {x: 1.76805878, y: -13.5530596, z: 25.6377792}
+  m_LocalRotation: {x: .190637752, y: .198717937, z: .0394412354, w: -.96052736}
+  m_LocalPosition: {x: 2.59385872, y: -8.03239727, z: 6.42209244}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 649732651}
@@ -3472,6 +3637,140 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1517869705}
   m_RootOrder: 0
+--- !u!1 &1432383308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+  m_PrefabInternal: {fileID: 89933741}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1432383315}
+  - 33: {fileID: 1432383314}
+  - 23: {fileID: 1432383313}
+  - 54: {fileID: 1432383312}
+  - 114: {fileID: 1432383311}
+  - 135: {fileID: 1432383310}
+  - 114: {fileID: 1432383309}
+  m_Layer: 9
+  m_Name: Apple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1432383309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 89933741}
+  m_GameObject: {fileID: 1432383308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854dbe3d72d58b4db6991a267e03277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerAmount: 20
+  healthAmount: 0
+  haveSeeds: 1
+  seedsDropChance: 2
+  seedName: AppleSeed
+  seedTitle: Apple seeds
+  seedDescription: Small brown seeds. Useful in farming.
+  seedWeight: .0199999996
+  seedMaxQ: 128
+  seedQuantity: 2
+--- !u!135 &1432383310
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13500000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 89933741}
+  m_GameObject: {fileID: 1432383308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .105682001
+  m_Center: {x: .00110850111, y: .105680004, z: -.00113150105}
+--- !u!114 &1432383311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 89933741}
+  m_GameObject: {fileID: 1432383308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d26ba7b1a480e47863d98b9fe9104b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Apple
+  title: Yellow Apple
+  desc: An ordinary yellow apple. You may eat it.
+  weight: .100000001
+  maxQ: 5
+  quantity: 3
+  durability: 1
+  maxDur: 1
+  type: 2
+--- !u!54 &1432383312
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 89933741}
+  m_GameObject: {fileID: 1432383308}
+  serializedVersion: 2
+  m_Mass: .200000003
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!23 &1432383313
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 89933741}
+  m_GameObject: {fileID: 1432383308}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: f0722bd21d31ef1408909e6966fa9c54, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &1432383314
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 89933741}
+  m_GameObject: {fileID: 1432383308}
+  m_Mesh: {fileID: 4300000, guid: 7f9468b82884dcd43990819c658cbf17, type: 3}
+--- !u!4 &1432383315
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+  m_PrefabInternal: {fileID: 89933741}
+  m_GameObject: {fileID: 1432383308}
+  m_LocalRotation: {x: 2.18556941e-08, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.1130009, y: 5.65910006, z: -34.2229996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
 --- !u!1001 &1469936193
 Prefab:
   m_ObjectHideFlags: 0
@@ -4330,7 +4629,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 15
 --- !u!1 &1667024204
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,12 +4883,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image:
-  - {fileID: 2800000, guid: 77bfddfa296f3e14dbe84f5917d8ca18, type: 3}
-  - {fileID: 2800000, guid: a9a309aea8824a240b408707650de966, type: 3}
-  - {fileID: 2800000, guid: acf0cd229046f524986b70cf39773e43, type: 3}
-  - {fileID: 2800000, guid: d25db8c065ea4df44bb217ae92820af7, type: 3}
-  - {fileID: 2800000, guid: 8e342819fee3ddb4b9bb30e950fcf5f4, type: 3}
-  - {fileID: 2800000, guid: 8e342819fee3ddb4b9bb30e950fcf5f4, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   background: {fileID: 2800000, guid: 104e4522f665c3944a3e4e789c939656, type: 3}
   hotbarFrame: {fileID: 2800000, guid: b381f6d17d43c1d4c825b816fb44c9d3, type: 3}
 --- !u!114 &1667024217
@@ -4763,6 +5062,140 @@ Prefab:
   m_RootGameObject: {fileID: 560364632}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1813046175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+  m_PrefabInternal: {fileID: 873827574}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1813046182}
+  - 33: {fileID: 1813046181}
+  - 23: {fileID: 1813046180}
+  - 54: {fileID: 1813046179}
+  - 114: {fileID: 1813046178}
+  - 135: {fileID: 1813046177}
+  - 114: {fileID: 1813046176}
+  m_Layer: 9
+  m_Name: Apple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1813046176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 873827574}
+  m_GameObject: {fileID: 1813046175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854dbe3d72d58b4db6991a267e03277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerAmount: 20
+  healthAmount: 0
+  haveSeeds: 1
+  seedsDropChance: 2
+  seedName: AppleSeed
+  seedTitle: Apple seeds
+  seedDescription: Small brown seeds. Useful in farming.
+  seedWeight: .0199999996
+  seedMaxQ: 128
+  seedQuantity: 2
+--- !u!135 &1813046177
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13500000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 873827574}
+  m_GameObject: {fileID: 1813046175}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .105682001
+  m_Center: {x: .00110850111, y: .105680004, z: -.00113150105}
+--- !u!114 &1813046178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 873827574}
+  m_GameObject: {fileID: 1813046175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d26ba7b1a480e47863d98b9fe9104b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Apple
+  title: Yellow Apple
+  desc: An ordinary yellow apple. You may eat it.
+  weight: .100000001
+  maxQ: 5
+  quantity: 1
+  durability: 1
+  maxDur: 1
+  type: 2
+--- !u!54 &1813046179
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 873827574}
+  m_GameObject: {fileID: 1813046175}
+  serializedVersion: 2
+  m_Mass: .200000003
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!23 &1813046180
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 873827574}
+  m_GameObject: {fileID: 1813046175}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: f0722bd21d31ef1408909e6966fa9c54, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &1813046181
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 873827574}
+  m_GameObject: {fileID: 1813046175}
+  m_Mesh: {fileID: 4300000, guid: 7f9468b82884dcd43990819c658cbf17, type: 3}
+--- !u!4 &1813046182
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+  m_PrefabInternal: {fileID: 873827574}
+  m_GameObject: {fileID: 1813046175}
+  m_LocalRotation: {x: 2.18556941e-08, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 20.2749996, y: 5.65910006, z: -34.2229996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
 --- !u!1001 &1844318007
 Prefab:
   m_ObjectHideFlags: 0
@@ -5301,6 +5734,140 @@ Transform:
   m_Children: []
   m_Father: {fileID: 560364635}
   m_RootOrder: 3
+--- !u!1 &1962586327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+  m_PrefabInternal: {fileID: 1173134062}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1962586334}
+  - 33: {fileID: 1962586333}
+  - 23: {fileID: 1962586332}
+  - 54: {fileID: 1962586331}
+  - 114: {fileID: 1962586330}
+  - 135: {fileID: 1962586329}
+  - 114: {fileID: 1962586328}
+  m_Layer: 9
+  m_Name: Apple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1962586328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1173134062}
+  m_GameObject: {fileID: 1962586327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854dbe3d72d58b4db6991a267e03277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerAmount: 20
+  healthAmount: 0
+  haveSeeds: 1
+  seedsDropChance: 2
+  seedName: AppleSeed
+  seedTitle: Apple seeds
+  seedDescription: Small brown seeds. Useful in farming.
+  seedWeight: .0199999996
+  seedMaxQ: 128
+  seedQuantity: 2
+--- !u!135 &1962586329
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13500000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1173134062}
+  m_GameObject: {fileID: 1962586327}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .105682001
+  m_Center: {x: .00110850111, y: .105680004, z: -.00113150105}
+--- !u!114 &1962586330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1173134062}
+  m_GameObject: {fileID: 1962586327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d26ba7b1a480e47863d98b9fe9104b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Apple
+  title: Yellow Apple
+  desc: An ordinary yellow apple. You may eat it.
+  weight: .100000001
+  maxQ: 5
+  quantity: 2
+  durability: 1
+  maxDur: 1
+  type: 2
+--- !u!54 &1962586331
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1173134062}
+  m_GameObject: {fileID: 1962586327}
+  serializedVersion: 2
+  m_Mass: .200000003
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!23 &1962586332
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1173134062}
+  m_GameObject: {fileID: 1962586327}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: f0722bd21d31ef1408909e6966fa9c54, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &1962586333
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: 39d341e4d364fb247a8e0938f497ceb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1173134062}
+  m_GameObject: {fileID: 1962586327}
+  m_Mesh: {fileID: 4300000, guid: 7f9468b82884dcd43990819c658cbf17, type: 3}
+--- !u!4 &1962586334
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 39d341e4d364fb247a8e0938f497ceb3, type: 2}
+  m_PrefabInternal: {fileID: 1173134062}
+  m_GameObject: {fileID: 1962586327}
+  m_LocalRotation: {x: 2.18556941e-08, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.5300007, y: 5.65910006, z: -34.2229996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1 &1994060449
 GameObject:
   m_ObjectHideFlags: 0
@@ -5358,7 +5925,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 21
 --- !u!1 &2000434697
 GameObject:
   m_ObjectHideFlags: 0
@@ -5393,7 +5960,7 @@ Transform:
   - {fileID: 976361770}
   - {fileID: 214335544}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 22
 --- !u!114 &2000434699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5689,8 +6256,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2095499413}
-  m_LocalRotation: {x: .136952028, y: .52874583, z: .0869168639, w: -.833137095}
-  m_LocalPosition: {x: 2.29152679, y: -9.27514458, z: 11.3167343}
+  m_LocalRotation: {x: .190637752, y: .198717937, z: .0394412354, w: -.96052736}
+  m_LocalPosition: {x: 2.59385872, y: -8.03239727, z: 6.42209244}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 649732651}

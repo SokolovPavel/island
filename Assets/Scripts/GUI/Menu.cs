@@ -25,10 +25,11 @@ public class Menu : MonoBehaviour {
 	void Update () {
 		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
 			invGUI.changeSelectedIndex(1);
-
+			StartCoroutine( "EquipTool",invGUI.selectedIndex);
 		}
 		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
 			invGUI.changeSelectedIndex(-1);
+			StartCoroutine( "EquipTool",invGUI.selectedIndex);
 		}
 		if (Input.GetButtonDown("Inventory")) {
 			if (locked){
@@ -62,9 +63,9 @@ public class Menu : MonoBehaviour {
 			}
 
 			if (Input.GetButtonDown ("Drop")) {
-				//DropItem ();
-				Inventory inv = GetComponent<Inventory>();
-				inv.DropItem (invGUI.selectedIndex, 1);
+				DropItem ();
+				//Inventory inv = GetComponent<Inventory>();
+				//inv.DropItem (invGUI.selectedIndex, 1);
 			}
 
 			if (Input.GetButtonDown ("Use")) {
@@ -74,6 +75,20 @@ public class Menu : MonoBehaviour {
 			if (Input.GetKeyDown ("1")) { //Equip tool/weapon in inventory slot1
 				//UseObject ();
 				StartCoroutine( "EquipTool",0);
+			}
+
+			if (Input.GetKeyDown ("2")) { //Equip tool/weapon in inventory slot2
+				//UseObject ();
+				StartCoroutine( "EquipTool",(int)1);
+			}
+
+			if (Input.GetKeyDown ("3")) { //Equip tool/weapon in inventory slot3
+				//UseObject ();
+				StartCoroutine( "EquipTool",(int)2);
+			}
+			if (Input.GetKeyDown ("4")) { //Equip tool/weapon in inventory slot4
+				//UseObject ();
+				StartCoroutine( "EquipTool",(int)3);
 			}
 
 		}
@@ -105,7 +120,8 @@ public class Menu : MonoBehaviour {
 		if (Physics.Raycast (HeadCamera.transform.position, direction, out hit, range)) {
 
 			Inventory inv = GetComponent<Inventory>();
-			GameObject obj = inv.DropLastItem();
+			//GameObject obj = inv.DropLastItem();
+			GameObject obj = inv.DropItem (invGUI.selectedIndex, 1);
 
 			Component[] allComponents = obj.GetComponents<Component>();
 			if (allComponents.Length == 1) { // Contains only Transform?
@@ -162,13 +178,18 @@ public class Menu : MonoBehaviour {
 			if ((inv.items [index].type == Item.enType.Tool) || (inv.items [index].type == Item.enType.Weapon)) {
 				if (equipped) {
 					SendMessage ("Unequip");
-					yield return new WaitForSeconds (0.05f);
+					yield return new WaitForSeconds (0.02f);
 				}
-				this.gameObject.AddComponent( inv.items [index].name+ "Script");
-				yield return new WaitForSeconds (0.05f);
+				Debug.Log (inv.items [index].name);
+				string tmp = inv.items [index].name +"Script";
+				this.gameObject.AddComponent (tmp);
+
+				yield return new WaitForSeconds (0.02f);
 
 				SendMessage ("Equip", index);
 				equipped = true;
+			} else {
+				yield return null;
 			}
 		} else {
 			yield return null;

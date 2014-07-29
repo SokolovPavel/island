@@ -16,7 +16,7 @@ public class toolBaseScript : MonoBehaviour {
 	public Material material;
 	public int size=50;
 
-
+	private bool equipped;
 
 	void Start () {
 		//	Init ();
@@ -38,7 +38,7 @@ public class toolBaseScript : MonoBehaviour {
 		toolModel.collider.enabled = false;
 		toolModel.rigidbody.isKinematic = true;
 		toolModel.GetComponent<Item> ().enabled = false;
-
+		equipped = true;
 	}
 
 
@@ -51,15 +51,17 @@ public class toolBaseScript : MonoBehaviour {
 
 
 	public void Validate() {
-		if (inv.items [toolIndex] != null) {
+		if (equipped) {
+			if (inv.items [toolIndex] != null) {
 
-			if (inv.items [toolIndex].name != toolName) {
+				if (inv.items [toolIndex].name != toolName) {
+					Unequip ();
+					return;
+				}
+			} else {
 				Unequip ();
 				return;
 			}
-		} else {
-			Unequip ();
-			return;
 		}
 	}
 

@@ -436,7 +436,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &153368951
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,6 +952,7 @@ GameObject:
   - 114: {fileID: 832349441}
   - 65: {fileID: 832349440}
   - 54: {fileID: 832349439}
+  - 114: {fileID: 832349445}
   m_Layer: 0
   m_Name: AppleSeed
   m_TagString: Untagged
@@ -1049,7 +1050,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
+--- !u!114 &832349445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: f0418fa899b556543b662f50fda18270,
+    type: 2}
+  m_PrefabInternal: {fileID: 1348665952}
+  m_GameObject: {fileID: 832349438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d3e9a71359ba44697e1840777390df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlantName: BerryBush
+  origin: {fileID: 0}
+  timeToAppear: 5
+  activated: 0
+  canGrowSelf: 1
 --- !u!1 &844777517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,6 +1253,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1675448644}
   m_RootOrder: 9
+--- !u!1 &909543508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100008, guid: 0a32eeffbf659634c9dbe8d8734d0cbf, type: 2}
+  m_PrefabInternal: {fileID: 1116308546}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 909543509}
+  m_Layer: 0
+  m_Name: ToolPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &909543509
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400008, guid: 0a32eeffbf659634c9dbe8d8734d0cbf, type: 2}
+  m_PrefabInternal: {fileID: 1116308546}
+  m_GameObject: {fileID: 909543508}
+  m_LocalRotation: {x: -.615661502, y: 0, z: 0, w: .788010776}
+  m_LocalPosition: {x: .409240007, y: .0728510022, z: .671920002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1656756516}
+  m_RootOrder: 0
 --- !u!1 &1044262734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1352,7 @@ GameObject:
   - 114: {fileID: 1045896066}
   m_Layer: 0
   m_Name: SoilHole
-  m_TagString: Untagged
+  m_TagString: Usable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1338,6 +1383,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondStage: {fileID: 1153957324}
+  hydrated: 0
+  haveSeed: 0
+  timeToGrow: 15
+  waterAmount: 0
+  seedObj: {fileID: 0}
 --- !u!65 &1045896067
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1501,7 +1551,7 @@ Prefab:
     m_RemovedComponents: []
     m_DeprecatedTransformRoot: {fileID: 0}
     m_DeprecatedTransformMap: {}
-    m_DeprecatedTransformComplete: 0
+    m_DeprecatedTransformComplete: 1
   m_ParentPrefab: {fileID: 100100000, guid: 0a32eeffbf659634c9dbe8d8734d0cbf, type: 2}
   m_RootGameObject: {fileID: 1738767070}
   m_IsPrefabParent: 0
@@ -1796,6 +1846,7 @@ GameObject:
   - 92: {fileID: 1656756514}
   - 124: {fileID: 1656756513}
   - 81: {fileID: 1656756511}
+  - 114: {fileID: 1656756512}
   m_Layer: 0
   m_Name: Head camera
   m_TagString: MainCamera
@@ -1811,6 +1862,49 @@ AudioListener:
   m_PrefabInternal: {fileID: 1116308546}
   m_GameObject: {fileID: 1656756510}
   m_Enabled: 1
+--- !u!114 &1656756512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400018, guid: 0a32eeffbf659634c9dbe8d8734d0cbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1116308546}
+  m_GameObject: {fileID: 1656756510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35a90bed98554f4d8b92c9cd3cfbafa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweakMode: 0
+  screenBlendMode: 1
+  hdr: 0
+  sepBlurSpread: 1.5
+  useSrcAlphaAsMask: 0
+  bloomIntensity: 1
+  bloomThreshhold: .5
+  bloomBlurIterations: 2
+  lensflares: 0
+  hollywoodFlareBlurIterations: 2
+  lensflareMode: 1
+  hollyStretchWidth: 3.5
+  lensflareIntensity: 1
+  lensflareThreshhold: .300000012
+  flareColorA: {r: .400000006, g: .400000006, b: .800000012, a: .75}
+  flareColorB: {r: .400000006, g: .800000012, b: .800000012, a: .75}
+  flareColorC: {r: .800000012, g: .400000006, b: .800000012, a: .75}
+  flareColorD: {r: .800000012, g: .400000006, b: 0, a: .75}
+  blurWidth: 1
+  lensFlareVignetteMask: {fileID: 2800000, guid: 95ef4804fe0be4c999ddaa383536cde8,
+    type: 3}
+  lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
+  vignetteShader: {fileID: 4800000, guid: 562f620336e024ac99992ff05725a89a, type: 3}
+  separableBlurShader: {fileID: 4800000, guid: a9df009a214e24a5ebbf271595f8d5b6, type: 3}
+  addBrightStuffOneOneShader: {fileID: 4800000, guid: f7898d203e9b94c0dbe2bf9dd5cb32c0,
+    type: 3}
+  screenBlendShader: {fileID: 4800000, guid: 53b3960ee3d3d4a5caa8d5473d120187, type: 3}
+  hollywoodFlaresShader: {fileID: 4800000, guid: e2baf3cae8edc4daf94c9adc2154be00,
+    type: 3}
+  brightPassFilterShader: {fileID: 4800000, guid: 186c4c0d31e314f049595dcbaf4ca129,
+    type: 3}
 --- !u!124 &1656756513
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1845,7 +1939,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .00999999978
-  far clip plane: 50
+  far clip plane: 15200
   field of view: 60
   orthographic: 0
   orthographic size: 100
@@ -1856,7 +1950,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_HDR: 0
+  m_HDR: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
@@ -1869,7 +1963,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .0296730008, y: .780960023, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 909543509}
   m_Father: {fileID: 1738767071}
   m_RootOrder: 1
 --- !u!1 &1675448643
@@ -1930,6 +2025,7 @@ GameObject:
   - 114: {fileID: 1738767079}
   - 114: {fileID: 1738767080}
   - 114: {fileID: 1738767081}
+  - 114: {fileID: 1738767082}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1951,7 +2047,7 @@ Transform:
   - {fileID: 1656756516}
   - {fileID: 571897033}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!114 &1738767072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,6 +2247,22 @@ MonoBehaviour:
   gameCursor: {fileID: 2800000, guid: e432ab0a61dfc144e832781090926ea9, type: 3}
   gameCursorOffset: {x: 16, y: 16}
   lockCursor: 1
+--- !u!114 &1738767082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1738767070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9bda029f075e14ba427dda9455a327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image:
+  - {fileID: 2800000, guid: 77bfddfa296f3e14dbe84f5917d8ca18, type: 3}
+  - {fileID: 2800000, guid: a9a309aea8824a240b408707650de966, type: 3}
+  - {fileID: 2800000, guid: 8e342819fee3ddb4b9bb30e950fcf5f4, type: 3}
+  background: {fileID: 2800000, guid: 104e4522f665c3944a3e4e789c939656, type: 3}
 --- !u!1001 &1743057788
 Prefab:
   m_ObjectHideFlags: 0

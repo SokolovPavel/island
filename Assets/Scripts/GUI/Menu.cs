@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour {
 	private PlayerController controller;
 	private bool locked = false;
 	private bool equipped;
+	InventoryGUI invGUI;
 	void Start () {
 		look = gameObject.GetComponent<MouseLook> ();
 		GUIHolder = GetComponent<GUIt> ();
@@ -18,9 +19,17 @@ public class Menu : MonoBehaviour {
 		controller = gameObject.GetComponent<PlayerController> ();
 		map = mapCamera.GetComponent<MiniMap> ();
 		equipped = false;
+		invGUI = gameObject.GetComponent<InventoryGUI> ();
 	}
 
 	void Update () {
+		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+			invGUI.changeSelectedIndex(1);
+
+		}
+		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
+			invGUI.changeSelectedIndex(-1);
+		}
 		if (Input.GetButtonDown("Inventory")) {
 			if (locked){
 				map.setMiniMap();
@@ -53,7 +62,9 @@ public class Menu : MonoBehaviour {
 			}
 
 			if (Input.GetButtonDown ("Drop")) {
-				DropItem ();
+				//DropItem ();
+				Inventory inv = GetComponent<Inventory>();
+				inv.DropItem (invGUI.selectedIndex, 1);
 			}
 
 			if (Input.GetButtonDown ("Use")) {

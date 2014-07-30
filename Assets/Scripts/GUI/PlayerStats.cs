@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[ExecuteInEditMode]
 public class PlayerStats : MonoBehaviour {
 	bool sleeping;
 	public float health;

@@ -4506,8 +4506,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1395102767}
-  m_LocalRotation: {x: -.17588228, y: .228044465, z: .0419237353, w: .956714988}
-  m_LocalPosition: {x: -7.52915382, y: -12.7019997, z: .294746399}
+  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: -18.7701435, y: -53.6754303, z: 13.4189529}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 649732651}
@@ -6066,20 +6066,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607f2f2d383c56543bf63e8be1ea6700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  hunger: 0
-  thirst: 0
-  energy: 0
-  strength: 0
-  agility: 0
-  stamina: 0
-  maxHealth: 0
-  maxHunger: 0
-  maxThirst: 0
-  maxEnergy: 0
-  maxStrength: 0
-  maxAgility: 0
-  maxStamina: 0
+  health: 255
+  hunger: 255
+  thirst: 255
+  energy: 127.5
+  strength: 85
+  agility: 85
+  stamina: 85
+  maxHealth: 255
+  maxHunger: 255
+  maxThirst: 255
+  maxEnergy: 255
+  maxStrength: 255
+  maxAgility: 255
+  maxStamina: 255
   thirstCoef: .800000012
   hungerCoef: .400000006
   energyCoef: .200000003
@@ -7939,8 +7939,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2095499413}
-  m_LocalRotation: {x: .0871723145, y: .899590492, z: .210452527, w: -.372622669}
-  m_LocalPosition: {x: 1.76805878, y: -13.5530596, z: 25.6377792}
+  m_LocalRotation: {x: -.17588228, y: .228044465, z: .0419237353, w: .956714988}
+  m_LocalPosition: {x: -7.52915382, y: -12.7019997, z: .294746399}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 649732651}

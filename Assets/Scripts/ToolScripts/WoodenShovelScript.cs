@@ -27,7 +27,7 @@ public class WoodenShovelScript :  toolBaseScript  {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!busy) {
+		if ((!busy)&&(!controls.locked)) {
 			if (Input.GetMouseButtonDown (0)) {
 				//	Debug.Log ("LMB Pressed");
 				delayTime = delay1;

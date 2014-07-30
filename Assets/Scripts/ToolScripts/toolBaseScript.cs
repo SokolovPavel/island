@@ -17,7 +17,7 @@ public class toolBaseScript : MonoBehaviour {
 	public int size=50;
 
 	private bool equipped;
-
+	public Menu controls;
 	void Start () {
 		//	Init ();
 	}
@@ -44,7 +44,7 @@ public class toolBaseScript : MonoBehaviour {
 
 	public void Unequip() {
 		Destroy (toolModel);
-
+		SendMessage ("Unequipped");
 		DestroyObject (this);
 	}
 
@@ -73,6 +73,7 @@ public class toolBaseScript : MonoBehaviour {
 		prBar b = this.gameObject.GetComponent<prBar> ();
 		texture = b.texture;
 		material = b.material;
+		controls = this.gameObject.GetComponent<Menu> ();
 	}
 
 	public void DrawBar(float percent) {

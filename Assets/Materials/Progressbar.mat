@@ -30,12 +30,12 @@ Material:
     m_Floats:
       data:
         first:
-          name: _Progress
-        second: .995599449
-      data:
-        first:
           name: _Health
         second: .357142836
+      data:
+        first:
+          name: _Progress
+        second: .996825218
     m_Colors:
       data:
         first:

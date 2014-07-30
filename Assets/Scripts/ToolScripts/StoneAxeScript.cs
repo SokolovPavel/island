@@ -8,6 +8,7 @@ public class StoneAxeScript : toolBaseScript {
 	private float delay2=1.0f;
 	private float timer;
 	private float delayTime;
+
 	public byte delayN;
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,7 @@ public class StoneAxeScript : toolBaseScript {
 		scriptName = "StoneAxeScript";
 		toolObj = Resources.Load (toolName, typeof(GameObject)) as GameObject;
 		Init ();
+	
 
 	}
 
@@ -25,7 +27,7 @@ public class StoneAxeScript : toolBaseScript {
 	void Update () {
 
 
-		if (!busy) {
+		if ((!busy)&&(!controls.locked)) {
 			if (Input.GetMouseButtonDown (0)) {
 				//	Debug.Log ("LMB Pressed");
 				delayTime = delay1;
@@ -86,10 +88,10 @@ public class StoneAxeScript : toolBaseScript {
 
 			if ((hit.rigidbody) && (hit.rigidbody.gameObject.name != "Player")) {
 				yield return new WaitForSeconds (delay1);
-				hit.transform.gameObject.SendMessage ("Chop", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
+				hit.transform.gameObject.SendMessage ("Chop", new ToolParams(this.gameObject,1.0f), SendMessageOptions.DontRequireReceiver);
 			} else if (hit.collider.tag == "Usable") {
 				yield return new WaitForSeconds (delay1);
-				hit.transform.gameObject.SendMessage ("Chop", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
+				hit.transform.gameObject.SendMessage ("Chop", new ToolParams(this.gameObject,1.0f), SendMessageOptions.DontRequireReceiver);
 			}
 		} else {
 			yield return null;

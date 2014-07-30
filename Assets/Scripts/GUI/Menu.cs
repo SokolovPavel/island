@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour {
 	private MouseLook look;
 	//private FPSInputController controller;
 	private PlayerController controller;
-	private bool locked = false;
+	public bool locked = false;
 	private bool equipped;
 	InventoryGUI invGUI;
 	void Start () {
@@ -26,10 +26,12 @@ public class Menu : MonoBehaviour {
 		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
 			invGUI.changeSelectedIndex(1);
 			StartCoroutine( "EquipTool",invGUI.selectedIndex);
+
 		}
 		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
 			invGUI.changeSelectedIndex(-1);
 			StartCoroutine( "EquipTool",invGUI.selectedIndex);
+
 		}
 		if (Input.GetButtonDown("Inventory")) {
 			if (locked){
@@ -72,44 +74,54 @@ public class Menu : MonoBehaviour {
 				UseObject ();
 			}
 
-			if (Input.GetKeyDown ("1")) { //Equip tool/weapon in inventory slot1
+			if (Input.GetKeyDown ("1")) { //Equip tool/weapon in inventory slot1. Лучше сделать циклом наверн.
 				//UseObject ();
 				StartCoroutine( "EquipTool",0);
+				invGUI.selectedIndex = 0;
 			}
 
 			if (Input.GetKeyDown ("2")) { //Equip tool/weapon in inventory slot2
 				//UseObject ();
 				StartCoroutine( "EquipTool",(int)1);
+				invGUI.selectedIndex = 1;
 			}
 
 			if (Input.GetKeyDown ("3")) { //Equip tool/weapon in inventory slot3
 				//UseObject ();
 				StartCoroutine( "EquipTool",(int)2);
+				invGUI.selectedIndex = 2;
 			}
 			if (Input.GetKeyDown ("4")) { //Equip tool/weapon in inventory slot4
 				//UseObject ();
 				StartCoroutine( "EquipTool",(int)3);
+				invGUI.selectedIndex = 3;
 			}
 
 		}
 
 	}
 
-	void unlockControl () {
+	public void unlockControl () {
 		look.enabled = true;
 		controller.enabled = true;
 		Screen.lockCursor = true;
 		//Screen.showCursor = false;
 	}
 
-	void lockControl () {
+	public void lockControl () {
 		look.enabled = false;
 		controller.enabled = false;
 		Screen.lockCursor = false;
 		//Screen.showCursor = false;
 	}
 
+	public void showCursor() {
+		GUIHolder.SetCursor(GUIt.CursorType.inventory);
+	}
 
+	public void showCrosshair() {
+		GUIHolder.SetCursor(GUIt.CursorType.game);
+	}
 
 
 	void DropItem()
@@ -146,9 +158,18 @@ public class Menu : MonoBehaviour {
 		if (Physics.Raycast (HeadCamera.transform.position, direction, out hit, range)) {	
 			if ((hit.rigidbody)&&(hit.rigidbody.gameObject.name!="Player"))
 			{
+
 				GameObject nz= hit.transform.gameObject;
-				if (inv.AddItem (nz) >= 0) {
-					Destroy (nz);
+				Item it = nz.GetComponent<Item> ();
+				if (it != null) {
+					int index = inv.AddItem (nz);
+
+					if (index>=0) {
+						if (!equipped) {
+							StartCoroutine( "EquipTool",index);
+						}
+						Destroy (nz);
+					}
 				}
 			}
 		}
@@ -178,21 +199,33 @@ public class Menu : MonoBehaviour {
 			if ((inv.items [index].type == Item.enType.Tool) || (inv.items [index].type == Item.enType.Weapon)) {
 				if (equipped) {
 					SendMessage ("Unequip");
-					yield return new WaitForSeconds (0.02f);
+					yield return new WaitForSeconds (0.01f);
 				}
 				Debug.Log (inv.items [index].name);
 				string tmp = inv.items [index].name +"Script";
 				this.gameObject.AddComponent (tmp);
 
-				yield return new WaitForSeconds (0.02f);
+				yield return new WaitForSeconds (0.01f);
 
 				SendMessage ("Equip", index);
 				equipped = true;
 			} else {
+				if (equipped) {
+					SendMessage ("Unequip");
+					equipped = false;
+				}
 				yield return null;
 			}
 		} else {
+			if (equipped) {
+				SendMessage ("Unequip");
+				equipped = false;
+			}
 			yield return null;
 		}
+	}
+
+	void Unequipped() {
+		equipped = false;
 	}
 }

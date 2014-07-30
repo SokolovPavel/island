@@ -14,7 +14,7 @@ public class VegetationScript : MonoBehaviour {
 	public GameObject[] fruitPlace;
 	public GameObject[] fr;
 	public AudioClip[] hitSound;
-
+	public TreeLoot lootScript;
 	private bool sprouted;
 	private float lastResizeTime;
 	private GameObject fruitRes;
@@ -27,7 +27,9 @@ public class VegetationScript : MonoBehaviour {
 			this.collider.enabled = false;
 			treeAge = 0.0f;
 			sprouted = false;
-
+			if (lootScript != null) {
+				lootScript.enabled = false;
+			}
 		}
 	}
 
@@ -35,7 +37,7 @@ public class VegetationScript : MonoBehaviour {
 		treeAge += Time.fixedDeltaTime;
 
 
-		if ((treeAge > (timeToGrow * 0.1f)) && (!grown)&&(!sprouted)) {
+		if ((treeAge > (timeToGrow * 0.03f)) && (!grown)&&(!sprouted)) {
 			sprouted = true;
 			this.gameObject.GetComponent<MeshRenderer> ().enabled = true;
 			this.collider.enabled = true;
@@ -53,6 +55,9 @@ public class VegetationScript : MonoBehaviour {
 
 		if ((!grown) && (treeAge > timeToGrow)) {
 			grown = true;
+			if (lootScript != null) {
+				lootScript.enabled = true;
+			}
 		}
 
 		if ((!fruits) && (treeAge > timeToFruits)&&(haveFruits)) {

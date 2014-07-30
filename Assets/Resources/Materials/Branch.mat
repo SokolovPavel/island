@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: alder-alderbark
-  m_Shader: {fileID: 10509, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Branch
+  m_Shader: {fileID: 10511, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,10 +17,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 612cfc07d624f434f9878ae5bff08819, type: 3}
+          m_Texture: {fileID: 2800000, guid: a10450d6a0d4131429679ba52ea1bef5, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: .5
       data:
         first:
           name: _SquashAmount
@@ -28,24 +32,21 @@ Material:
       data:
         first:
           name: _BaseLight
-        second: .0660377368
+        second: .349999994
       data:
         first:
           name: _AO
-        second: 3.30188704
+        second: 2.4000001
+      data:
+        first:
+          name: _Occlusion
+        second: 7.5
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .968764782, g: .968764782, b: .968764782, a: 1}
-      data:
-        first:
-          name: _MainTex_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _Scale
         second: {r: 1, g: 1, b: 1, a: 1}
---- !u!1002 &2100001
-EditorExtensionImpl:
-  serializedVersion: 6

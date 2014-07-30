@@ -35,6 +35,7 @@ public class GUIt : MonoBehaviour {
 
 	void OnGUI () {
 		map.Draw ();
+		GUI.depth = 0;
 		if (lockCursor) {
 			GUI.DrawTexture (new Rect (Screen.width/2 - currentOffset.x/2, Screen.height/2 - currentOffset.y/2, currentCursor.width, currentCursor.height), currentCursor);
 		} else {

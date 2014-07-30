@@ -98,17 +98,33 @@ public class InventoryGUI : MonoBehaviour {
 		_contexMenuX = _buttonX + index * (_buttonSize + _buttonShift);
 	}
 	Texture getImage(string name){
-		if (name == "Apple")
-			return image[0];
-		else if (name == "AppleSeed")
-			return image[1];
-		else if (name == "StoneAxe")
-			return image[2];
-		else if (name == "WoodenShovel")
-			return image[3];
-		else
-			return image[4];
+		int index = 0;
+		switch (name) {
+		case "Apple":
+			index = 1;
+			break;
+		case "AppleSeed":
+			index = 2;
+			break;
+		case "StoneAxe":
+			index = 3;
+			break;
+		case "WoodenShovel":
+			index = 4;
+			break;
+		case "TreeLog":
+			index = 5;
+			break;
+		case "TreeBranch":
+			index = 6;
+			break;
+		case "PineTreeSeed":
+			index = 7;
+			break;
+		}
+		return image [index];
 	}
+		
 	public void changeSelectedIndex(int diff){
 		_selectedIndex = (_selectedIndex + diff + 10) % 10;
 	}

@@ -61,7 +61,7 @@ public class Fireplace : MonoBehaviour {
 				}
 			} else if (isBurning) {
 				Inventory inv = user.GetComponent<Inventory> ();
-				InventoryGUI invGUI = gameObject.GetComponent<InventoryGUI> ();
+				InventoryGUI invGUI = user.GetComponent<InventoryGUI> ();
 				string name = inv.items [invGUI.selectedIndex].name;
 				if (name == "TreeBranch") {
 					maxBurnTime += 100.0f;

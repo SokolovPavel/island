@@ -4,21 +4,21 @@ using System.Collections;
 [ExecuteInEditMode]
 public class PlayerStats : MonoBehaviour {
 	bool sleeping;
-	float health;
-	float hunger;
-	float thirst;
-	float energy;
-	float strength;
-	float agility;
-	float stamina;
+	public float health;
+	public float hunger;
+	public float thirst;
+	public float energy;
+	public float strength;
+	public float agility;
+	public float stamina;
 
-	float maxHealth;
-	float maxHunger;
-	float maxThirst;
-	float maxEnergy;
-	float maxStrength;
-	float maxAgility;
-	float maxStamina;
+	public float maxHealth;
+	public float maxHunger;
+	public float maxThirst;
+	public float maxEnergy;
+	public float maxStrength;
+	public float maxAgility;
+	public float maxStamina;
 
 	public	float thirstCoef = 0.8f;
 	public  float hungerCoef = 0.4f;

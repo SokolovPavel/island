@@ -72,6 +72,8 @@ GameObject:
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400014}
   - 114: {fileID: 11400016}
+  - 114: {fileID: 11400022}
+  - 114: {fileID: 11400020}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -186,7 +188,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_HDR: 1
+  m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
@@ -271,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapCamera: {fileID: 0}
   HeadCamera: {fileID: 100004}
+  locked: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -381,6 +384,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607f2f2d383c56543bf63e8be1ea6700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  hunger: 0
+  thirst: 0
+  energy: 0
+  strength: 0
+  agility: 0
+  stamina: 0
+  maxHealth: 0
+  maxHunger: 0
+  maxThirst: 0
+  maxEnergy: 0
+  maxStrength: 0
+  maxAgility: 0
+  maxStamina: 0
   thirstCoef: .800000012
   hungerCoef: .400000006
   energyCoef: .200000003
@@ -439,7 +456,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d35a90bed98554f4d8b92c9cd3cfbafa, type: 3}
   m_Name: 
@@ -475,6 +492,40 @@ MonoBehaviour:
     type: 3}
   brightPassFilterShader: {fileID: 4800000, guid: 186c4c0d31e314f049595dcbaf4ca129,
     type: 3}
+--- !u!114 &11400020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9bda029f075e14ba427dda9455a327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image:
+  - {fileID: 2800000, guid: 77bfddfa296f3e14dbe84f5917d8ca18, type: 3}
+  - {fileID: 2800000, guid: a9a309aea8824a240b408707650de966, type: 3}
+  - {fileID: 2800000, guid: acf0cd229046f524986b70cf39773e43, type: 3}
+  - {fileID: 2800000, guid: d25db8c065ea4df44bb217ae92820af7, type: 3}
+  - {fileID: 2800000, guid: 8e342819fee3ddb4b9bb30e950fcf5f4, type: 3}
+  - {fileID: 0}
+  background: {fileID: 2800000, guid: 104e4522f665c3944a3e4e789c939656, type: 3}
+  hotbarFrame: {fileID: 2800000, guid: b381f6d17d43c1d4c825b816fb44c9d3, type: 3}
+--- !u!114 &11400022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af59e5df15e87ef45b2d0c701e9bb870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texture: {fileID: 2800000, guid: 41ef72889692c1746896d2e6fbd975bb, type: 3}
+  material: {fileID: 2100000, guid: c247a3339b972e348854cebd82d69099, type: 2}
+  size: 50
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

@@ -23,6 +23,7 @@ public class InventoryGUI : MonoBehaviour {
 	private bool _dragSetup = false;
 	private bool _dragOn = false;
 	private int _dragFromIndex;
+	private int _dragToIndex;
 	// Use this for initialization
 	Inventory inventory;
 	void Start () {
@@ -35,40 +36,13 @@ public class InventoryGUI : MonoBehaviour {
 
 	void OnGUI () {
 
-		if (Input.GetMouseButton (0)) {
-			if (_dragOn) {
-				GUI.DrawTexture (new Rect (Input.mousePosition.x, Input.mousePosition.y, _buttonSize, _buttonSize), getImage (inventory.items [_dragFromIndex].name));
-			} else {
-				if (_dragSetup) {
-					Vector3 diff = Input.mousePosition - _dragPrevPos;
-					if (diff.sqrMagnitude > 25) {
-						_dragOn = true;
-						Debug.Log ("DragOn");
-					} else {
-						_dragSetup = false;
-					}
-				} else {
-					_dragFromIndex = checkHitSlot (Input.mousePosition);
-					if (_dragFromIndex >= 0) {
-						_dragPrevPos = Input.mousePosition;
-						_dragSetup = true;
-						Debug.Log ("DragSetup");
-					}
-				}
-			}
-		} else {
-			_dragOn = false;
-			_dragSetup = false;
-		}
-			//if (_dragOn)
-		//	findNearestAndSwipe ();
 
 		GUI.skin = guiSkin;
 		if (Event.current.type.Equals (EventType.Repaint)) {
 			GUI.DrawTexture (new Rect (Screen.width * 0.26f, Screen.height - _buttonSize - 2 * _buttonShift - 10, Screen.width - Screen.width * 2 * 0.26f, _buttonSize + 2 * _buttonShift + 10), background);
 		}
 		for (int i = 0; i < 10; i++) {
-			if (inventory.items [i] != null) {
+			if ((inventory.items [i] != null)&&(!(_dragOn&&(i==_dragFromIndex)))) {
 				if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), _buttonY, _buttonSize, _buttonSize), new GUIContent (getImage(inventory.items[i].name), "inventory slot" + i))) {
 					if (Event.current.button == 0) {
 						Debug.Log ("Rigth click");
@@ -90,6 +64,23 @@ public class InventoryGUI : MonoBehaviour {
 			GUI.Button (new Rect (_contexMenuX + _buttonSize/2 - _contexMenuSize, _buttonY - _contexMenuSize, 2 * _contexMenuSize, _contexMenuSize), "Equip");
 			GUI.Button (new Rect (_contexMenuX + _buttonSize, _buttonY - _contexMenuSize, 2 * _contexMenuSize, _contexMenuSize), "Use");
 		}
+
+		//DragAndDrop
+		if (Input.GetMouseButton (0)) {
+			if (!_dragOn) {
+				_dragFromIndex = checkHitSlot (Input.mousePosition);
+				if (_dragFromIndex >= 0)
+					_dragOn = true;
+			} else {
+				GUI.DrawTexture (new Rect (Input.mousePosition.x - _buttonSize/2, Screen.height-Input.mousePosition.y - _buttonSize/2, _buttonSize, _buttonSize), getImage (inventory.items [_dragFromIndex].name));
+			}
+		} else if (_dragOn) {
+			_dragToIndex = checkHitSlot (Input.mousePosition);
+			if (inventory.items [_dragToIndex] == null)
+				inventory.SwapItems (_dragFromIndex, _dragToIndex);
+			_dragOn = false;
+		}
+
 	}
 	void pickUpItem(int index){
 		Debug.Log ("Index : " + index);

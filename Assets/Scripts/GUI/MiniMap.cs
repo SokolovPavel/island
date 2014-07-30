@@ -65,7 +65,9 @@ public class MiniMap : MonoBehaviour {
 				_currentRect.height = _mapRect.height * (proportion) + (1 - proportion) * _miniMapRect.height;
 			} 
 
-			transform.position = new Vector3 (target.transform.position.x, target.transform.position.y + camHeight, target.transform.position.z);
+			//transform.position.y = 0.1f * (target.transform.position.y + camHeight - transform.position.y);
+			//transform.position += 0.1f * (new Vector3 (target.transform.position.x, target.transform.position.y + camHeight, target.transform.position.z) - transform.position);
+			transform.position = new Vector3 (target.transform.position.x, target.transform.position.y + camHeight + 0.1f * (transform.position.x - target.transform.position.y), target.transform.position.z);
 			if (!freezeRotation) {
 				Vector3 angles = transform.eulerAngles;
 				float diff = angles.y - target.transform.eulerAngles.y;
@@ -106,7 +108,7 @@ public class MiniMap : MonoBehaviour {
 			Vector3 move = curPos - _prevPos;
 			_prevPos = transform.position;
 			float speed = move.magnitude;
-			camera.orthographicSize = camDistance + speed * speedScale + target.position.y * heightScale;
+			camera.orthographicSize = camDistance +  target.position.y * heightScale;
 		}
 	}
 

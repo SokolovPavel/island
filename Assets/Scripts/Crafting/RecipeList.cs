@@ -11,6 +11,7 @@ public class RecipeList : MonoBehaviour {
 	private bool show;
 	private GameObject user;
 	private Inventory inv;
+	private GameObject item;
 
 	void Start () {
 		user = this.gameObject;
@@ -80,6 +81,29 @@ public class RecipeList : MonoBehaviour {
 				if( GUI.Button( new Rect(20+100*k,60+27*pos,140,20),recList[i].name ))
 				{
 
+					for (int j = 0; j < recList [i].elements.Count; j++) {
+						int q = recList [i].quantities [j];
+						while (q > 0) {
+							int index = inv.FindMaxQuantity (recList [i].elements [j]);
+							if (q > inv.items [index].quantity) {
+								q -= inv.items [index].quantity;
+								inv.DestroyItem (index);
+							} else {
+								inv.AddQuantity (index, -q);
+								q = 0;
+							}
+						}
+					}
+
+					for (int j = 0; j < recList [i].results.Count; j++) {
+						item = Resources.Load (recList [i].results [j], typeof(GameObject)) as GameObject;
+						int dex = inv.AddItem (item);
+						if (recList [i].resQ [j] > 1) {
+							inv.AddQuantity (dex,( recList [i].resQ [j]-1));
+						}
+						CheckAvailability ();
+						item = null;
+					}
 
 				}
 			}

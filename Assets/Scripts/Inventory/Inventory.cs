@@ -303,7 +303,7 @@ public class Inventory : MonoBehaviour
 
 	}
 
-	public int FindAndCompareQuantity (string n)          //Возвращает индекс места в слоте, где количество данного элемента максимально
+	public int FindMaxQuantity (string n)          //Возвращает индекс места в слоте, где количество данного элемента максимально
 	{
 		int ret=-1;
 		int q=0;

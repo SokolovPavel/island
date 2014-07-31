@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<system>
+<recipe Name="Apple seeds" CraftTime="1" ElementsQuantity="1" ResultsQuantity="1" Element1="Apple" ElQ1="1" Result1="AppleSeed" ResQ1="1"/>
+
+<recipe Name="Raw Planks" CraftTime="5" ElementsQuantity="2" ResultsQuantity="1" Element1="TreeLog" ElQ1="1" Element2="StoneAxe" ElQ2="0" Result1="RawPlank" ResQ1="4"/>
+
+</system>

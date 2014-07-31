@@ -24,6 +24,7 @@ public class InventoryGUI : MonoBehaviour {
 	private bool _dragOn = false;
 	private int _dragFromIndex;
 	private int _dragToIndex;
+	private int _dragTempStorage = 10;
 	// Use this for initialization
 	Inventory inventory;
 	void Start () {
@@ -36,26 +37,60 @@ public class InventoryGUI : MonoBehaviour {
 
 	void OnGUI () {
 
-
+		if (_dragOn)
+			GUI.Label (new Rect (Screen.width / 2, Screen.height / 2, 40, 40), "Drag!");
 		GUI.skin = guiSkin;
+
+		//Фон хотбара
 		if (Event.current.type.Equals (EventType.Repaint)) {
 			GUI.DrawTexture (new Rect (Screen.width * 0.26f, Screen.height - _buttonSize - 2 * _buttonShift - 10, Screen.width - Screen.width * 2 * 0.26f, _buttonSize + 2 * _buttonShift + 10), background);
 		}
+
 		for (int i = 0; i < 10; i++) {
-			if ((inventory.items [i] != null)&&(!(_dragOn&&(i==_dragFromIndex)))) {
+			if (inventory.items [i] != null) {
 				if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), _buttonY, _buttonSize, _buttonSize), new GUIContent (getImage(inventory.items[i].name), "inventory slot" + i))) {
+
 					if (Event.current.button == 0) {
-						Debug.Log ("Rigth click");
+						if (_dragOn) {
+							if (inventory.items [_dragTempStorage].name == inventory.items [i].name) {
+								inventory.SetQuantity(_dragTempStorage, inventory.AddQuantity (i, inventory.items [_dragTempStorage].quantity));
+								if (inventory.items[_dragTempStorage] == null) {
+									_dragOn = false;
+								}
+							} 
+
+						} else {
+							_dragOn = true;
+							inventory.SwapItems (i, _dragTempStorage);
+						}
 					}else if (Event.current.button == 1) {
-						showContexMenu (i);
+						if (_dragOn) {
+							inventory.shareStack (_dragTempStorage, i);
+							if(inventory.items[_dragTempStorage] == null) _dragOn = false;
+						}
 					}
 				}
-				if(inventory.items [i].quantity>1)GUI.Label (new Rect (_buttonX + i * (_buttonSize + _buttonShift)+4, _buttonY, _buttonSize, _buttonSize), inventory.items [i].quantity.ToString());
+				if((inventory.items[i] != null )&&(inventory.items [i].quantity>1))GUI.Label (new Rect (_buttonX + i * (_buttonSize + _buttonShift)+4, _buttonY, _buttonSize, _buttonSize), inventory.items [i].quantity.ToString());
 			} else {
-				GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), _buttonY, _buttonSize, _buttonSize),"");
+				if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), _buttonY, _buttonSize, _buttonSize), "")) {
+					if (Event.current.button == 0) {
+						if (_dragOn) {
+							inventory.SwapItems (_dragTempStorage, i);
+							_dragOn = false;
+						} 
+					}else
+					if (Event.current.button == 1) {
+						if (_dragOn){
+							inventory.shareStack (_dragTempStorage, i);
+							if(inventory.items[_dragTempStorage] == null) _dragOn = false;
+						}
+					}
+				}
 			}
 
 		}
+
+		//Рамка выделения
 		if (Event.current.type.Equals (EventType.Repaint)) {
 			GUI.DrawTexture (new Rect(_buttonX + _selectedIndex * (_buttonSize + _buttonShift), _buttonY, _buttonSize, _buttonSize), hotbarFrame);
 		}
@@ -66,21 +101,27 @@ public class InventoryGUI : MonoBehaviour {
 		}
 
 		//DragAndDrop
-		if (Input.GetMouseButton (0)) {
+		/*if (Input.GetMouseButton (0)) {
 			if (!_dragOn) {
 				_dragFromIndex = checkHitSlot (Input.mousePosition);
 				if (_dragFromIndex >= 0)
 					_dragOn = true;
-			} else {
-				GUI.DrawTexture (new Rect (Input.mousePosition.x - _buttonSize/2, Screen.height-Input.mousePosition.y - _buttonSize/2, _buttonSize, _buttonSize), getImage (inventory.items [_dragFromIndex].name));
-			}
+			} 
 		} else if (_dragOn) {
 			_dragToIndex = checkHitSlot (Input.mousePosition);
-			if (inventory.items [_dragToIndex] == null)
+			if((_dragFromIndex < 10)&&(inventory.items [_dragToIndex] == null))
 				inventory.SwapItems (_dragFromIndex, _dragToIndex);
 			_dragOn = false;
-		}
+		}*/
 
+		//Иконка итема около курсора
+		if (Event.current.type.Equals (EventType.Repaint)) {
+			if ((_dragOn)&&(inventory.items [_dragTempStorage] != null)) {
+				GUI.DrawTexture (new Rect (Input.mousePosition.x - _buttonSize / 2, Screen.height - Input.mousePosition.y - _buttonSize / 2, _buttonSize, _buttonSize), getImage (inventory.items [_dragTempStorage].name));
+				if (inventory.items [_dragTempStorage].quantity > 1)
+					GUI.Label (new Rect (Input.mousePosition.x - _buttonSize / 2, Screen.height - Input.mousePosition.y - _buttonSize / 2, _buttonSize, _buttonSize), inventory.items [_dragTempStorage].quantity.ToString ());
+			}
+		}
 	}
 	void pickUpItem(int index){
 		Debug.Log ("Index : " + index);
@@ -142,7 +183,11 @@ public class InventoryGUI : MonoBehaviour {
 			if (pos.x > _buttonX) {
 				int index = (int)((pos.x - _buttonX) / (_buttonSize + _buttonShift));
 				if (((pos.x - _buttonX) - index * (_buttonSize + _buttonShift)) < _buttonSize) {
-					return index;
+					if (index < 10) {
+						return index;
+					} else {
+						return -1;
+					}
 				} else {
 					return -1;
 				}

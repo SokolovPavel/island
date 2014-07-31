@@ -256,21 +256,35 @@ public class Inventory : MonoBehaviour
 			return 0;
 	}
 
-	public void SetQuantity (int index, int amount)          //Задать количество предмету. Ограничения на максимальное количество не учитывает (пока)
+	public int SetQuantity (int index, int amount)          //Задать количество предмету. Ограничения на максимальное количество не учитывает (пока)
 	{
 		items [index].quantity = amount;
 		if (items [index].quantity <= 0) {
 			items [index] = null;
+			return 0;
+		} else if (items [index].quantity > items [index].maxQ) {//Вычисление излишка
+			int diff = items [index].quantity - items [index].maxQ;
+			items [index].quantity = items [index].maxQ;
+			return diff;
+		} else {
+			return 0;
 		}
+
 	}
 
-	public void AddQuantity (int index, int amount)          //Добавить предмету количество. Ограничения на максимальное количество не учитывает (пока)
+	public int AddQuantity (int index, int amount)          //Добавить предмету количество. Ограничения на максимальное количество не учитывает (пока)
 	{
 		items [index].quantity += amount;
 		if (items [index].quantity <= 0) {
-			items [index]  = null;
+			items [index] = null;
+			return -1;
+		} else if (items [index].quantity > items [index].maxQ) {//Вычисление излишка
+			int diff = items [index].quantity - items [index].maxQ;
+			items [index].quantity = items [index].maxQ;
+			return diff;
+		} else {
+			return 0;
 		}
-
 	}	
 
 	public int FindByName (string n)          //Returns item index. If not found, returns -1
@@ -305,9 +319,38 @@ public class Inventory : MonoBehaviour
 		return mass;
 	}
 
-	public void SwapItems(int index1, int index2) { //Боюсь, может уничтожать итемы, надо тестить
-		Itm temp =  new Itm (items[index1].name,items[index1].title, items[index1].desc, items[index1].weight, items[index1].maxQ, items[index1].quantity, items[index1].durability, items[index1].maxDur, items[index1].type);
-		items [index1] = items [index2];
-		items [index2] = temp;
+	public void SwapItems(int fromIndex, int toIndex) { //Боюсь, может уничтожать итемы, надо тестить
+		Itm temp =  new Itm (items[fromIndex].name,items[fromIndex].title, items[fromIndex].desc, items[fromIndex].weight, items[fromIndex].maxQ, items[fromIndex].quantity, items[fromIndex].durability, items[fromIndex].maxDur, items[fromIndex].type);
+		items [toIndex] = temp;
+		items [fromIndex] = null;
 	}
+
+	public bool shareStack(int senderIndex, int recipientIndex){
+		if (senderIndex != recipientIndex) {
+			Itm sharedItem = items [senderIndex];
+			if (items [recipientIndex] == null) {
+				items [recipientIndex] = new Itm (sharedItem.name, sharedItem.title, sharedItem.desc, sharedItem.weight, sharedItem.maxQ, 1, sharedItem.durability, sharedItem.maxDur, sharedItem.type);
+				AddQuantity (senderIndex, -1);
+				return true;
+			} else {
+				if ((items [recipientIndex].name == sharedItem.name) && (items [recipientIndex].quantity < items [recipientIndex].maxQ)) {
+					items [recipientIndex].quantity++;
+					if (sharedItem.quantity > 1) {
+						sharedItem.quantity--;
+						return true;
+					} else {
+						items [senderIndex] = null;
+						return false;
+					}
+
+				} else {
+					return true;
+				}
+			}
+		} else {
+			return true;
+		}
+	}
+
+				
 }

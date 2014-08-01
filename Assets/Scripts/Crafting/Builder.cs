@@ -26,7 +26,7 @@ public class Builder : MonoBehaviour {
 		int index = invGUI.selectedIndex;
 
 		for (int i = 0; i < blueprint.elements.Count; i++) {
-			if (inv.items [index].name == blueprint.elements [i]) {
+			if ((inv.items [index].name == blueprint.elements [i])&&(blueprint.quantities[i]>0)) {
 				if (blueprint.quantities [i] > inv.items [index].quantity) {
 
 					blueprint.quantities [i] -= inv.items [index].quantity;
@@ -43,8 +43,8 @@ public class Builder : MonoBehaviour {
 			q += blueprint.quantities [j];
 
 		}
-		//	Debug.Log (q);
-		if (q == 0) {
+			Debug.Log (q);
+		if (q <= 0) {
 			built = true;
 			mainBuildingScript.enabled = true;
 			DestroyObject (this);

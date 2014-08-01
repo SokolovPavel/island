@@ -24,7 +24,8 @@ public class Hovel : MonoBehaviour {
 			stats = user.GetComponent<PlayerStats> ();
 
 			if (!sleeping) {
-
+				sleeping = true;
+				time = 0.0f;
 				sky = GameObject.FindGameObjectWithTag ("Sky");
 				Ttime = sky.GetComponent<TOD_Time> ();
 				oldDayLength = Ttime.DayLengthInMinutes;
@@ -34,9 +35,9 @@ public class Hovel : MonoBehaviour {
 				controller.enabled = false;
 				lastPos = user.transform.position;
 				user.transform.position = sleepPlace.transform.position;
-				sleeping = true;
+
 				//Debug.Log ("Y U DONT WORK?!!!");
-				return;
+				//return;
 			}
 		} else {
 			Debug.Log ("nah, im disabled.");
@@ -54,8 +55,9 @@ public class Hovel : MonoBehaviour {
 				ply.SendMessage("addThirst",-bedQuality*1.5f);
 				time = 0.0f;
 				if (stats.energy > (stats.maxEnergy - 1)) {
-					sleeping = false;
+
 					Wake ();
+					return;
 				}
 
 			}
@@ -63,7 +65,7 @@ public class Hovel : MonoBehaviour {
 				Wake ();
 			}
 
-		}
+		} 
 	}
 
 	void Wake() {

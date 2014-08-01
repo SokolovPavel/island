@@ -13,12 +13,14 @@ public class BuildingPlacement : MonoBehaviour {
 	private bool placing;
 	private Builder builder;
 	private Menu menu;
-
+	private Material buildMat;
+	private Material objMat;
 	private float angle;
 	// Use this for initialization
 	void Start () {
 		//placing = true;
 		menu = this.gameObject.GetComponent<Menu>();
+		buildMat = Resources.Load ("Materials\\BuildPlace", typeof(Material)) as Material;
 	}
 	
 	// Update is called once per frame
@@ -43,6 +45,7 @@ public class BuildingPlacement : MonoBehaviour {
 					}
 
 					if (Input.GetMouseButtonDown (0)) {
+						building.renderer.material = objMat;
 						placing = false;
 						building.collider.enabled = true;
 						menu.unlock ();
@@ -56,6 +59,8 @@ public class BuildingPlacement : MonoBehaviour {
 	}
 
 	public void Activate(Blueprint print) {
+
+		buildMat = Resources.Load ("Materials/BuildPlace", typeof(Material)) as Material;
 		blueprint = print;
 
 		blueprint.quantities [0] -= 1;
@@ -63,11 +68,15 @@ public class BuildingPlacement : MonoBehaviour {
 		GameObject tmp = Resources.Load (print.result, typeof(GameObject)) as GameObject;
 		building =  Instantiate (tmp, new Vector3(0,0,0), Quaternion.identity) as GameObject;
 		building.collider.enabled = false;
+		objMat = building.renderer.material;
+		building.renderer.material = buildMat;
+		Debug.Log (buildMat.name);
 		builder = building.GetComponent<Builder> ();
 		builder.enabled = true;
 		builder.built = false;
 		builder.blueprint = print;
 		placing = true;
+
 	}
 
 

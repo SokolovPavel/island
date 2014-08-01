@@ -36,11 +36,11 @@ Material:
       data:
         first:
           name: _AO
-        second: .892857134
+        second: 0
       data:
         first:
           name: _Occlusion
-        second: 5.71428585
+        second: .714285851
     m_Colors:
       data:
         first:

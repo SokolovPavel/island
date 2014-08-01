@@ -13,7 +13,9 @@ public class Hovel : MonoBehaviour {
 	private Vector3 lastPos;
 	//private var gui:Transform;
 	private float time = 0.0f;
-
+	private GameObject sky;
+	private TOD_Time Ttime;
+	private float oldDayLength;
 	void Use(GameObject user)
 	{
 		if (enabled) {
@@ -22,6 +24,12 @@ public class Hovel : MonoBehaviour {
 			stats = user.GetComponent<PlayerStats> ();
 
 			if (!sleeping) {
+
+				sky = GameObject.FindGameObjectWithTag ("Sky");
+				Ttime = sky.GetComponent<TOD_Time> ();
+				oldDayLength = Ttime.DayLengthInMinutes;
+				Ttime.DayLengthInMinutes =3f;
+
 				ply = user;
 				controller.enabled = false;
 				lastPos = user.transform.position;
@@ -59,6 +67,7 @@ public class Hovel : MonoBehaviour {
 	}
 
 	void Wake() {
+		Ttime.DayLengthInMinutes = oldDayLength;
 		sleeping = false;
 		controller.enabled = true;
 		ply.transform.position = lastPos;

@@ -83,6 +83,7 @@ GameObject:
   - 64: {fileID: 6400000}
   - 82: {fileID: 8200000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Fireplace
   m_TagString: Usable
@@ -123,7 +124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -681,7 +682,20 @@ MonoBehaviour:
   isBurning: 0
   maxBurnTime: 600
   curBurnTime: 0
-  fireSound: {fileID: 0}
+  fireSound: {fileID: 8200000}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87af62f8f3797944fbaa40b83e07225a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  built: 1
+  mainBuildingScript: {fileID: 11400000}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

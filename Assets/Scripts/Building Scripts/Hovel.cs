@@ -16,20 +16,23 @@ public class Hovel : MonoBehaviour {
 
 	void Use(GameObject user)
 	{
-		controller = user.GetComponent<PlayerController> ();
-		stats = user.GetComponent<PlayerStats> ();
+		if (enabled) {
 
-		if(!sleeping)
-		{
-			ply = user;
-			controller.enabled = false;
-			lastPos = user.transform.position;
-			user.transform.position = sleepPlace.transform.position;
-			sleeping=true;
+			controller = user.GetComponent<PlayerController> ();
+			stats = user.GetComponent<PlayerStats> ();
 
-			return;
+			if (!sleeping) {
+				ply = user;
+				controller.enabled = false;
+				lastPos = user.transform.position;
+				user.transform.position = sleepPlace.transform.position;
+				sleeping = true;
+				//Debug.Log ("Y U DONT WORK?!!!");
+				return;
+			}
+		} else {
+			Debug.Log ("nah, im disabled.");
 		}
-
 
 
 	}
@@ -48,7 +51,7 @@ public class Hovel : MonoBehaviour {
 				}
 
 			}
-			if (Input.anyKeyDown) {
+			if ((Input.anyKeyDown)&&(time>0.2f)) {
 				Wake ();
 			}
 
@@ -59,6 +62,6 @@ public class Hovel : MonoBehaviour {
 		sleeping = false;
 		controller.enabled = true;
 		ply.transform.position = lastPos;
-
+		Debug.Log ("Wake up mazafaka");
 	}
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<system>
+
+<blueprint Name="Small hovel" CraftTime="5" ElementsQuantity="1"  Element1="TreeBranch" ElQ1="5" Result="Hovel" />
+
+<blueprint Name="Camp fire" CraftTime="2" ElementsQuantity="2"  Element1="TreeBranch" ElQ1="3" Element2="Stone" ElQ2="2" Result="Fireplace" />
+
+
+</system>

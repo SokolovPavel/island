@@ -4,4 +4,6 @@
 
 <recipe Name="Raw Planks" CraftTime="5" ElementsQuantity="2" ResultsQuantity="1" Element1="TreeLog" ElQ1="1" Element2="StoneAxe" ElQ2="0" Result1="RawPlank" ResQ1="4"/>
 
+<recipe Name="Stone Axe" CraftTime="10" ElementsQuantity="2" ResultsQuantity="1" Element1="Stone" ElQ1="3" Element2="TreeBranch" ElQ2="2" Result1="StoneAxe" ResQ1="1"/>
+
 </system>

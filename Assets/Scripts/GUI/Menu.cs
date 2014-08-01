@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour {
 	private MiniMap map;
 	private MouseLook look;
 	private RecipeList craft;
+	private BuildingCrafting build;
 	//private FPSInputController controller;
 	private PlayerController controller;
 	public bool locked = false;
@@ -18,6 +19,7 @@ public class Menu : MonoBehaviour {
 	InventoryGUI invGUI;
 	void Start () {
 		craft = gameObject.GetComponent<RecipeList> ();
+		build = gameObject.GetComponent<BuildingCrafting> ();
 		look = gameObject.GetComponent<MouseLook> ();
 		GUIHolder = GetComponent<GUIt> ();
 		//controller = gameObject.GetComponent<FPSInputController> ();
@@ -64,6 +66,7 @@ public class Menu : MonoBehaviour {
 
 		}
 		if (Input.GetButtonDown("Inventory")) {
+			CloseWindows ();
 			if (locked){
 				map.setMiniMap();
 				unlockControl();
@@ -76,6 +79,7 @@ public class Menu : MonoBehaviour {
 		}
 
 		if (Input.GetButtonDown("Map")) {
+			CloseWindows ();
 			if (locked){
 				unlockControl();
 				GUIHolder.SetCursor(GUIt.CursorType.game);
@@ -89,12 +93,27 @@ public class Menu : MonoBehaviour {
 		}
 
 		if (Input.GetButtonDown("Craft")) {
+			CloseWindows ();
 			if (locked){
 				craft.HideWindow (gameObject);
 				unlockControl();
 				GUIHolder.SetCursor(GUIt.CursorType.game);
 			} else {
 				craft.ShowWindow (gameObject);
+				lockControl();
+				GUIHolder.SetCursor(GUIt.CursorType.inventory);
+			}
+			locked =!locked;
+		}
+
+		if (Input.GetButtonDown("Build")) {
+			CloseWindows ();
+			if (locked){
+				build.HideWindow (gameObject);
+				unlockControl();
+				GUIHolder.SetCursor(GUIt.CursorType.game);
+			} else {
+				build.ShowWindow (gameObject);
 				lockControl();
 				GUIHolder.SetCursor(GUIt.CursorType.inventory);
 			}
@@ -145,11 +164,29 @@ public class Menu : MonoBehaviour {
 
 	}
 
+	public void CloseWindows() {
+		map.setMiniMap();
+		craft.HideWindow (gameObject);
+		build.HideWindow (gameObject);
+	}
+
 	public void unlockControl () {
+
 		look.enabled = true;
 		controller.enabled = true;
 		Screen.lockCursor = true;
 		//Screen.showCursor = false;
+		GUIHolder.SetCursor(GUIt.CursorType.game);
+	}
+
+	public void unlock () {
+		CloseWindows ();
+		locked = false;
+		look.enabled = true;
+		controller.enabled = true;
+		Screen.lockCursor = true;
+		//Screen.showCursor = false;
+		GUIHolder.SetCursor(GUIt.CursorType.game);
 	}
 
 	public void lockControl () {
@@ -209,7 +246,7 @@ public class Menu : MonoBehaviour {
 					int index = inv.AddItem (nz);
 
 					if (index>=0) {
-						if (!equipped) {
+						if ((!equipped)&&(index == invGUI.selectedIndex)) {
 							StartCoroutine( "EquipTool",index);
 						}
 						Destroy (nz);

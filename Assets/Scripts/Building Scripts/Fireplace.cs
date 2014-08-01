@@ -52,36 +52,36 @@ public class Fireplace : MonoBehaviour {
 
 	void Use( GameObject user)
 	{
+		if (enabled) {
+			if (!burnt) {
 
-		if (!burnt) {
+				if (!isBurning) {
+					if (curBurnTime < maxBurnTime) {
+						Burn ();
+					}
+				} else if (isBurning) {
+					Inventory inv = user.GetComponent<Inventory> ();
+					InventoryGUI invGUI = user.GetComponent<InventoryGUI> ();
+					string name = inv.items [invGUI.selectedIndex].name;
+					if (name == "TreeBranch") {
+						maxBurnTime += 100.0f;
+						inv.AddQuantity (invGUI.selectedIndex, -1);
 
-			if (!isBurning) {
-				if (curBurnTime < maxBurnTime) {
-					Burn ();
-				}
-			} else if (isBurning) {
-				Inventory inv = user.GetComponent<Inventory> ();
-				InventoryGUI invGUI = user.GetComponent<InventoryGUI> ();
-				string name = inv.items [invGUI.selectedIndex].name;
-				if (name == "TreeBranch") {
-					maxBurnTime += 100.0f;
-					inv.AddQuantity (invGUI.selectedIndex, -1);
+					} else if (name == "TreeLog") {
+						maxBurnTime += 1000.0f;
+						inv.AddQuantity (invGUI.selectedIndex, -1);
 
-				} else if (name == "TreeLog") {
-					maxBurnTime += 1000.0f;
-					inv.AddQuantity (invGUI.selectedIndex, -1);
+					} else if (name == "RawPlank") {
+						maxBurnTime += 500.0f;
+						inv.AddQuantity (invGUI.selectedIndex, -1);
 
-				} else if (name == "RawPlank") {
-					maxBurnTime += 500.0f;
-					inv.AddQuantity (invGUI.selectedIndex, -1);
-
-				} else {
-					Debug.Log ("This item is not suitable to refuel.");
-				}
+					} else {
+						Debug.Log ("This item is not suitable to refuel.");
+					}
 	
+				}
 			}
 		}
 	}
-
 
 }

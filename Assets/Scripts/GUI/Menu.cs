@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour {
 	private GUIt GUIHolder;
 	private MiniMap map;
 	private MouseLook look;
+	private RecipeList craft;
 	//private FPSInputController controller;
 	private PlayerController controller;
 	public bool locked = false;
@@ -16,6 +17,7 @@ public class Menu : MonoBehaviour {
 	private Vector3 oldMousePos;
 	InventoryGUI invGUI;
 	void Start () {
+		craft = gameObject.GetComponent<RecipeList> ();
 		look = gameObject.GetComponent<MouseLook> ();
 		GUIHolder = GetComponent<GUIt> ();
 		//controller = gameObject.GetComponent<FPSInputController> ();
@@ -86,11 +88,25 @@ public class Menu : MonoBehaviour {
 			locked =!locked;
 		}
 
+		if (Input.GetButtonDown("Craft")) {
+			if (locked){
+				craft.HideWindow (gameObject);
+				unlockControl();
+				GUIHolder.SetCursor(GUIt.CursorType.game);
+			} else {
+				craft.ShowWindow (gameObject);
+				lockControl();
+				GUIHolder.SetCursor(GUIt.CursorType.inventory);
+			}
+			locked =!locked;
+		}
 
 		if (!locked) {
 			if (Input.GetButtonDown ("Take")) {
 				TakeItem ();
 			}
+
+
 
 			if (Input.GetButtonDown ("Drop")) {
 				DropItem ();

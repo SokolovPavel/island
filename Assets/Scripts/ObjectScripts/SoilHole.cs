@@ -129,6 +129,7 @@ public class SoilHole : MonoBehaviour {
 				pos++;
 				if (pos > 10) {
 					k = 1;
+					pos = 0;
 				}
 				if( GUI.Button( new Rect(20+100*k,60+27*pos,140,20),inv.items[i].title ))
 				{

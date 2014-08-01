@@ -303,6 +303,48 @@ public class Inventory : MonoBehaviour
 
 	}
 
+	public int FindMaxQuantity (string n)          //Возвращает индекс места в слоте, где количество данного элемента максимально
+	{
+		int ret=-1;
+		int q=0;
+		for (int i=0; i<inventorySize; i++) {
+			if (items [i] != null) {
+				if (items [i].name == n) {
+
+					if (q < items [i].quantity) {
+						ret = i;	
+						q = items [i].quantity;
+					}
+
+				}
+			}
+		}
+
+		return ret;
+
+	}
+
+	public int FindAndCountQuantity (string n)          //Возвращает индекс места в слоте, где количество данного элемента максимально
+	{
+		int ret=-1;
+		int q=0;
+		int totalQ = -1;
+		for (int i=0; i<inventorySize; i++) {
+			if (items [i] != null) {
+				if (items [i].name == n) {
+						ret = i;	
+					if (totalQ == -1) {
+						totalQ = 0;
+					}
+					totalQ += items [i].quantity;
+					}
+
+				}
+			}
+		return totalQ;
+
+	}
+
 	public void DestroyItem(int index) // Уничтожает объект из инвентаря под заданным индексом.
 	{
 		items[index] = null;

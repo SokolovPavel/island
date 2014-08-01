@@ -37,7 +37,7 @@ public class MiniMap : MonoBehaviour {
 	private Rect _mapRect;
 	private Rect _currentRect;
 	private Vector3 _prevPos;
-	private bool isMinimap = true;
+	public bool isMinimap = true;
 
 	void Start () {
 		Vector3 angles = transform.eulerAngles;
@@ -197,4 +197,17 @@ public class MiniMap : MonoBehaviour {
 		isMovingDown = true;
 		isMovingUp = false;
 	}
+	
+	public void changeCamMapSize(int diff){
+		camMapDistance += diff;
+		if (camMapDistance >= 10) {
+			camera.orthographicSize = camMapDistance;
+		} else {
+			camera.orthographicSize = 10;
+			camMapDistance = 10;
+		}
+	}
+
+	
 }
+

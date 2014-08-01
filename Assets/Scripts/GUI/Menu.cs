@@ -11,6 +11,9 @@ public class Menu : MonoBehaviour {
 	private PlayerController controller;
 	public bool locked = false;
 	private bool equipped;
+	private bool _dragMap = false;
+	private Vector3 oldCamPos;
+	private Vector3 oldMousePos;
 	InventoryGUI invGUI;
 	void Start () {
 		look = gameObject.GetComponent<MouseLook> ();
@@ -23,14 +26,39 @@ public class Menu : MonoBehaviour {
 	}
 
 	void Update () {
+		if (!map.isMinimap) {
+			GUI.Label (new Rect (20, Screen.height / 2, 40, 40), "Size: 0" + map.camera.orthographicSize);
+			if (Input.GetMouseButton (0)) {
+				if (_dragMap) {
+					Vector3 diff = oldMousePos - map.camera.ScreenToWorldPoint (Input.mousePosition);
+					diff.y = 0;
+					map.gameObject.transform.position = oldCamPos + diff*3;
+					_dragMap = false;
+				} else {
+					_dragMap = true;
+					oldCamPos = map.gameObject.transform.position;
+					oldMousePos = map.camera.ScreenToWorldPoint (Input.mousePosition);
+				}
+			} else {
+				_dragMap = false;
+			}
+		}
 		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
-			invGUI.changeSelectedIndex(1);
-			StartCoroutine( "EquipTool",invGUI.selectedIndex);
+			if (map.isMinimap) {
+				invGUI.changeSelectedIndex (1);
+				StartCoroutine ("EquipTool", invGUI.selectedIndex);
+			} else {
+				map.changeCamMapSize (10);
+			}
 
 		}
 		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
-			invGUI.changeSelectedIndex(-1);
-			StartCoroutine( "EquipTool",invGUI.selectedIndex);
+			if (map.isMinimap) {
+				invGUI.changeSelectedIndex(-1);
+				StartCoroutine( "EquipTool",invGUI.selectedIndex);
+			} else {
+				map.changeCamMapSize (-10);
+			}
 
 		}
 		if (Input.GetButtonDown("Inventory")) {

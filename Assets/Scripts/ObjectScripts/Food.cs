@@ -15,17 +15,14 @@ public class Food : MonoBehaviour {
 	public int seedMaxQ;
 	public int seedQuantity;
 
-	void Start () {
-		if (haveSeeds) {
-			seeds = new Itm (seedName, seedTitle, seedDescription, seedWeight, seedMaxQ, seedQuantity, 1, 1, Item.enType.Seeds);
-		}
-	}
-
 	void Use(GameObject eater) {
 		eater.SendMessage("addHunger",hungerAmount, SendMessageOptions.DontRequireReceiver);
 		if(healthAmount!=0) {eater.SendMessage("addHealth",healthAmount, SendMessageOptions.DontRequireReceiver);}
 		if(haveSeeds)
 		{
+			if (haveSeeds) {
+				seeds = new Itm (seedName, seedTitle, seedDescription, seedWeight, seedMaxQ, seedQuantity, 1, 1, Item.enType.Seeds);
+			}
 			int dice;
 			dice=Mathf.CeilToInt(Random.value*seedsDropChance);
 			if (dice==1)

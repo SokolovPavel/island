@@ -71,9 +71,11 @@ public class Menu : MonoBehaviour {
 				map.setMiniMap();
 				unlockControl();
 				GUIHolder.SetCursor(GUIt.CursorType.game);
+				invGUI.HideWindow ();
 			} else {
 				lockControl();
 				GUIHolder.SetCursor(GUIt.CursorType.inventory);
+				invGUI.ShowWindow ();
 			}
 			locked =!locked;
 		}
@@ -168,6 +170,7 @@ public class Menu : MonoBehaviour {
 		map.setMiniMap();
 		craft.HideWindow (gameObject);
 		build.HideWindow (gameObject);
+		invGUI.HideWindow ();
 	}
 
 	public void unlockControl () {

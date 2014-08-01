@@ -6,7 +6,7 @@ using System.Collections;
 
 public class Inventory : MonoBehaviour
 {	
-	public static int inventorySize = 127;
+	public const int inventorySize = 127;
 	public Itm[] items = new Itm[inventorySize + 1];	// Элементы инвентаря
 	private int lastPickedItem;
 
@@ -94,9 +94,10 @@ public class Inventory : MonoBehaviour
 			bool stacked = false;
 			for (int i = 0; i < inventorySize; i++) {
 				if (items [i] != null) {
-					if (it.name == items [i].name) {
+					if ((it.name == items [i].name)&&(items[i].quantity<items[i].maxQ)) {
 						if ((items [i].quantity + q) > (items [i].maxQ)) {
-							it.quantity = q + items [i].quantity - items [i].maxQ;
+							q = q + items [i].quantity - items [i].maxQ;
+
 							items [i].quantity = items [i].maxQ;
 							stacked = false;
 							break; //Идем добавлять остатки в новый слот.
@@ -185,6 +186,63 @@ public class Inventory : MonoBehaviour
 		if (resIndex >= 0) {
 			lastPickedItem = resIndex;
 		}
+		it = null;
+		return resIndex;
+	}
+
+	public int AddItem(Itm it, int q) //Прям таки набиваю строчки, перегружая функцию и меняя в ней всего пару строк. Тут можно добавить итем с помощью экземпляра служебного класса инвентаря. И задать количество
+	{
+		int resIndex = -1;
+		if (it.maxQ == 1) {
+			for (int i = 0; i < inventorySize; i++) {
+				if (items [i] == null) {
+					// Итак, начинаем. Ибо простое присваивание запихает сюда только ссылку на объект, копируем все ручками
+					items [i] = new Itm (it.name, it.title, it.desc, it.weight, it.maxQ, it.quantity, it.durability, it.maxDur, it.type);
+					resIndex = i;
+					Debug.Log (resIndex);
+					break;
+				}
+
+			}
+
+		} else { 				
+			bool stacked = false;
+			for (int i = 0; i < inventorySize; i++) {
+				if (items [i] != null) {
+					if ((it.name == items [i].name)&&(items[i].quantity<items[i].maxQ)) {
+						if ((items [i].quantity + q) > (items [i].maxQ)) {
+							q = q + items [i].quantity - items [i].maxQ;
+							items [i].quantity = items [i].maxQ;
+							stacked = false;
+							break; //Идем добавлять остатки в новый слот.
+						} else {
+							items [i].quantity += it.quantity;
+							resIndex = i;
+							stacked = true;
+							break;
+						}
+					}
+				}
+			}
+
+			if (!stacked) {
+				for (int i = 0; i < inventorySize; i++) {
+
+					if (items [i] == null) {
+						// Итак, начинаем. Ибо простое присваивание запихает сюда только ссылку на объект, копируем все ручками
+						items [i] = new Itm (it.name, it.title, it.desc, it.weight, it.maxQ,q, it.durability, it.maxDur, it.type);
+						resIndex = i;
+						break;
+					}
+
+				}
+
+			}
+		}
+		if (resIndex >= 0) {
+			lastPickedItem = resIndex;
+		}
+		it = null;
 		return resIndex;
 	}
 

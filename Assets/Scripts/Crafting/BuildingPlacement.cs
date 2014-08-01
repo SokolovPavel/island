@@ -63,6 +63,8 @@ public class BuildingPlacement : MonoBehaviour {
 		buildMat = Resources.Load ("Materials/BuildPlace", typeof(Material)) as Material;
 		blueprint = print;
 
+		SendMessage ("Unequip", SendMessageOptions.DontRequireReceiver);
+
 		blueprint.quantities [0] -= 1;
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
 		GameObject tmp = Resources.Load (print.result, typeof(GameObject)) as GameObject;

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class InventoryGUI : MonoBehaviour {
 
-	public Texture2D[] image;
 	public Texture2D background;
 	public Texture2D hotbarFrame;
 	public GUISkin guiSkin;
@@ -26,6 +25,8 @@ public class InventoryGUI : MonoBehaviour {
 	private int _dragToIndex;
 	private int _dragTempStorage = 10;
 	// Use this for initialization
+
+	ImageLibrary library = new ImageLibrary();
 	Inventory inventory;
 	void Start () {
 		_buttonSize = (int) (Screen.width * 0.4f - 9 * _buttonShift) / 10;
@@ -33,12 +34,10 @@ public class InventoryGUI : MonoBehaviour {
 		_buttonY = Screen.height - _buttonShift - _buttonSize;
 		_contexMenuSize = (int)(0.9f * _buttonSize/2);
 		inventory = gameObject.GetComponent<Inventory>(); 
+		library.getImage ("NoImage");
 	}
 
 	void OnGUI () {
-
-		if (_dragOn)
-			GUI.Label (new Rect (Screen.width / 2, Screen.height / 2, 40, 40), "Drag!");
 		GUI.skin = guiSkin;
 
 		//Фон хотбара
@@ -48,7 +47,7 @@ public class InventoryGUI : MonoBehaviour {
 
 		for (int i = 0; i < 10; i++) {
 			if (inventory.items [i] != null) {
-				if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), _buttonY, _buttonSize, _buttonSize), new GUIContent (getImage(inventory.items[i].name), "inventory slot" + i))) {
+				if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), _buttonY, _buttonSize, _buttonSize), library.getImage(inventory.items[i].name))) {
 
 					if (Event.current.button == 0) {
 						if (_dragOn) {
@@ -117,7 +116,7 @@ public class InventoryGUI : MonoBehaviour {
 		//Иконка итема около курсора
 		if (Event.current.type.Equals (EventType.Repaint)) {
 			if ((_dragOn)&&(inventory.items [_dragTempStorage] != null)) {
-				GUI.DrawTexture (new Rect (Input.mousePosition.x - _buttonSize / 2, Screen.height - Input.mousePosition.y - _buttonSize / 2, _buttonSize, _buttonSize), getImage (inventory.items [_dragTempStorage].name));
+				GUI.DrawTexture (new Rect (Input.mousePosition.x - _buttonSize / 2, Screen.height - Input.mousePosition.y - _buttonSize / 2, _buttonSize, _buttonSize), library.getImage (inventory.items [_dragTempStorage].name));
 				if (inventory.items [_dragTempStorage].quantity > 1)
 					GUI.Label (new Rect (Input.mousePosition.x - _buttonSize / 2, Screen.height - Input.mousePosition.y - _buttonSize / 2, _buttonSize, _buttonSize), inventory.items [_dragTempStorage].quantity.ToString ());
 			}
@@ -138,7 +137,7 @@ public class InventoryGUI : MonoBehaviour {
 		_contexMenuIndex = index;
 		_contexMenuX = _buttonX + index * (_buttonSize + _buttonShift);
 	}
-	Texture getImage(string name){
+	/*Texture getImage(string name){
 		int index = 0;
 		switch (name) {
 		case "Apple":
@@ -164,7 +163,7 @@ public class InventoryGUI : MonoBehaviour {
 			break;
 		}
 		return image [index];
-	}
+	}*/
 		
 	public void changeSelectedIndex(int diff){
 		_selectedIndex = (_selectedIndex + diff + 10) % 10;

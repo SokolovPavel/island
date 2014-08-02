@@ -15,6 +15,7 @@ public class DrinkWater : MonoBehaviour {
 			user.SendMessage ("addHealth", -1.0f * healthPenalty);
 		}
 
+		GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You've drank some water", GameMessage.messageType.ObjectMessage));
 	}
 
 }

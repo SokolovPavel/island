@@ -98,6 +98,8 @@ public class RecipeList : MonoBehaviour {
 					for (int j = 0; j < recList [i].results.Count; j++) {
 						item = Resources.Load (recList [i].results [j], typeof(GameObject)) as GameObject;
 						int dex = inv.AddItem (item);
+						GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You've crafted "+item.GetComponent<Item>().title, GameMessage.messageType.ObjectMessage));
+
 						if (recList [i].resQ [j] > 1) {
 							inv.AddQuantity (dex,( recList [i].resQ [j]-1));
 						}

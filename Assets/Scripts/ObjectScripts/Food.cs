@@ -17,6 +17,8 @@ public class Food : MonoBehaviour {
 
 	void Use(GameObject eater) {
 		eater.SendMessage("addHunger",hungerAmount, SendMessageOptions.DontRequireReceiver);
+		GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You've ate some food and restored "+ hungerAmount + " of hunger points", GameMessage.messageType.ObjectMessage));
+
 		if(healthAmount!=0) {eater.SendMessage("addHealth",healthAmount, SendMessageOptions.DontRequireReceiver);}
 		if(haveSeeds)
 		{

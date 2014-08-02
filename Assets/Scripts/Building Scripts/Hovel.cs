@@ -16,6 +16,8 @@ public class Hovel : MonoBehaviour {
 	private GameObject sky;
 	private TOD_Time Ttime;
 	private float oldDayLength;
+	private float oldEnergy;
+
 	void Use(GameObject user)
 	{
 		if (enabled) {
@@ -24,6 +26,7 @@ public class Hovel : MonoBehaviour {
 			stats = user.GetComponent<PlayerStats> ();
 
 			if (!sleeping) {
+				oldEnergy = stats.energy;
 				sleeping = true;
 				time = 0.0f;
 				sky = GameObject.FindGameObjectWithTag ("Sky");
@@ -73,6 +76,8 @@ public class Hovel : MonoBehaviour {
 		sleeping = false;
 		controller.enabled = true;
 		ply.transform.position = lastPos;
-		Debug.Log ("Wake up mazafaka");
+		//Debug.Log ("Wake up mazafaka");
+		GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You've restored "+(Mathf.CeilToInt(stats.energy - oldEnergy)) + " energy points", GameMessage.messageType.ObjectMessage));
+
 	}
 }

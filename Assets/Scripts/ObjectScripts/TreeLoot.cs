@@ -31,16 +31,19 @@ public class TreeLoot : MonoBehaviour {
 			Inventory inv = user.GetComponent<Inventory> ();
 			useItem.quantity = useQuantity;
 			inv.AddItem (useItem);
+			GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You've obtained some "+useItem.title, GameMessage.messageType.ObjectMessage));
 		}
 	}
 
 	public void Chop(ToolParams par) {
 		Debug.Log ("Chopping");
 		if (chItem != null) {
-			Debug.Log ("AddingItem");
+			//Debug.Log ("AddingItem");
 			Inventory inv = par.owner.GetComponent<Inventory> ();
 			chItem.quantity = Mathf.CeilToInt (chopQuantity * par.mainCoef);
 			inv.AddItem (chItem);
+			GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You've obtained some "+chItem.title, GameMessage.messageType.ObjectMessage));
+
 		}
 	}
 

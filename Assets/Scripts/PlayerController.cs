@@ -31,27 +31,27 @@ public class PlayerController : MonoBehaviour {
 		if (enable) {
 			float h = height;
 
-			moveSpeedDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveSpeedDir = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
 			if (moveSpeedDir != Vector3.zero) {
 				//moveSpeedDir = moveSpeedDir / moveSpeedDir.magnitude;
 
 
 				if ((crouching == true) && (moveSpeedDir.z > 0)) {
 					moveSpeedDir *= crouchSpeed;
-				} else	if ((Input.GetButton("Run"))&&(moveSpeedDir.z > 0)) {
+				} else if ((Input.GetButton ("Run")) && (moveSpeedDir.z > 0)) {
 					moveSpeedDir *= runSpeed;
 				} else {
 					moveSpeedDir *= moveSpeed;
 				}
 
 
-				moveSpeedDir = transform.TransformDirection(moveSpeedDir);
+				moveSpeedDir = transform.TransformDirection (moveSpeedDir);
 
 			
 			}
 
-			if( isGrounded ){
-				if(Input.GetButton("Jump")){
+			if (isGrounded) {
+				if (Input.GetButton ("Jump")) {
 					moveSpeedDir.y = _jumpSpeed;
 				} else {
 					moveSpeedDir.y = 0;
@@ -61,17 +61,17 @@ public class PlayerController : MonoBehaviour {
 
 			if (Input.GetButton ("Crouch")) {
 				crouching = true;
-				h = height*0.5f;
+				h = height * 0.5f;
 
 
 
 			} else {
 				if (crouching == true) {
-					Vector3 up = transform.TransformDirection(Vector3.up);
+					Vector3 up = transform.TransformDirection (Vector3.up);
 					up.y -= 0.5f;
 					if (Physics.Raycast (transform.position, up, 1.5f)) {
 						crouching = true;
-						h = height*0.5f;
+						h = height * 0.5f;
 					} else {
 						crouching = false;
 						h = height;
@@ -81,13 +81,16 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			var lastHeight = controller.height; // crouch/stand up smoothly 
-			controller.height = Mathf.Lerp(controller.height, h, 8*Time.deltaTime);
+			controller.height = Mathf.Lerp (controller.height, h, 8 * Time.deltaTime);
 
 			Vector3 temp = tr.position;
-			temp.y = temp.y + (controller.height-lastHeight)/2; // fix vertical position
+			temp.y = temp.y + (controller.height - lastHeight) / 2; // fix vertical position
 			tr.position = temp;
 
 
+		} else {
+
+			moveSpeedDir *= 0.95f;
 		}
 		if (!isGrounded) {
 			moveSpeedDir.y = _prevSpeed.y - gravity * Time.deltaTime;

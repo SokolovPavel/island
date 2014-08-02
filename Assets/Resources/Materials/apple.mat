@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: apple
-  m_Shader: {fileID: 50, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 51, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -38,7 +38,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: .446428567
+        second: .303571433
       data:
         first:
           name: _Shininess

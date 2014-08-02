@@ -5,6 +5,7 @@ public class Builder : MonoBehaviour {
 
 	public Blueprint blueprint;
 	public bool built = false;
+	private GameObject buildMarker;
 	public MonoBehaviour mainBuildingScript;
 	// Use this for initialization
 	void Start () {
@@ -14,6 +15,7 @@ public class Builder : MonoBehaviour {
 
 		} else {
 			mainBuildingScript.enabled = false;
+			buildMarker = Instantiate (Resources.Load ("BuildMarker", typeof(GameObject)), this.gameObject.transform.position, this.transform.rotation) as GameObject;
 			//	renderer.material.color = new Color (50, 50, 200);
 
 		}
@@ -48,8 +50,13 @@ public class Builder : MonoBehaviour {
 			built = true;
 			mainBuildingScript.enabled = true;
 			DestroyObject (this);
+			Destroy (buildMarker);
 		}
 
 	}
 
+	void Update() {
+		buildMarker.transform.position = transform.position;
+
+	}
 }

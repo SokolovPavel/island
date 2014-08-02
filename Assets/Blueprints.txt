@@ -6,4 +6,7 @@
 <blueprint Name="Camp fire" CraftTime="2" ElementsQuantity="2"  Element1="TreeBranch" ElQ1="3" Element2="Stone" ElQ2="2" Result="Fireplace" />
 
 
+
+<blueprint Name="Wooden Chest" CraftTime="10" ElementsQuantity="2"  Element1="RawPlank" ElQ1="20" Element2="TreeLog" ElQ2="1" Result="Chest" />
+
 </system>

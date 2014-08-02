@@ -176,7 +176,7 @@ public class Menu : MonoBehaviour {
 	public void unlockControl () {
 
 		look.enabled = true;
-		controller.enabled = true;
+		controller.enable = true;
 		Screen.lockCursor = true;
 		//Screen.showCursor = false;
 		GUIHolder.SetCursor(GUIt.CursorType.game);
@@ -186,7 +186,7 @@ public class Menu : MonoBehaviour {
 		CloseWindows ();
 		locked = false;
 		look.enabled = true;
-		controller.enabled = true;
+		controller.enable = true;
 		Screen.lockCursor = true;
 		//Screen.showCursor = false;
 		GUIHolder.SetCursor(GUIt.CursorType.game);
@@ -194,7 +194,7 @@ public class Menu : MonoBehaviour {
 
 	public void lockControl () {
 		look.enabled = false;
-		controller.enabled = false;
+		controller.enable = false;
 		Screen.lockCursor = false;
 		//Screen.showCursor = false;
 	}

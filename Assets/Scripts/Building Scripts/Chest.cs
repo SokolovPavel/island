@@ -24,22 +24,25 @@ public class Chest : MonoBehaviour {
 
 
 	void Use(GameObject ply) {
-		user = ply;
-		plInv = user.GetComponent<Inventory> ();
-		menu = user.GetComponent<Menu> ();
+		if (enabled) {
+			user = ply;
+			plInv = user.GetComponent<Inventory> ();
+			menu = user.GetComponent<Menu> ();
 
 
-		if (!isActive) {
+			if (!isActive) {
 
-			isActive = true;
-			menu.locked = true;
-			menu.lockControl();
-			menu.showCursor ();
-			menu.enabled = false;
-			audio.PlayOneShot(openSound);
-			animation.Play("Open");
+				isActive = true;
+				menu.locked = true;
+				menu.lockControl ();
+				menu.showCursor ();
+				menu.enabled = false;
+				audio.PlayOneShot (openSound);
+				animation.Play ("Open");
 
-		} else {
+			} else {
+
+			}
 
 		}
 	}

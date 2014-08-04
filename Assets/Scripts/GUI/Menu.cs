@@ -31,7 +31,6 @@ public class Menu : MonoBehaviour {
 
 	void Update () {
 		if (!map.isMinimap) {
-			GUI.Label (new Rect (20, Screen.height / 2, 40, 40), "Size: 0" + map.camera.orthographicSize);
 			if (Input.GetMouseButton (0)) {
 				if (_dragMap) {
 					Vector3 diff = oldMousePos - map.camera.ScreenToWorldPoint (Input.mousePosition);

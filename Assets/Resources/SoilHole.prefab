@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 2.18556941e-08, y: -1.13446405e-16, z: 1.13446405e-16, w: 1}
-  m_LocalPosition: {x: 6.134027, y: .0518380292, z: 5.48870182}
+  m_LocalPosition: {x: 14.1808109, y: 6.12997293, z: -27.9454803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -125,8 +125,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .492360771, y: .0992948413, z: .409193605}
-  m_Center: {x: -.000364303589, y: .0423362739, z: -.00285339542}
+  m_Size: {x: .492360771, y: .180000007, z: .409193605}
+  m_Center: {x: -.000364303589, y: .0799999982, z: -.00285339542}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,6 +142,7 @@ MonoBehaviour:
   hydrated: 0
   haveSeed: 0
   timeToGrow: 15
+  waterAmount: 0
   seedObj: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:

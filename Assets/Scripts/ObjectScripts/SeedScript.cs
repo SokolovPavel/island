@@ -35,7 +35,7 @@ public class SeedScript : MonoBehaviour {
 
 	public bool Activate(GameObject activator,bool bur) {
 
-		if (CheckLifeSpace ()) {
+		if (CheckLifeSpace (activator)) {
 			activated = true;
 			this.gameObject.renderer.material.color = new Color (0, 255, 0);
 			this.rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
@@ -82,7 +82,7 @@ public class SeedScript : MonoBehaviour {
 
 		for (int i = 0; i <colliders.Length; i++) 
 		{
-			if((colliders[i].name!="Ground")||(colliders[i].name!="WaterLevel")||(colliders[i].gameObject!=this.gameObject))
+			if((colliders[i].name!="Ground")||(colliders[i].name!="WaterLevel")||(colliders[i].gameObject!=this.gameObject)||(colliders[i].gameObject.name!="Player"))
 			{
 				//	GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("Bad place for planting. Try another", GameMessage.messageType.ObjectMessage));
 				return false;
@@ -90,6 +90,24 @@ public class SeedScript : MonoBehaviour {
 
 		}
 		return true;
+	}
+
+	bool CheckLifeSpace(GameObject hole) {
+
+		colliders = Physics.OverlapSphere (transform.position,lifeSpaceRadius);
+
+		for (int i = 0; i <colliders.Length; i++) 
+		{
+			if((colliders[i].gameObject.name=="Ground")||(colliders[i].gameObject.name=="WaterLevel")||(colliders[i].gameObject==this.gameObject)||(colliders[i].gameObject == hole.gameObject)||(colliders[i].gameObject.name=="Player"))
+			{
+				//	GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("Bad place for planting. Try another", GameMessage.messageType.ObjectMessage));
+				//Debug.Log (hole.name);
+				//Debug.Log (colliders [i].gameObject.name);
+				return true;
+			}
+
+		}
+		return false;
 	}
 
 }

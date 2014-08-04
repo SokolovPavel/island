@@ -78,16 +78,16 @@ Material:
         second: .430000007
       data:
         first:
+          name: _AnimSpeed
+        second: .189999998
+      data:
+        first:
           name: _underFogStart
         second: .238000005
       data:
         first:
           name: _underFogStretch
         second: .00300000003
-      data:
-        first:
-          name: _AnimSpeed
-        second: .189999998
     m_Colors:
       data:
         first:

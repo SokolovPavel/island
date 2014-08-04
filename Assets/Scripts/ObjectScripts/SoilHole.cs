@@ -16,6 +16,7 @@ public class SoilHole : MonoBehaviour {
 	private int seedIndex = 0;
 	private Menu menu;
 	private Inventory inv;
+	private bool seedActivated = false;
 	// Use this for initialization
 	void Start () {
 		hydrated = false;
@@ -75,11 +76,11 @@ public class SoilHole : MonoBehaviour {
 	void FixedUpdate(){
 		if (haveSeed) {
 			timer += Time.fixedDeltaTime;
-			if ((timer > timeToGrow) && (waterAmount >= neededWater)) {
+			if ((timer > timeToGrow) && (waterAmount >= neededWater)&&(seedActivated)) {
 				seedObj.SetActive (true);
 				if (seedObj.GetComponent<SeedScript> ().Activate (this.gameObject, true)) {
 					GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage (seedObj.GetComponent<SeedScript>().name+" have been planted", GameMessage.messageType.ObjectMessage));
-
+					seedActivated = true;
 				} else {
 					GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("Growing failed. Too close", GameMessage.messageType.ObjectMessage));
 					haveSeed = false;

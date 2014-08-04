@@ -86,7 +86,9 @@ public class WoodenShovelScript :  toolBaseScript  {
 
 				if (tex.TexMatch ("Grass")) {
 					yield return new WaitForSeconds (delay1);
-					Instantiate (hole, hit.point, Quaternion.LookRotation (hit.normal) * Quaternion.Euler (90, 0, 0));
+					GameObject tmp = Instantiate (hole, hit.point, Quaternion.LookRotation (hit.normal) * Quaternion.Euler (90, 0, 0)) as GameObject;
+					tmp.name = hole.name; 
+					tmp.name.Replace ("(Clone)", "");
 				} else {
 					Debug.Log ("Terrain type mismatch");
 					busy = false;

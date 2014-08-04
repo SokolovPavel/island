@@ -171,13 +171,6 @@ public class MiniMap : MonoBehaviour {
 				Graphics.DrawTexture (_miniMapRect, RTexture, RMaterial);
 			}
 			Graphics.DrawTexture (_currentRect, RTexture, RMapMaterial);
-			if (GUI.Button (new Rect (_mapRect.x, _mapRect.y + _mapRect.height -30 , 30, 30), "+")) {
-				camera.orthographicSize -= 10;
-			}
-
-			if (GUI.Button (new Rect (_mapRect.x, _mapRect.y + _mapRect.height - 60, 30, 30), "-")) {
-				camera.orthographicSize += 10;
-			}
 		}
 	}
 

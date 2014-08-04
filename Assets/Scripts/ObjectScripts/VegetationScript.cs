@@ -5,6 +5,7 @@ public class VegetationScript : MonoBehaviour {
 	public string plantName;
 	public float timeToGrow;
 	public float timeToFruits;
+
 	public float treeMaxAge;
 	public float treeAge;
 	public bool grown;
@@ -20,9 +21,13 @@ public class VegetationScript : MonoBehaviour {
 	private GameObject fruitRes;
 	private float initScale;
 
+
+
 	void Start () {
 		if (!grown) {
 			initScale = this.transform.localScale.y;
+
+
 			this.gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			this.collider.enabled = false;
 			treeAge = 0.0f;
@@ -82,6 +87,12 @@ public class VegetationScript : MonoBehaviour {
 			Destroy (this.gameObject);
 			return;
 		}
+
+	}
+
+	void Die(){
+		GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("Plant tried to grow, but failed. Too close to another objects", GameMessage.messageType.ObjectMessage));
+		Destroy (this.gameObject);
 
 	}
 }

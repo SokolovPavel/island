@@ -71,15 +71,15 @@ Material:
       data:
         first:
           name: _Energy
-        second: .473987699
+        second: .460657358
       data:
         first:
           name: _Hunger
-        second: .809857786
+        second: .841314733
       data:
         first:
           name: _Thirst
-        second: .764225662
+        second: .822593808
       data:
         first:
           name: _Width

@@ -21,6 +21,8 @@ public class BuildingPlacement : MonoBehaviour {
 	private Material[] renMat = new Material[16];
 	private Texture[] renTex = new Texture[16];
 
+	private Collider[] colliders;
+
 	private float angle;
 	// Use this for initialization
 	void Start () {
@@ -51,6 +53,18 @@ public class BuildingPlacement : MonoBehaviour {
 					}
 
 					if (Input.GetMouseButtonDown (0)) {
+
+						colliders = Physics.OverlapSphere (hit.point,Vector3.Distance (building.collider.bounds.max,building.collider.bounds.center));
+
+						for (int i = 0; i <colliders.Length; i++) 
+						{
+							if((colliders[i].name!="Ground")||(colliders[i].name!="WaterLevel")||(colliders[i].gameObject!=this.gameObject))
+							{
+								GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("Bad place for building. Try another", GameMessage.messageType.ObjectMessage));
+								return;
+							}
+						}
+
 						if (renderer != null) {
 							building.renderer.material = objMat;
 						}
@@ -84,6 +98,7 @@ public class BuildingPlacement : MonoBehaviour {
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
 		GameObject tmp = Resources.Load (print.result, typeof(GameObject)) as GameObject;
 		building =  Instantiate (tmp, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+		building.name.Replace ("(Clone)", "");
 		building.collider.enabled = false;
 		renderers = building.GetComponentsInChildren<Renderer> ();
 		if (renderers [0] != null) {

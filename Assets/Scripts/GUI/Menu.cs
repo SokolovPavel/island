@@ -227,7 +227,52 @@ public class Menu : MonoBehaviour {
 			obj.transform.rotation = Quaternion.identity;
 
 		} else {
-			return;
+
+			Inventory inv = GetComponent<Inventory>();
+			GameObject obj = inv.DropItem (invGUI.selectedIndex, 1);
+
+			Component[] allComponents = obj.GetComponents<Component>();
+			if (allComponents.Length == 1) { // Contains only Transform?
+				Destroy (obj);
+				return;
+			}
+			obj.transform.position =HeadCamera.transform.position + direction;
+			obj.transform.rotation = Quaternion.identity;
+		}
+
+	}
+
+	public void DropItem(int index,int q)
+	{
+		Vector3 direction = HeadCamera.transform.TransformDirection (Vector3.forward);
+		float range = 7.0f;
+		RaycastHit hit;
+		if (Physics.Raycast (HeadCamera.transform.position, direction, out hit, range)) {
+
+			Inventory inv = GetComponent<Inventory>();
+			//GameObject obj = inv.DropLastItem();
+			GameObject obj = inv.DropItem (index, q);
+
+			Component[] allComponents = obj.GetComponents<Component>();
+			if (allComponents.Length == 1) { // Contains only Transform?
+				Destroy (obj);
+				return;
+			}
+			obj.transform.position = hit.point;
+			obj.transform.rotation = Quaternion.identity;
+
+		} else {
+
+			Inventory inv = GetComponent<Inventory>();
+			GameObject obj = inv.DropItem (index, q);
+
+			Component[] allComponents = obj.GetComponents<Component>();
+			if (allComponents.Length == 1) { // Contains only Transform?
+				Destroy (obj);
+				return;
+			}
+			obj.transform.position =HeadCamera.transform.position + direction;
+			obj.transform.rotation = Quaternion.identity;
 		}
 
 	}

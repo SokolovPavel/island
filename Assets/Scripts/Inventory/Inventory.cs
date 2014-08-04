@@ -252,7 +252,7 @@ public class Inventory : MonoBehaviour
 		GameObject it = new GameObject();
 		if (items [itemIndex] != null) {
 			it = (GameObject)Instantiate (Resources.Load (items [itemIndex].name, typeof(GameObject)));
-
+			it.name.Replace ("(Clone)", "");
 			Item im = it.GetComponent<Item> ();
 			im.SetItem (items [itemIndex].name, items [itemIndex].title, items [itemIndex].desc, items [itemIndex].weight, items [itemIndex].maxQ, items [itemIndex].quantity, items [itemIndex].durability, items [itemIndex].maxDur, items [itemIndex].type);
 			items [itemIndex] = null;
@@ -270,7 +270,7 @@ public class Inventory : MonoBehaviour
 			if (items [itemIndex].quantity < quantity) {
 				quantity = items [itemIndex].quantity;
 			}
-
+			it.name.Replace ("(Clone)", "");
 			Item im = it.GetComponent<Item> ();
 			im.SetItem (items [itemIndex].name, items [itemIndex].title, items [itemIndex].desc, items [itemIndex].weight, items [itemIndex].maxQ, quantity, items [itemIndex].durability, items [itemIndex].maxDur, items [itemIndex].type);
 			items [itemIndex].quantity -= quantity;
@@ -294,7 +294,7 @@ public class Inventory : MonoBehaviour
 		}
 		if (items [lastPickedItem] != null) {
 			it = (GameObject)Instantiate (Resources.Load (items [lastPickedItem].name, typeof(GameObject)));
-
+			it.name.Replace ("(Clone)", "");
 			Item im = it.GetComponent<Item> ();
 			im.SetItem (items [lastPickedItem].name, items [lastPickedItem].title, items [lastPickedItem].desc, items [lastPickedItem].weight, items [lastPickedItem].maxQ, items [lastPickedItem].quantity, items [lastPickedItem].durability, items [lastPickedItem].maxDur, items [lastPickedItem].type);
 			items [lastPickedItem] = null;

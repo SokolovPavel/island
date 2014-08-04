@@ -3,12 +3,16 @@ using System.Collections;
 
 public class SeedScript : MonoBehaviour {
 	public string PlantName;
+	public float lifeSpaceRadius = 0.3f;
 	public GameObject origin;
 	public float timeToAppear;
 	public bool activated;
 	public bool canGrowSelf;
 	private float timer;
 	private bool buried;
+	private Collider[] colliders;
+
+
 	// Use this for initialization
 	void Start () {
 		timer = 0.0f;
@@ -29,19 +33,25 @@ public class SeedScript : MonoBehaviour {
 		}
 	}
 
-	public void Activate(GameObject activator,bool bur) {
+	public bool Activate(GameObject activator,bool bur) {
 
-		activated = true;
-		this.gameObject.renderer.material.color = new Color (0, 255, 0);
-		this.rigidbody.constraints = RigidbodyConstraints.FreezePositionX |RigidbodyConstraints.FreezePositionY|RigidbodyConstraints.FreezePositionZ;
-		this.rigidbody.freezeRotation=true;
-		this.gameObject.GetComponent<Item> ().enabled = false;
+		if (CheckLifeSpace ()) {
+			activated = true;
+			this.gameObject.renderer.material.color = new Color (0, 255, 0);
+			this.rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+			this.rigidbody.freezeRotation = true;
+			this.gameObject.GetComponent<Item> ().enabled = false;
 
-		if (bur) {
-			origin = activator;
-			this.gameObject.GetComponent<MeshRenderer> ().enabled = false;
-			this.gameObject.collider.enabled = false;
+			if (bur) {
+				origin = activator;
+				this.gameObject.GetComponent<MeshRenderer> ().enabled = false;
+				this.gameObject.collider.enabled = false;
+			}
+			return true;
+		} else {
+			return false;
 		}
+
 	}
 
 	public void Activate() {
@@ -64,6 +74,22 @@ public class SeedScript : MonoBehaviour {
 			Activate ();
 
 		}
+	}
+
+	bool CheckLifeSpace() {
+
+		colliders = Physics.OverlapSphere (transform.position,lifeSpaceRadius);
+
+		for (int i = 0; i <colliders.Length; i++) 
+		{
+			if((colliders[i].name!="Ground")||(colliders[i].name!="WaterLevel")||(colliders[i].gameObject!=this.gameObject))
+			{
+				//	GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("Bad place for planting. Try another", GameMessage.messageType.ObjectMessage));
+				return false;
+			}
+
+		}
+		return true;
 	}
 
 }

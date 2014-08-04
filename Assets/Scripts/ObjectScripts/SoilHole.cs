@@ -77,7 +77,21 @@ public class SoilHole : MonoBehaviour {
 			timer += Time.fixedDeltaTime;
 			if ((timer > timeToGrow) && (waterAmount >= neededWater)) {
 				seedObj.SetActive (true);
-				seedObj.GetComponent<SeedScript> ().Activate (this.gameObject, true);
+				if (seedObj.GetComponent<SeedScript> ().Activate (this.gameObject, true)) {
+					GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage (seedObj.GetComponent<SeedScript>().name+" have been planted", GameMessage.messageType.ObjectMessage));
+
+				} else {
+					GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("Growing failed. Too close", GameMessage.messageType.ObjectMessage));
+					haveSeed = false;
+					timer = 0.0f;
+					waterAmount = 1;
+					stage = 0;
+					this.gameObject.GetComponent<MeshRenderer> ().enabled = true;
+					secondStage.SetActive (false);
+					Destroy (seedObj);
+					seedObj = null;
+
+				}
 				Destroy (this.gameObject,5.0f);
 			}
 		}

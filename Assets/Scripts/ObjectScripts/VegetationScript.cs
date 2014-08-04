@@ -71,6 +71,7 @@ public class VegetationScript : MonoBehaviour {
 
 			for (int i = 0; i<fruitPlace.Length; i++) {
 				fr[i] = Instantiate (fruit, fruitPlace[i].transform.position,  fruitPlace[i].transform.rotation) as GameObject;
+				fr [i].transform.parent = fruitPlace [i].transform;
 				fr[i].rigidbody.constraints = RigidbodyConstraints.FreezePositionX |RigidbodyConstraints.FreezePositionY|RigidbodyConstraints.FreezePositionZ;
 				fr[i].rigidbody.freezeRotation=true;
 			}

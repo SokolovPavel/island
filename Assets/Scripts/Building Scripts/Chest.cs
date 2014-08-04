@@ -196,7 +196,10 @@ public class Chest : MonoBehaviour {
 			dialog=0;
 			if (qua < 0) {
 				qua *= -1;
+			} else if (qua == 0) {
+				qua = 1;
 			}
+
 			if (qua > plInv.items [index].quantity) {
 				qua = plInv.items [index].quantity;
 			}

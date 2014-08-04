@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChopLoot: TreeLog
   chopQuantity: 1
-  useLoot: 
+  useLoot: TreeBranch
   useQuantity: 1
 --- !u!114 &11400002
 MonoBehaviour:

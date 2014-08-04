@@ -102,7 +102,7 @@ public class Inventory : MonoBehaviour
 							stacked = false;
 							break; //Идем добавлять остатки в новый слот.
 						} else {
-							items [i].quantity += it.quantity;
+							items [i].quantity += q;
 							resIndex = i;
 							stacked = true;
 							break;
@@ -216,7 +216,8 @@ public class Inventory : MonoBehaviour
 							stacked = false;
 							break; //Идем добавлять остатки в новый слот.
 						} else {
-							items [i].quantity += it.quantity;
+							items [i].quantity += q;
+							//	it.quantity -= q;
 							resIndex = i;
 							stacked = true;
 							break;

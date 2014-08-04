@@ -47,6 +47,7 @@ GameObject:
   - 124: {fileID: 12400000}
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400018}
+  - 114: {fileID: 11400028}
   m_Layer: 0
   m_Name: Head camera
   m_TagString: MainCamera
@@ -64,8 +65,6 @@ GameObject:
   - 4: {fileID: 400006}
   - 143: {fileID: 14300000}
   - 114: {fileID: 11400004}
-  - 114: {fileID: 11400006}
-  - 114: {fileID: 11400008}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400010}
@@ -171,7 +170,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .19166474, g: .301966369, b: .474509805, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -179,7 +178,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .00999999978
-  far clip plane: 15200
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 100
@@ -310,71 +309,6 @@ MonoBehaviour:
   sensitivityPitch: 15
   minimumPitch: -90
   maximumPitch: 90
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1438f7e70cba2c468aab12e3ddf0b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enabled: 1
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca5ad1a91abd294f93f89ebe59a527e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement:
-    maxForwardSpeed: 6
-    maxSidewaysSpeed: 6
-    maxBackwardsSpeed: 6
-    slopeSpeedMultiplier:
-      serializedVersion: 2
-      m_Curve:
-      - time: -99
-        value: 1.00625002
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - time: .703868866
-        value: 1.01361954
-        inSlope: -.000121218858
-        outSlope: -.000121218858
-        tangentMode: 0
-      - time: 99.25
-        value: .0125001669
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    maxGroundAcceleration: 30
-    maxAirAcceleration: 20
-    gravity: 9.81000042
-    maxFallSpeed: 20
-  jumping:
-    enabled: 1
-    baseHeight: 1
-    extraHeight: 1
-    perpAmount: 0
-    steepPerpAmount: .5
-  movingPlatform:
-    enabled: 1
-    movementTransfer: 2
-  sliding:
-    enabled: 1
-    slidingSpeed: 15
-    sidewaysControl: 1
-    speedControl: .400000006
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -546,6 +480,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recFile: {fileID: 4900000, guid: 3114d8327403c944eb87909e9bcccd80, type: 3}
+--- !u!114 &11400028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5a618c43a8d4e2aab80f67424cb7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sky: {fileID: 0}
+  DomePosToCamera: 1
+  DomeScaleToFarClip: 0
+  DomeScaleFactor: .949999988
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

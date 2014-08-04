@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlantName: PineTree
+  lifeSpaceRadius: .699999988
   origin: {fileID: 0}
   timeToAppear: 5
   activated: 0

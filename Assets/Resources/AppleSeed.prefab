@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlantName: BerryBush
+  lifeSpaceRadius: .400000006
   origin: {fileID: 0}
   timeToAppear: 5
   activated: 0

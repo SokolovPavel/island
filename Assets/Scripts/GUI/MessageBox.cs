@@ -45,7 +45,7 @@ public class MessageBox : MonoBehaviour {
 			for (int i = 0; i < messages.Count; i++) {
 				if (messages [i].type == GameMessage.messageType.ObjectMessage) {
 					GUI.color= Color.white;
-					GUI.Label(new Rect(drawPoint.x-20, drawPoint.y+20*(messages.Count - i)+1, 400, 20), infoIcon,);
+					GUI.Label(new Rect(drawPoint.x-20, drawPoint.y+20*(messages.Count - i)+1, 400, 20), infoIcon);
 					messageColor = Color.blue;
 
 				} else if (messages [i].type == GameMessage.messageType.Warning) {

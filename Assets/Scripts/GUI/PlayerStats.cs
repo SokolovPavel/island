@@ -27,6 +27,10 @@ public class PlayerStats : MonoBehaviour {
 	public Material material;
 	public int size=25;
 
+	private bool thWarn = false;
+	private bool hunWarn = false;
+	private bool enWarn = false;
+
 	void Start () 
 	{
 
@@ -72,17 +76,33 @@ public class PlayerStats : MonoBehaviour {
 	}
 	void checkLowNeeds()
 	{
-		if (hunger<20.0f) 
-		{
-			this.harm(harmCoef*(Mathf.Abs(this.hunger-20.0f)/10.0f));
+		if (hunger < 20.0f) {
+			if (!hunWarn) {
+				GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You're starving", GameMessage.messageType.Warning));
+			}
+			this.harm (harmCoef * (Mathf.Abs (this.hunger - 20.0f) / 7.0f));
+		} else if (hunWarn) {
+			hunWarn = false;
 		}
+
 		if (this.energy<20.0f) 
 		{
-			this.harm(harmCoef*(Mathf.Abs(this.energy-20.0f)/10.0f));
+			if (!enWarn) {
+				GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You're tired", GameMessage.messageType.Warning));
+			}
+			this.harm(harmCoef*(Mathf.Abs(this.energy-20.0f)/7.0f));
+		}else if (enWarn) {
+			enWarn = false;
 		}
+
 		if (this.thirst<20.0f) 
 		{
-			this.harm(harmCoef*(Mathf.Abs(this.thirst-20.0f)/10.0f));
+			if (!thWarn) {
+				GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You're thirsty", GameMessage.messageType.Warning));
+			}
+			this.harm(harmCoef*(Mathf.Abs(this.thirst-20.0f)/7.0f));
+		} else if (thWarn) {
+			thWarn = false;
 		}
 	}
 

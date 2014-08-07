@@ -58,6 +58,12 @@ public class toolBaseScript : MonoBehaviour {
 					Unequip ();
 					return;
 				}
+
+				if (inv.items [toolIndex].durability <= 0) {
+					inv.DestroyItem (toolIndex);
+					Unequip ();
+					return;
+				}
 			} else {
 				Unequip ();
 				return;

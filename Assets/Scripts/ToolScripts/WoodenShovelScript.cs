@@ -13,6 +13,8 @@ public class WoodenShovelScript :  toolBaseScript  {
 	private float delayTime;
 	public byte delayN;
 
+
+
 	void Start () {
 
 		toolName = "WoodenShovel";
@@ -86,6 +88,7 @@ public class WoodenShovelScript :  toolBaseScript  {
 
 				if (tex.TexMatch ("Grass")) {
 					yield return new WaitForSeconds (delay1);
+					inv.items [toolIndex].durability -= 1;
 					GameObject tmp = Instantiate (hole, hit.point, Quaternion.LookRotation (hit.normal) * Quaternion.Euler (90, 0, 0)) as GameObject;
 					tmp.name = hole.name; 
 					tmp.name.Replace ("(Clone)", "");

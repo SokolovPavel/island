@@ -102,6 +102,7 @@ public class SoilHole : MonoBehaviour {
 	void Hydrate() {
 		hydrated = true;
 		waterAmount++;
+		renderer.material.color = new Color (0.37f, 0.37f, 0.37f);
 	}
 
 	void Plant(int index) {

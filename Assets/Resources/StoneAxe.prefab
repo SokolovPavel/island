@@ -118,7 +118,7 @@ MonoBehaviour:
   weight: 3
   maxQ: 1
   quantity: 1
-  durability: 128
+  durability: 64
   maxDur: 128
   type: 1
 --- !u!1001 &100100000

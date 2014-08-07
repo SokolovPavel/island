@@ -5,16 +5,20 @@ public class StoneAxeScript : toolBaseScript {
 
 	private bool busy;
 	private float delay1=3.0f;
-	private float delay2=1.0f;
+	private float delay2=3.0f;
 	private float timer;
 	private float delayTime;
 
 	public byte delayN;
+	public AudioClip hydrSound;
+
+
 	// Use this for initialization
 	void Start () {
 		toolName = "StoneAxe";
 		scriptName = "StoneAxeScript";
 		toolObj = Resources.Load (toolName, typeof(GameObject)) as GameObject;
+		hydrSound = Resources.Load ("hydrating") as AudioClip;
 		Init ();
 	
 
@@ -88,9 +92,11 @@ public class StoneAxeScript : toolBaseScript {
 
 			if ((hit.rigidbody) && (hit.rigidbody.gameObject.name != "Player")) {
 				yield return new WaitForSeconds (delay1);
+				inv.items [toolIndex].durability -= 1;
 				hit.transform.gameObject.SendMessage ("Chop", new ToolParams(this.gameObject,1.0f), SendMessageOptions.DontRequireReceiver);
 			} else if (hit.collider.tag == "Usable") {
 				yield return new WaitForSeconds (delay1);
+				inv.items [toolIndex].durability -= 1;
 				hit.transform.gameObject.SendMessage ("Chop", new ToolParams(this.gameObject,1.0f), SendMessageOptions.DontRequireReceiver);
 			}
 		} else {
@@ -106,10 +112,14 @@ public class StoneAxeScript : toolBaseScript {
 		if (Physics.Raycast (cam.transform.position, direction, out hit, range)) {	
 
 			if ((hit.rigidbody) && (hit.rigidbody.gameObject.name != "Player")) {
-				yield return new WaitForSeconds (delay1);
+				audio.PlayOneShot (hydrSound);
+				yield return new WaitForSeconds (delay2);
+				inv.items [toolIndex].durability -= 1;
 				hit.transform.gameObject.SendMessage ("Hydrate", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
 			} else if (hit.collider.tag == "Usable") {
-				yield return new WaitForSeconds (delay1);
+				audio.PlayOneShot (hydrSound);
+				yield return new WaitForSeconds (delay2);
+				inv.items [toolIndex].durability -= 1;
 				hit.transform.gameObject.SendMessage ("Hydrate", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
 			}
 		}

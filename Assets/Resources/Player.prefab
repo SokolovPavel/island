@@ -140,8 +140,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.9099998, y: 7.95469999, z: -34.3219986}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: 29.6280003, y: 6.10900021, z: -37.6790009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -169,7 +169,7 @@ Camera:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 2800000, guid: 104e4522f665c3944a3e4e789c939656, type: 3}
   hotbarFrame: {fileID: 2800000, guid: b381f6d17d43c1d4c825b816fb44c9d3, type: 3}
-  guiSkin: {fileID: 0}
+  guiSkin: {fileID: 11400000, guid: 15f2fe67bc7ab0344bdd670c31ac1e55, type: 2}
 --- !u!114 &11400022
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -14,7 +14,7 @@ public class namedImage : MonoBehaviour{
 public class ImageLibrary : MonoBehaviour {
 
 	//public namedImage[] images = new Itm[inventorySize + 1];
-	public List<namedImage> images = new List<namedImage>();
+	static public List<namedImage> images = new List<namedImage>();
 	Texture2D tempImage;
 	public Texture2D getImage(string name){
 		for (int i = 0; i < images.Count; i++) {

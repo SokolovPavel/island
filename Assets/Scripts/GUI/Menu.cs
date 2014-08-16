@@ -71,10 +71,12 @@ public class Menu : MonoBehaviour {
 				unlockControl();
 				GUIHolder.SetCursor(GUIt.CursorType.game);
 				invGUI.HideWindow ();
+				craft.HideWindow (gameObject);
 			} else {
 				lockControl();
 				GUIHolder.SetCursor(GUIt.CursorType.inventory);
 				invGUI.ShowWindow ();
+				//craft.ShowWindow (gameObject);
 			}
 			locked =!locked;
 		}
@@ -89,20 +91,6 @@ public class Menu : MonoBehaviour {
 				lockControl();
 				GUIHolder.SetCursor(GUIt.CursorType.inventory);
 				map.setMap();
-			}
-			locked =!locked;
-		}
-
-		if (Input.GetButtonDown("Craft")) {
-			CloseWindows ();
-			if (locked){
-				craft.HideWindow (gameObject);
-				unlockControl();
-				GUIHolder.SetCursor(GUIt.CursorType.game);
-			} else {
-				craft.ShowWindow (gameObject);
-				lockControl();
-				GUIHolder.SetCursor(GUIt.CursorType.inventory);
 			}
 			locked =!locked;
 		}

@@ -25,12 +25,17 @@ public class InventoryGUI : MonoBehaviour {
 	private int _dragFromIndex;
 	private int _dragToIndex;
 	private int _dragTempStorage = 126;
-	// Use this for initialization
 
 	private bool _showInventory = false;
 	private int _windowYShift = (int)(Screen.height*0.05f);
 	ImageLibrary library = new ImageLibrary();
 	Inventory inventory;
+
+	//GUI Toolbar
+	public int toolbarInt = 0;
+	public string[] toolbarStrings = new string[] {"Inventory", "Craft"};
+	public RecipeList craftWindowHolder;
+
 	void Start () {
 		_buttonSize = (int) (Screen.width * 0.4f - 9 * _buttonShift) / 10;
 		_buttonX = (int) (Screen.width/2 - 5 * _buttonSize - 4.5f * _buttonShift);
@@ -38,71 +43,133 @@ public class InventoryGUI : MonoBehaviour {
 		_contexMenuSize = (int)(0.9f * _buttonSize/2);
 		inventory = gameObject.GetComponent<Inventory>(); 
 		library.getImage ("NoImage");
-	}
-
-	void OnGUI () {
 		GUI.skin = guiSkin;
-
+	}
+		
+	void OnGUI () {
 		//Фон хотбара
 		if (Event.current.type.Equals (EventType.Repaint)) {
 			GUI.DrawTexture (new Rect (Screen.width * 0.26f, Screen.height - _buttonSize - 2 * _buttonShift - 10, Screen.width - Screen.width * 2 * 0.26f, _buttonSize + 2 * _buttonShift + 10), background);
 		}
-		for (int j = 0; j < 9; j++) {
-			for (int i = 0; i < 10; i++) {
-				int Y = _buttonY - j * (_buttonSize + _buttonShift);
-				if (j > 0) {
-					Y -= _windowYShift;
-				}
-				if (inventory.items [i + j*10] != null) {
-					if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), Y, _buttonSize, _buttonSize), library.getImage (inventory.items [i + j*10].name))) {
+		//Хотбар
+		for (int i = 0; i < 10; i++) {
+			int Y = _buttonY;
+			if (inventory.items [i] != null) {
+				if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), Y, _buttonSize, _buttonSize), library.getImage (inventory.items [i].name))) {
 
-						if (Event.current.button == 0) {
-							_contexMenuShow = false;
-							if (_dragOn) {
-								if (inventory.items [_dragTempStorage].name == inventory.items [i + j*10].name) {
-									inventory.SetQuantity (_dragTempStorage, inventory.AddQuantity (i + j*10, inventory.items [_dragTempStorage].quantity));
-									if (inventory.items [_dragTempStorage] == null) {
-										_dragOn = false;
-									}
-								} 
-
-							} else {
-								_dragOn = true;
-								inventory.SwapItems (i + j*10, _dragTempStorage);
-							}
-						} else if (Event.current.button == 1) {
-							if (_dragOn) {
-								inventory.shareStack (_dragTempStorage, i + j*10);
-								if (inventory.items [_dragTempStorage] == null)
+					if (Event.current.button == 0) {
+						_contexMenuShow = false;
+						if (_dragOn) {
+							if (inventory.items [_dragTempStorage].name == inventory.items [i].name) {
+								inventory.SetQuantity (_dragTempStorage, inventory.AddQuantity (i, inventory.items [_dragTempStorage].quantity));
+								if (inventory.items [_dragTempStorage] == null) {
 									_dragOn = false;
-							} else {
-								showContexMenu (i,j);
-							}
-						}
-					}
-					if ((inventory.items [i + j*10] != null) && (inventory.items [i + j*10].quantity > 1))
-						GUI.Label (new Rect (_buttonX + i * (_buttonSize + _buttonShift) + 4, Y, _buttonSize, _buttonSize), inventory.items [i + j*10].quantity.ToString ());
-				} else {
-					if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), Y, _buttonSize, _buttonSize), "")) {
-						if (Event.current.button == 0) {
-							_contexMenuShow = false;
-							if (_dragOn) {
-								inventory.SwapItems (_dragTempStorage, i + j*10);
-								_dragOn = false;
+								}
 							} 
-						} else if (Event.current.button == 1) {
-							if (_dragOn) {
-								inventory.shareStack (_dragTempStorage, i + j*10);
-								if (inventory.items [_dragTempStorage] == null)
-									_dragOn = false;
-							}
+
+						} else {
+							_dragOn = true;
+							inventory.SwapItems (i, _dragTempStorage);
+						}
+					} else if (Event.current.button == 1) {
+						if (_dragOn) {
+							inventory.shareStack (_dragTempStorage, i);
+							if (inventory.items [_dragTempStorage] == null)
+								_dragOn = false;
+						} else {
+							showContexMenu (i,0);
 						}
 					}
-		
 				}
-
+				if ((inventory.items [i] != null) && (inventory.items [i ].quantity > 1))
+					GUI.Label (new Rect (_buttonX + i * (_buttonSize + _buttonShift) + 4, Y, _buttonSize, _buttonSize), inventory.items [i].quantity.ToString ());
+			} else {
+				if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), Y, _buttonSize, _buttonSize), "")) {
+					if (Event.current.button == 0) {
+						_contexMenuShow = false;
+						if (_dragOn) {
+							inventory.SwapItems (_dragTempStorage, i);
+							_dragOn = false;
+						} 
+					} else if (Event.current.button == 1) {
+						if (_dragOn) {
+							inventory.shareStack (_dragTempStorage, i);
+							if (inventory.items [_dragTempStorage] == null)
+								_dragOn = false;
+						}
+					}
+				}
+	
 			}
-			if (!_showInventory) {
+
+		}
+		//-Хотбар
+
+		if (_showInventory) {
+			toolbarInt = GUI.SelectionGrid(new Rect(_buttonX-150, Screen.height/2, 100, 100), toolbarInt, toolbarStrings, 1);
+			switch (toolbarInt) {
+			case 0:
+				craftWindowHolder.HideWindow (gameObject);
+				for (int j = 1; j < 5; j++) {
+					for (int i = 0; i < 10; i++) {
+						int Y = _buttonY - j * (_buttonSize + _buttonShift);
+						if (j > 0) {
+							Y -= _windowYShift;
+						}
+						if (inventory.items [i + j * 10] != null) {
+							if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), Y, _buttonSize, _buttonSize), library.getImage (inventory.items [i + j * 10].name))) {
+
+								if (Event.current.button == 0) {
+									_contexMenuShow = false;
+									if (_dragOn) {
+										if (inventory.items [_dragTempStorage].name == inventory.items [i + j * 10].name) {
+											inventory.SetQuantity (_dragTempStorage, inventory.AddQuantity (i + j * 10, inventory.items [_dragTempStorage].quantity));
+											if (inventory.items [_dragTempStorage] == null) {
+												_dragOn = false;
+											}
+										} 
+
+									} else {
+										_dragOn = true;
+										inventory.SwapItems (i + j * 10, _dragTempStorage);
+									}
+								} else if (Event.current.button == 1) {
+									if (_dragOn) {
+										inventory.shareStack (_dragTempStorage, i + j * 10);
+										if (inventory.items [_dragTempStorage] == null)
+											_dragOn = false;
+									} else {
+										showContexMenu (i, j);
+									}
+								}
+							}
+							if ((inventory.items [i + j * 10] != null) && (inventory.items [i + j * 10].quantity > 1))
+								GUI.Label (new Rect (_buttonX + i * (_buttonSize + _buttonShift) + 4, Y, _buttonSize, _buttonSize), inventory.items [i + j * 10].quantity.ToString ());
+						} else {
+							if (GUI.Button (new Rect (_buttonX + i * (_buttonSize + _buttonShift), Y, _buttonSize, _buttonSize), "")) {
+								if (Event.current.button == 0) {
+									_contexMenuShow = false;
+									if (_dragOn) {
+										inventory.SwapItems (_dragTempStorage, i + j * 10);
+										_dragOn = false;
+									} 
+								} else if (Event.current.button == 1) {
+									if (_dragOn) {
+										inventory.shareStack (_dragTempStorage, i + j * 10);
+										if (inventory.items [_dragTempStorage] == null)
+											_dragOn = false;
+									}
+								}
+							}
+
+						}
+
+					}
+				}
+				break;
+			case 1:
+				//show craft dialog
+				craftWindowHolder.ShowWindow (gameObject);
 				break;
 			}
 		}

@@ -3,7 +3,8 @@ using System.Collections;
 
 public class toolBaseScript : MonoBehaviour {
 	public int toolIndex;
-	public GameObject toolPlace;
+	public GameObject toolPlaceArmature;
+    public Transform toolPlace;
 	public Inventory inv;
 	public GameObject cam;
 	public GameObject toolModel;
@@ -33,8 +34,11 @@ public class toolBaseScript : MonoBehaviour {
 		toolIndex = invIndex;
 		//toolModel = Instantiate (toolObj, toolPlace.transform.position, toolPlace.transform.rotation) as GameObject;
 		toolName = inv.items [invIndex].name;
-		toolModel = Instantiate (Resources.Load(toolName,typeof (GameObject)),toolPlace.transform.position, toolPlace.transform.rotation) as GameObject;
-		toolModel.transform.parent = cam.transform;
+        toolModel = Instantiate(Resources.Load(toolName, typeof(GameObject)), toolPlace.position, toolPlace.rotation) as GameObject;
+        toolModel.transform.parent = toolPlace;// cam.transform.Find("arm_anim/Armature/Bone");
+        toolModel.transform.localPosition = Vector3.zero;
+        toolModel.transform.localRotation = Quaternion.identity;
+        toolModel.transform.localScale = Vector3.one;
 		toolModel.collider.enabled = false;
 		toolModel.rigidbody.isKinematic = true;
 		toolModel.GetComponent<Item> ().enabled = false;
@@ -74,7 +78,8 @@ public class toolBaseScript : MonoBehaviour {
 	public void Init() {
 		inv = this.gameObject.GetComponent<Inventory> ();
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
-		toolPlace = GameObject.Find ("ToolPlace");
+        toolPlaceArmature = GameObject.Find("arm_anim");
+        toolPlace = cam.transform.Find("arm_anim/Armature/Bone/ToolPlace");
 		scriptName = this.name;
 		prBar b = this.gameObject.GetComponent<prBar> ();
 		texture = b.texture;

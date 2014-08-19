@@ -11,7 +11,7 @@ public class StoneAxeScript : toolBaseScript {
 
 	public byte delayN;
 	public AudioClip hydrSound;
-
+    animController animCont;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +20,7 @@ public class StoneAxeScript : toolBaseScript {
 		toolObj = Resources.Load (toolName, typeof(GameObject)) as GameObject;
 		hydrSound = Resources.Load ("hydrating") as AudioClip;
 		Init ();
+        animCont = cam.transform.Find("arm_anim").GetComponent<animController>();
 	
 
 	}
@@ -37,6 +38,7 @@ public class StoneAxeScript : toolBaseScript {
 				delayTime = delay1;
 				delayN = 1;
 				busy = true;
+                animCont.SetAnim("Chop");
 				StartCoroutine ("Action1");
 				return;
 			}

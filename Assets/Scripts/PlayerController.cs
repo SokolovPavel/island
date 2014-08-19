@@ -4,6 +4,8 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour {
 
+    public animController animControl;
+
 	public float moveSpeed = 10;
 	public float runSpeed = 20;
 	public float crouchSpeed = 2f;
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour {
 		_jumpSpeed = Mathf.Sqrt (2 * gravity * JumpHeight);
 		height = controller.height;
 		tr = this.transform;
+        animControl = gameObject.transform.Find("Head camera/arm_anim").GetComponent<animController>();
+        //animControl = this.gameObject.GetComponent<animController>();
 	}
 
 	void FixedUpdate () {
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 			if (moveSpeedDir != Vector3.zero) {
 				//moveSpeedDir = moveSpeedDir / moveSpeedDir.magnitude;
 
-
+                animControl.SetAnim("Walk");
 				if ((crouching == true) && (moveSpeedDir.z > 0)) {
 					moveSpeedDir *= crouchSpeed;
 				} else if ((Input.GetButton ("Run")) && (moveSpeedDir.z > 0)) {
@@ -48,8 +52,9 @@ public class PlayerController : MonoBehaviour {
 				moveSpeedDir = transform.TransformDirection (moveSpeedDir);
 
 			
-			}
-
+			}else{
+                animControl.SetAnim("Stand");
+            }
 			if (isGrounded) {
 				if (Input.GetButton ("Jump")) {
 					moveSpeedDir.y = _jumpSpeed;

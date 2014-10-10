@@ -42,6 +42,7 @@ public class toolBaseScript : MonoBehaviour {
 		toolModel.collider.enabled = false;
 		toolModel.rigidbody.isKinematic = true;
 		toolModel.GetComponent<Item> ().enabled = false;
+
 		equipped = true;
 	}
 

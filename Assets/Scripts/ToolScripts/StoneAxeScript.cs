@@ -18,7 +18,7 @@ public class StoneAxeScript : toolBaseScript {
 		toolName = "StoneAxe";
 		scriptName = "StoneAxeScript";
 		toolObj = Resources.Load (toolName, typeof(GameObject)) as GameObject;
-		hydrSound = Resources.Load ("hydrating") as AudioClip;
+		//	hydrSound = Resources.Load ("hydrating") as AudioClip;
 		Init ();
         animCont = cam.transform.Find("arm_anim").GetComponent<animController>();
 	
@@ -43,7 +43,7 @@ public class StoneAxeScript : toolBaseScript {
 				return;
 			}
 
-			if (Input.GetMouseButtonDown (1)) {
+			/*	if (Input.GetMouseButtonDown (1)) {
 				//Debug.Log ("RMB Pressed");
 				delayTime = delay2;
 				busy = true;
@@ -51,7 +51,9 @@ public class StoneAxeScript : toolBaseScript {
 				StartCoroutine ("Action2");
 				return;
 			}
-		
+		*/
+
+
 		} else {
 			timer += Time.deltaTime;
 			if (timer > delayTime) {
@@ -107,7 +109,7 @@ public class StoneAxeScript : toolBaseScript {
 
 	}
 
-	IEnumerator Action2() {
+	/*	IEnumerator Action2() {
 		float range = 10f;
 		Vector3 direction = cam.transform.TransformDirection (Vector3.forward);
 		RaycastHit hit;
@@ -125,5 +127,6 @@ public class StoneAxeScript : toolBaseScript {
 				hit.transform.gameObject.SendMessage ("Hydrate", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
 			}
 		}
-	}
+}
+*/
 }

@@ -26,6 +26,8 @@ public class Hovel : MonoBehaviour {
 			stats = user.GetComponent<PlayerStats> ();
 
 			if (!sleeping) {
+				user.SendMessage ("HideTool", SendMessageOptions.DontRequireReceiver);
+				user.SendMessage ("lockControl", SendMessageOptions.DontRequireReceiver);
 				oldEnergy = stats.energy;
 				sleeping = true;
 				time = 0.0f;
@@ -76,6 +78,8 @@ public class Hovel : MonoBehaviour {
 		sleeping = false;
 		controller.enabled = true;
 		ply.transform.position = lastPos;
+		ply.SendMessage ("unlockControl", SendMessageOptions.DontRequireReceiver);
+		ply.SendMessage ("ShowTool", SendMessageOptions.DontRequireReceiver);
 		//Debug.Log ("Wake up mazafaka");
 		GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage ("You've restored "+(Mathf.CeilToInt(stats.energy - oldEnergy)) + " energy points", GameMessage.messageType.ObjectMessage));
 

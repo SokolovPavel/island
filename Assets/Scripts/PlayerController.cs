@@ -11,14 +11,17 @@ public class PlayerController : MonoBehaviour {
 	public float crouchSpeed = 2f;
 	public float JumpHeight = 1;
 	public float gravity = 9.8f;
+	public float fallThreshold = 1f;
 	private Vector3 moveSpeedDir = Vector3.zero;
 	private bool isGrounded = false;
 	private Vector3 _prevSpeed = Vector3.zero;
 	private float _jumpSpeed = 0;
 	CharacterController controller;
 	public bool enable = true;
-
+	public AudioClip fallDamageSnd;
 	//private float vScale = 1.0f; //Vertical scale of the character
+	private float fallTime = 0f;
+
 	private bool crouching = false;
 	private float height;
 	private Transform tr;
@@ -56,11 +59,25 @@ public class PlayerController : MonoBehaviour {
                 animControl.SetAnim("Stand");
             }
 			if (isGrounded) {
+
+				if (fallTime > fallThreshold) {
+					Debug.Log ("We've just felt down! Fall time:" + fallTime.ToString() );
+					SendMessage("addHealth",( -(fallTime - fallThreshold)*120f), SendMessageOptions.DontRequireReceiver);
+					audio.PlayOneShot (fallDamageSnd);
+					fallTime = 0f;
+
+				} else {
+					fallTime = 0f;
+				}
+
 				if (Input.GetButton ("Jump")) {
 					moveSpeedDir.y = _jumpSpeed;
 				} else {
 					moveSpeedDir.y = 0;
 				}
+
+			} else {
+				fallTime += Time.deltaTime;
 
 			}
 

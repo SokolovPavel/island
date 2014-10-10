@@ -344,4 +344,13 @@ public class Menu : MonoBehaviour {
 	void Unequipped() {
 		equipped = false;
 	}
+
+	public void HideTool() {
+		SendMessage ("Unequip");
+		equipped = false;
+	}
+
+	public void ShowTool() {
+		StartCoroutine( "EquipTool",invGUI.selectedIndex);
+	}
 }

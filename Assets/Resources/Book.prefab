@@ -9,14 +9,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
-  - 23: {fileID: 2300000}
-  - 95: {fileID: 9500000}
-  - 54: {fileID: 5400000}
   - 65: {fileID: 6500000}
+  - 23: {fileID: 2300000}
+  - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: StoneAxe
-  m_TagString: Untagged
+  m_Name: Book
+  m_TagString: Usable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,9 +26,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 30.625, y: 6.6480999, z: -34.6010017}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 31.7649994, y: 4.69119978, z: -39.6790009}
+  m_LocalScale: {x: .400000006, y: .0500000007, z: .300000012}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,7 +44,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 7d3a9a78104d9084ca796e7476082773, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -59,7 +58,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 7aaf4aa0f1b83df4dbf438a0a24d4842, type: 3}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -67,7 +66,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Mass: 3
+  m_Mass: .200000003
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -85,22 +84,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .25, y: 1.10000002, z: .200000003}
-  m_Center: {x: -.100000001, y: .400000006, z: 0}
---- !u!95 &9500000
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 7aaf4aa0f1b83df4dbf438a0a24d4842, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,18 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d26ba7b1a480e47863d98b9fe9104b, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b0d7bea64ea7446b06996585568548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: StoneAxe
-  title: Stone Axe
-  desc: Primitive stone axe. Can only help you to chop some wood
-  weight: 3
-  maxQ: 1
-  quantity: 1
-  durability: 64
-  maxDur: 128
-  type: 1
+  Text: This is a hint sheet of paper
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

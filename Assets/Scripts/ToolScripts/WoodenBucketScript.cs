@@ -9,6 +9,7 @@ public class WoodenBucketScript : toolBaseScript {
 	private float timer;
 	private float delayTime;
 
+	public bool Filled;
 	public byte delayN;
 	public AudioClip hydrSound;
 	animController animCont;
@@ -44,11 +45,13 @@ public class WoodenBucketScript : toolBaseScript {
 			}
 
 			if (Input.GetMouseButtonDown (1)) {
-				//Debug.Log ("RMB Pressed");
-				delayTime = delay2;
-				busy = true;
-				delayN = 2;
-				StartCoroutine ("Action2");
+				if (Filled) {
+					//Debug.Log ("RMB Pressed");
+					delayTime = delay2;
+					busy = true;
+					delayN = 2;
+					StartCoroutine ("Action2");
+				}
 				return;
 			}
 
@@ -92,14 +95,11 @@ public class WoodenBucketScript : toolBaseScript {
 		RaycastHit hit;
 		if (Physics.Raycast (cam.transform.position, direction, out hit, range)) {	
 
-			if ((hit.rigidbody) && (hit.rigidbody.gameObject.name != "Player")) {
+			if (hit.collider.tag == "Water") {
 				yield return new WaitForSeconds (delay1);
-				inv.items [toolIndex].durability -= 1;
-				//	hit.transform.gameObject.SendMessage ("Chop", new ToolParams(this.gameObject,1.0f), SendMessageOptions.DontRequireReceiver);
-			} else if (hit.collider.tag == "Usable") {
-				yield return new WaitForSeconds (delay1);
-				inv.items [toolIndex].durability -= 1;
-				//	hit.transform.gameObject.SendMessage ("Chop", new ToolParams(this.gameObject,1.0f), SendMessageOptions.DontRequireReceiver);
+				//	inv.items [toolIndex].durability -= 1;
+			    //hit.transform.gameObject.SendMessage ("Chop", new ToolParams(this.gameObject,1.0f), SendMessageOptions.DontRequireReceiver);
+				Filled = true;
 			}
 		} else {
 			yield return null;
@@ -118,11 +118,13 @@ public class WoodenBucketScript : toolBaseScript {
 				yield return new WaitForSeconds (delay2);
 				inv.items [toolIndex].durability -= 1;
 				hit.transform.gameObject.SendMessage ("Hydrate", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
+				Filled = false;
 			} else if (hit.collider.tag == "Usable") {
 				audio.PlayOneShot (hydrSound);
 				yield return new WaitForSeconds (delay2);
 				inv.items [toolIndex].durability -= 1;
 				hit.transform.gameObject.SendMessage ("Hydrate", this.transform.gameObject, SendMessageOptions.DontRequireReceiver);
+				Filled = false;
 			}
 		}
 	}

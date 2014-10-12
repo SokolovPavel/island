@@ -59,7 +59,7 @@ Material:
       data:
         first:
           name: _RefrStrength
-        second: .280000001
+        second: .216999993
       data:
         first:
           name: _RefrSpeed
@@ -75,7 +75,7 @@ Material:
       data:
         first:
           name: _MasterScale
-        second: .430000007
+        second: .49000001
       data:
         first:
           name: _AnimSpeed
@@ -83,11 +83,11 @@ Material:
       data:
         first:
           name: _underFogStart
-        second: .238000005
+        second: .213
       data:
         first:
           name: _underFogStretch
-        second: .00300000003
+        second: .00499999989
     m_Colors:
       data:
         first:
@@ -108,7 +108,7 @@ Material:
       data:
         first:
           name: _DepthColorB
-        second: {r: .230000004, g: 1, b: .970000029, a: .0700000003}
+        second: {r: .709999979, g: .949999988, b: 1, a: .25999999}
       data:
         first:
           name: _DiffuseColor

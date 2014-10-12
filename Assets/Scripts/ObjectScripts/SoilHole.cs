@@ -76,7 +76,8 @@ public class SoilHole : MonoBehaviour {
 	void FixedUpdate(){
 		if (haveSeed) {
 			timer += Time.fixedDeltaTime;
-			if ((timer > timeToGrow) && (waterAmount >= neededWater)&&(seedActivated)) {
+			if ((timer > timeToGrow) && (waterAmount >= neededWater)&&(!seedActivated)) {
+				//Debug.Log ("Planted!");
 				seedObj.SetActive (true);
 				if (seedObj.GetComponent<SeedScript> ().Activate (this.gameObject, true)) {
 					GameObject.FindGameObjectWithTag ("GameLogic").GetComponent<MessageBox> ().AddMessage (new GameMessage (seedObj.GetComponent<SeedScript>().name+" have been planted", GameMessage.messageType.ObjectMessage));
@@ -113,6 +114,7 @@ public class SoilHole : MonoBehaviour {
 			seedObj.SetActive (false);
 			haveSeed = true;
 			SwitchStage (); 
+		//seedActivated = true;
 	}
 
 	void OnGUI() {

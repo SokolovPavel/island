@@ -40,8 +40,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fxObject: {fileID: 0}
-  effectRule: 
-  effectData: []
+  effectRule: 00000000
+  effectData:
+  - 0
   resetRule: 
   effectSystemName: []
   effectSystem: 
@@ -61,7 +62,7 @@ MonoBehaviour:
   tintCol: {r: 1, g: 1, b: 1, a: 1}
   clampRot: 0
   typeIndex: 0
-  ruleIndex: 
+  ruleIndex: 00000000
   systemIndex: 0
   useDarkUI: 1
   currentSpeed: 0
